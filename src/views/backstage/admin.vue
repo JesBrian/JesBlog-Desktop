@@ -1,13 +1,13 @@
 <template>
     <div>
-        drcftvrguhnjikm,lcfgvhbnjkml,;.<br/>
-        index
+        rtfgyuhnjimkl,.;'cdfvtghnjkm<br/>
+        admin
     </div>
 </template>
 
 <script>
     export default {
-        name: "index"
+        name: "admin"
     }
 </script>
 

@@ -7,7 +7,18 @@ export default [
     },
     {
         path: '/backstage',
-        component: () => import('../../views/backstage/index.vue')
+        component: () => import('../../views/backstage/frame.vue'),
+
+        children: [
+          {
+              path: 'index',
+              component: () => import('../../views/backstage/index.vue'),
+          },
+          {
+              path: 'admin',
+              component: () => import('../../views/backstage/admin.vue'),
+          }
+        ]
     },
     /*****************--------------- PC后台页面路由[END] ---------------*****************/
 ]
