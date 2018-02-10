@@ -11,9 +11,11 @@ import store from './config/store.js'
 import VueLazyload from 'vue-lazyload'
 
 
+var rootUrl = 'http://localhost/JesBlog-Backstage/web/';
+
 // axios.defaults.withCredentials = true;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.defaults.baseURL = 'http://localhost/JesBlog-Backstage/web/index.php/';
+axios.defaults.baseURL = rootUrl + 'index.php/';
 Vue.prototype.axios = axios;
 Vue.use(VueLazyload, {
     preLoad: 1.3,

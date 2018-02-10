@@ -15,8 +15,8 @@
 
                 <!-- 登录注册 -->
                 <div id="navMenuAdmin" style="width:48px; height:45px; margin-top:5px; margin-right:68px; position:relative; float:right;">
-                    <span @click="loginRegister" class="superButton-Out" style="width:100%; height:100%;">
-                        <img class="superButton-In" :src="'http://localhost/JesBlog/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'" style="width:36px; height:34px;"/>
+                    <span class="superButton-Out" style="width:100%; height:100%;">
+                        <img class="superButton-In" :src="'http://localhost/JesBlog-Backstage/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'" style="width:36px; height:34px;"/>
                     </span>
 
                     <div style="top:40px; left:-55%; position:absolute;">
@@ -45,13 +45,21 @@
         </nav>
 
         <!-- 左侧手风琴菜单栏 -->
-        <div style="width:188px; height:100%; top:0; left:0; background:lightgreen; position:fixed; z-index:9;">
-
+        <div id="leftMenu" class="glass-Bg box-show" style="width:188px; height:100%; top:0; left:0; padding:60px 0 30px; box-sizing:border-box; position:fixed; z-index:9;">
+            <div style="width:100%; height:100%; overflow-y:auto; color:#DDD;">
+                sxdcftvgyuhnjimk,<h1>fcvgbhn</h1> overflow-y:scroll;
+                sxdcftvgyuhnjimk,<h1>fcvgbhn</h1>
+                sxdcftvgyuhnjimk,<h1>fcvgbhn</h1>
+                sxdcftvgyuhnjimk,<h1>fcvgbhn</h1>
+                sxdcftvgyuhnjimk,<h1>fcvgbhn</h1>
+            </div>
         </div>
 
         <!-- 中心 & 右侧内容 -->
-        <div style="width:100%; height:100%; top:0; right:0; position:fixed; background:lightseagreen;">
+        <div class="s1c-Bg" style="width:100%; height:100%; top:0; right:0; position:fixed; padding:63px 8px 35px 195px; box-sizing:border-box;">
+            <div class="glass-Bg" style="width:100%; height:100%; overflow:auto; color:#DDD;">
 
+            </div>
         </div>
 
         <!-- 底部信息条 -->
@@ -68,6 +76,11 @@
         name: "index",
         components: {
 
+        },
+
+        data() {
+            return {
+            }
         },
 
         beforeCreate() {

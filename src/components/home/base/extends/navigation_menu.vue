@@ -57,12 +57,12 @@
             <!-- 登录注册 -->
             <div id="navMenuUser" style="width:48px; height:45px; margin-top:7px; margin-left:28px; position:relative; float:right;">
                 <span @click="loginRegister" class="superButton-Out" style="width:100%; height:100%;">
-                    <img class="superButton-In" v-if="avatar !== ''" :src="avatar" style="width:36px; height:34px;"/>
+                    <img class="superButton-In" v-if="this.$store.state.userInfo.id !== '0'" :src="'http://localhost/JesBlog-Backstage/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'" style="width:36px; height:34px;"/>
                     <a class="superButton-In MyIF administrators-1" v-else style="width:36px; height:34px; line-height:35px!important; font-size:28px;"></a>
                 </span>
 
                 <div style="top:40px; left:-55%; position:absolute;">
-                    <div v-if="userId !== '0'" class="s1c-Bg box-show" style="width:100px; margin-top:10px; padding:0 4px; text-align:center; line-height:30px;">
+                    <div v-if="this.$store.state.userInfo.id !== '0'" class="s1c-Bg box-show" style="width:100px; margin-top:10px; padding:0 4px; text-align:center; line-height:30px;">
                         <ul>
                             <li>
                                 <router-link :to="'/author/' + this.$store.state.userInfo.id">
@@ -107,20 +107,6 @@
         data() {
             return {
             }
-        },
-        computed: {
-            userId() {
-                return this.$store.state.userInfo.id;
-            },
-
-            avatar() {
-                // return './src/assets/images/touxiang.jpg';
-                if (this.$store.state.userInfo.id !== '0') {
-                    return 'http://localhost/JesBlog/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg';
-                } else {
-                    return '';
-                }
-            },
         },
         methods: {
             /**
