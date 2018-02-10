@@ -1,0 +1,263 @@
+<template>
+    <!-- PC端前台作者信息页 -->
+    <div style="position:relative;">
+
+        <!-- 导航栏组件 -->
+        <navigation-bar/>
+
+
+        <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
+
+            <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
+
+                <div style="width:68%; display:inline-block;">
+                    <div style="width:100%; color:#EDE;">
+
+                        <div class="s1c-Bg box-show" style="width:68px; height:68px; margin:0 18px 0 28px; float:left;">
+                            <img v-lazy="'http://localhost/JesBlog/web/upload/avatar/' + this.$route.params.id + '-' + userInfo.username + '.jpg'" class="box-show" style="width:62px; height:62px; margin:3px;">
+                        </div>
+
+                        <div style="height:68px; margin-top:18px;">
+                            <p style="float:left; font-size:28px;">{{ userInfo.username }}</p>
+
+                            <!-- "关注/取消关注"组件 -->
+                            <follow v-if="!personal" :hasFollow="userInfo.hasFollow" :type="followType" :typeId="followTypeId" style="margin:-1px 0 0 28px; position:relative; float:left;"/>
+
+                            <router-link to="/management" class="superButton-Out" v-if="personal" style="width:106px; height:32px; margin-right:68px; float:right;">
+                                <span class="superButton-In MyIF add-data" style="width:96px; height:23px; line-height:23px;"> 文章管理</span>
+                            </router-link>
+                            <router-link to="/update" class="superButton-Out" v-if="personal" style="width:106px; height:32px; margin-right:28px; float:right;">
+                                <span class="superButton-In MyIF alter-information" style="width:96px; height:23px; line-height:23px;"> 修改资料</span>
+                            </router-link>
+
+                            <br/><br/>
+                            <div style="margin-top:8px; color:#C0FFB4; font-family:'Microsoft YaHei UI'">
+                                <a style="padding:0 12px; float:left;">
+                                    <p style="text-align:center; font-size:15px; color:#AAA; line-height:1.5em;">{{ userInfo.articleNum }}</p>
+                                    <p>文章</p>
+                                </a>
+                                <a style="padding:0 12px; float:left;">
+                                    <p style="text-align:center; font-size:15px; color:#AAA; line-height:1.5em;">{{ userInfo.follows }}</p>
+                                    <P>粉丝</P>
+                                </a>
+                                <a style="padding:0 12px; float:left;">
+                                    <p style="text-align:center; font-size:15px; color:#AAA; line-height:1.5em;">{{ userInfo.attention }}</p>
+                                    关注
+                                </a>
+                                <a style="padding:0 12px; float:left;">
+                                    <p style="text-align:center; font-size:15px; color:#AAA; line-height:1.5em;">68</p>
+                                    评论
+                                </a>
+                                <a style="padding:0 12px; float:left;">
+                                    <p style="text-align:center; font-size:15px; color:#AAA; line-height:1.5em;">{{ userInfo.likes }}</p>
+                                    收获点赞
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 切换详细信息按钮组 -->
+                    <div id="changeUserContent">
+                        <a :class="{active: contentType === 'authorDescript'}" @click="changeContent('authorDescript')"><i class="MyIF information"></i> 简介</a>
+                        <a :class="{active: contentType === 'articleList'}" @click="changeContent('articleList')"><i class="MyIF add-data"></i> 文章</a>
+                        <a :class="{active: contentType === 'fansList'}" @click="changeContent('fansList')"><i class="MyIF all-user"></i> 粉丝</a>
+                        <a :class="{active: contentType === 'commentList'}" @click="changeContent('commentList')"><i class="MyIF recommend"></i> 评论</a>
+                        <a :class="{active: contentType === 'categoryList'}" @click="changeContent('categoryList')"><i class="MyIF feedback"></i> 分类</a>
+                    </div>
+
+
+                    <div id="authorContent">
+                        <component :is="contentType" :descript="contentList" :articleList="contentList" :categoryList="contentList" />
+                    </div>
+
+                </div>
+
+                <div style="width:28%; display:inline-block; float:right;">
+                    <!-- 推荐作者列表组件 -->
+                    <author-list/>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 浮动块[回到顶部]组件 -->
+        <float-block/>
+
+        <!-- 页脚组件 -->
+        <page-footer/>
+
+        <!-- 拟态框组件 -->
+        <modal/>
+
+    </div>
+</template>
+
+<script>
+    /*-*-* 引入功能组件[BEGIN] *-*-*/
+    import navigationBar from "../../components/home/base/extends/navigation_menu.vue";//导航菜单组件
+    import follow from "../../components/home/base/extends/follow.vue";//"关注"按钮组件
+    import authorDescript from "../../components/home/base/extends/descript.vue";//作者简介组件
+    import articleList from "../../components/home/article/article_list.vue";//文章列表组件
+    import fansList from "../../components/home/author/author_list_search.vue";//粉丝列表组件
+    import commentList from "../../components/home/comment/author_comment.vue";//评论列表组件
+    import categoryList from "../../components/home/category/category_list.vue";//分类列表组件
+    import authorList from "../../components/home/author/author_list_recom.vue";//推荐作者列表组件
+    import floatBlock from "../../components/home/base/extends/float_block.vue";//浮动块[回到顶部]组件
+    import pageFooter from "../../components/home/base/extends/page_footer.vue";//页脚组件
+    import modal from "../../components/common/modal/modalTotal.vue";//拟态框组件
+    /*-*-* 引入功能组件[END] *-*-*/
+
+
+    export default {
+        name: "author",
+        components: {
+            navigationBar,
+            follow,
+            authorDescript,
+            articleList,
+            fansList,
+            commentList,
+            categoryList,
+            authorList,
+            floatBlock,
+            pageFooter,
+            modal,
+        },
+        data() {
+            return {
+                userInfo: {},
+                contentList: null,
+
+                followType: 'user',
+                followTypeId: this.$route.params.id,
+                contentType: 'authorDescript',
+
+                personal: false,
+            }
+        },
+
+        beforeCreate() {
+            if (!this.$route.params.id) {
+                this.$router.push('/');
+            }
+        },
+
+        created() {
+            let data = {
+                'id': this.$route.params.id,
+                'userid': this.$store.state.userInfo.id,
+            }, thisObj = this;
+
+            this.axios.post('user/get-detail-info', data).then(function (response) {
+                if (response.data.status === '01') {
+                    thisObj.userInfo = response.data.data;
+                    thisObj.changeContent();
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+            if (this.$store.state.userInfo.id === this.$route.params.id) {
+                this.personal = true;
+            }
+        },
+
+        methods: {
+            changeContent(type = 'authorDescript') {
+                this.contentType = type;
+
+                let data = {
+                    userid: this.$route.params.id,
+                    status: 1,
+                }, thisObj = this, url = '';
+
+                if (this.contentType === 'articleList') {
+                    url = 'article/get-simple-info';
+                } else if (this.contentType === 'fansList') {
+                    url = 'attention/';
+                } else if (this.contentType === 'commentList') {
+                    url = '';
+                } else if (this.contentType === 'categoryList') {
+                    url = 'category/user-follows';
+                    data.categoryIds = this.userInfo.category;
+                } else {
+                    thisObj.contentList = thisObj.userInfo.descript;
+                    return false;
+                }
+
+                this.axios.post(url, data).then(function (response) {
+                    if (response.data.status === '01') {
+                        thisObj.contentList = response.data.data;
+                    } else if (response.data.status === '00') {
+                        console.log(response.data.msg);
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+            },
+        }
+    }
+
+</script>
+
+<style scoped>
+    #changeUserContent {
+        width: 95%;
+        height: 48px;
+        margin: 30px 0;
+        color: #999;
+        text-align: center;
+        line-height: 50px;
+        font-size: 18px;
+        font-weight: 700;
+        text-shadow: 0.5px 0.5px 0.1px #000;
+    }
+
+    #changeUserContent > a {
+        padding: 0 20px 5px 12px;
+        margin:0 0 0 28px;
+    }
+
+    #changeUserContent > a.active, #changeUserContent > a:hover {
+        color: #DDD;
+        position:relative;
+    }
+
+    #changeUserContent > a:before, #changeUserContent > a:after {
+        content:'';
+        width:0;
+        height:3px;
+        bottom:-3px;
+        position:absolute;
+    }
+    #changeUserContent > a.active:before, #changeUserContent > a.active:after {
+        width:50%;
+        transition: all 0.2s 0.1s;
+    }
+    #changeUserContent > a:before {
+        left:50%;
+        background: linear-gradient(to right, #54E0FF, #2DBEFF, #3072CC);
+    }
+    #changeUserContent > a:after {
+        right:50%;
+        background: linear-gradient(to right, #3072CC, #2DBEFF, #54E0FF);
+    }
+
+
+    #changeUserContent > a > i.MyIF {
+        font-size: 28px;
+        font-weight: 500;
+    }
+
+    #changeUserContent > a.active > i.MyIF {
+        color: #38BBEE;
+    }
+
+
+    #authorList, #categoryList {
+        width:90%;
+        margin:0 auto;
+    }
+</style>
