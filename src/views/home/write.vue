@@ -8,11 +8,20 @@
 
         <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
-
             <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
 
+                <div style="width:80%; margin:28px auto;">
+                    <div v-if="this.$route.params.id" >
+                        <h2 style="display:inline-block; font-size:28px; color:#EEE; line-height:2em;">修改文章</h2>
+                        <span class="superButton-Out" @click="confirmSaveArticle(0)" style="width:108px; height:38px; right:88px; float:right;">
+                            <a class="superButton-In MyIF trash-1" style="width:98px; height:28px; line-height:28px;"> 删除文章</a>
+                        </span>
+                    </div>
+                    <h2 v-else style="display:inline-block; font-size:28px; color:#EEE; line-height:2em;">新建文章</h2>
+                </div>
+
                 <!-- 编写区域 -->
-                <div style="width:80%; height:100%; margin:68px auto 18px; color:#AAA;">
+                <div style="width:80%; height:100%; margin:0 auto 18px; color:#AAA;">
 
                     <!-- 上传缩略图 -->
                     <div style="width:238px; height:188px; right:98px; position:absolute;">
@@ -95,7 +104,10 @@
                         <tr>
                             <td style="height:68px; "></td>
                             <td style="text-align:right;">
-                                <span class="superButton-Out" @click="confirmSaveArticle" style="width:108px; height:38px; top:13px; right:108px;">
+                                <span class="superButton-Out" @click="confirmSaveArticle(2)" style="width:108px; height:38px; top:13px; right:128px;">
+                                    <a class="superButton-In MyIF information" style="width:98px; height:28px; line-height:28px;"> 存为草稿</a>
+                                </span>
+                                <span class="superButton-Out" @click="confirmSaveArticle(1)" style="width:108px; height:38px; top:13px; right:108px;">
                                     <a class="superButton-In MyIF questionnaire-3" style="width:98px; height:28px; line-height:28px;"> 确定发表</a>
                                 </span>
                             </td>
@@ -162,7 +174,7 @@
                 tags: '',
                 summary: '',
                 content: '',
-
+                status: 1,
                 warningText: '发表该新文章'
             }
         },
@@ -247,10 +259,32 @@
             /**
              * 保存文章 - 新建 / 修改信息
              */
-            confirmSaveArticle() {
+            confirmSaveArticle(status) {
+                if (status === 2) {
+                    this.warningText = '将该文章存进草稿箱';
+                } else if (status === 0) {
+                    this.warningText = '将该文章抛弃至回收站';
+                } else if (status === 1) {
+                    this.warningText = '发表该新文章';
+                }
+                this.status = status;
                 this.$store.commit('changeModal', 'warning');
             },
             sureSaveArticle() {
+
+                //判断文章信息完整性
+                if (this.title === '') {
+                    return false;
+                }
+                if (this.status === 1) {
+                    if (this.categoryid === 0) {
+                        return false;
+                    }
+                    if (this.content === '') {
+                        return false;
+                    }
+                }
+
                 let data = {
                     id: this.id,
                     userid: this.$store.state.userInfo.id,
@@ -259,6 +293,7 @@
                     tags: this.tags,
                     summary: this.summary,
                     content: this.content,
+                    status: this.status,
                 }, thisObj = this, url = '';
 
                 if (this.$route.params.id) {

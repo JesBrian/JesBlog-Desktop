@@ -14,7 +14,7 @@ import VueLazyload from 'vue-lazyload'
 
 // axios.defaults.withCredentials = true;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.defaults.baseURL = 'http://localhost/JesBlog-BackStage/web/index.php/';
+axios.defaults.baseURL = 'http://localhost/JesBlog-Backstage/web/index.php/';
 Vue.prototype.axios = axios;
 Vue.use(VueLazyload, {
     preLoad: 1.3,
