@@ -47,17 +47,38 @@
         <!-- 左侧手风琴菜单栏 -->
         <div id="leftMenu" class="glass-Bg box-show" style="width:188px; height:100%; top:0; left:0; padding:60px 0 30px; box-sizing:border-box; position:fixed; z-index:9;">
             <div style="width:100%; height:100%; overflow-y:auto; color:#DDD;">
-                sxdcftvgyuhnjimk,<h1>fcvgbhn</h1> overflow-y:scroll;
-                sxdcftvgyuhnjimk,<h1>fcvgbhn</h1>
-                sxdcftvgyuhnjimk,<h1>fcvgbhn</h1>
-                sxdcftvgyuhnjimk,<h1>fcvgbhn</h1>
-                sxdcftvgyuhnjimk,<h1>fcvgbhn</h1>
+                <ul>
+                    <li style="width:100%; margin:0 0 16px;">
+                        <div class="glass-Bg box-show" style="width:96%; height:30px; margin:0 auto;"></div>
+                        <ul>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">111</li>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">111</li>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">111</li>
+                        </ul>
+                    </li>
+                    <li style="width:100%; margin:0 0 16px;">
+                        <div class="glass-Bg box-show" style="width:96%; height:30px; margin:0 auto;"></div>
+                        <ul>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">222</li>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">222</li>
+                        </ul>
+                    </li>
+                    <li style="width:100%; margin:0 0 16px;">
+                        <div class="glass-Bg box-show" style="width:96%; height:30px; margin:0 auto;"></div>
+                        <ul>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
 
         <!-- 中心 & 右侧内容 -->
         <div class="s1c-Bg" style="width:100%; height:100%; top:0; right:0; position:fixed; padding:63px 8px 35px 195px; box-sizing:border-box; z-index:5;">
-            <div class="glass-Bg" style="width:100%; height:100%; overflow:auto; color:#DDD; background:lightcoral; position:relative;">
+            <div class="glass-Bg" style="width:100%; height:100%; overflow:auto; color:#DDD; position:relative;">
                 <router-view></router-view>
             </div>
         </div>
