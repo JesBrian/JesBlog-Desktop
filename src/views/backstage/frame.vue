@@ -50,24 +50,24 @@
         <div id="leftMenu" class="glass-Bg box-show" :class="{'leftmenu-is-show':showLeftMenu === true}" style="width:188px; height:100%; top:0; left:-188px; padding:60px 0 30px; box-sizing:border-box; position:fixed; z-index:9;">
             <div style="width:100%; height:100%; overflow-y:auto; color:#DDD;">
                 <ul>
-                    <li style="width:100%; margin:0 0 16px;">
-                        <div class="glass-Bg box-show" style="width:96%; height:30px; margin:0 auto;"></div>
-                        <ul>
+                    <li style="width:100%; margin:0 0 8px;">
+                        <div class="glass-Bg box-show" @click="changeSecondMenu('user')" style="width:96%; height:30px; margin:0 auto;"></div>
+                        <ul v-if="secondMenu === 'user'" style="padding-bottom:8px;">
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">111</li>
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">111</li>
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">111</li>
                         </ul>
                     </li>
-                    <li style="width:100%; margin:0 0 16px;">
-                        <div class="glass-Bg box-show" style="width:96%; height:30px; margin:0 auto;"></div>
-                        <ul>
+                    <li style="width:100%; margin:0 0 8px;">
+                        <div class="glass-Bg box-show" @click="changeSecondMenu('category')" style="width:96%; height:30px; margin:0 auto;"></div>
+                        <ul v-if="secondMenu === 'category'">
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">222</li>
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">222</li>
                         </ul>
                     </li>
-                    <li style="width:100%; margin:0 0 16px;">
-                        <div class="glass-Bg box-show" style="width:96%; height:30px; margin:0 auto;"></div>
-                        <ul>
+                    <li style="width:100%; margin:0 0 8px;">
+                        <div class="glass-Bg box-show" @click="changeSecondMenu('article')" style="width:96%; height:30px; margin:0 auto;"></div>
+                        <ul v-if="secondMenu === 'article'">
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
@@ -104,6 +104,7 @@
         data() {
             return {
                 showLeftMenu: true,
+                secondMenu: '',
             }
         },
 
@@ -133,8 +134,18 @@
             changeLeftMenuShow() {
                 this.showLeftMenu === true ? this.showLeftMenu = false : this.showLeftMenu = true;
 
-            }
+            },
 
+            /**
+             * 折叠/展开左侧二级菜单
+             */
+            changeSecondMenu(type) {
+                if (this.secondMenu === type) {
+                    this.secondMenu = '';
+                } else {
+                    this.secondMenu = type;
+                }
+            }
         }
     }
 </script>
