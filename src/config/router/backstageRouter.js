@@ -16,8 +16,20 @@ export default [
                 component: () => import('../../views/backstage/index.vue'),
             },
             {
+                path: 'userList',
+                component: () => import('../../views/backstage/user/userList.vue'),
+            },
+            {
+                path: 'addUser',
+                component: () => import('../../views/backstage/user/addUser.vue'),
+            },
+            {
+                path: 'userBlacklist',
+                component: () => import('../../views/backstage/user/userBlacklist.vue'),
+            },
+            {
                 path: 'admin',
-                component: () => import('../../views/backstage/admin.vue'),
+                component: () => import('../../views/backstage/admin/admin.vue'),
             }
         ]
     },

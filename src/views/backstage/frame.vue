@@ -13,7 +13,7 @@
                 </router-link>
 
                 <!-- 折叠左侧菜单面板按钮 -->
-                <div class="s1c-Bg box-show" @click="changeLeftMenuShow" style="width:33px; height:40px; top:7px; left:128px; position:absolute; display:inline-block;"></div>
+                <div class="show-left-menu-btn s1c-Bg box-show MyIF" :class="{'double-arrow-left':showLeftMenu === true,'double-arrow-right':showLeftMenu === false,}" @click="changeLeftMenuShow"></div>
 
                 <!-- 登录注册 -->
                 <div id="navMenuAdmin" style="width:48px; height:45px; margin-top:4px; margin-right:68px; position:relative; float:right;">
@@ -25,19 +25,13 @@
                         <div v-if="this.$store.state.userInfo.id !== '0'" class="s1c-Bg box-show" style="width:100px; margin-top:10px; padding:0 4px; text-align:center; line-height:30px;">
                             <ul>
                                 <li>
-                                    <router-link :to="'/author/' + this.$store.state.userInfo.id">
-                                        <i class="MyIF home"></i> 个人信息
-                                    </router-link>
+                                    <router-link :to="'/author/' + this.$store.state.userInfo.id"><i class="MyIF home"></i> 个人信息</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/update">
-                                        <i class="MyIF gears"></i> 修改资料
-                                    </router-link>
+                                    <router-link to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
                                 </li>
                                 <li @click="logout">
-                                    <a>
-                                        <i class="MyIF exit-1"></i> 安全退出
-                                    </a>
+                                    <a><i class="MyIF exit-1"></i> 安全退出</a>
                                 </li>
                             </ul>
                         </div>
@@ -47,27 +41,51 @@
         </nav>
 
         <!-- 左侧手风琴菜单栏 -->
-        <div id="leftMenu" class="glass-Bg box-show" :class="{'leftmenu-is-show':showLeftMenu === true}" style="width:188px; height:100%; top:0; left:-188px; padding:60px 0 30px; box-sizing:border-box; position:fixed; z-index:9;">
+        <div id="leftMenu" class="glass-Bg box-show" :class="{'leftmenu-is-show':showLeftMenu === true}" style="width:188px; height:100%; top:0; left:-188px; padding:60px 0 30px; box-sizing:border-box; position:fixed; z-index:9;  font-family:'宋体','Microsoft YaHei','黑体',sans-serif;">
             <div style="width:100%; height:100%; overflow-y:auto; color:#DDD;">
                 <ul>
                     <li style="width:100%; margin:0 0 8px;">
-                        <div class="glass-Bg box-show" @click="changeSecondMenu('user')" style="width:96%; height:30px; margin:0 auto;"></div>
-                        <ul v-if="secondMenu === 'user'" style="padding-bottom:8px;">
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">111</li>
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">111</li>
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">111</li>
+                        <div class="glass-Bg box-show" @click="changeFirstMenu('user')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                            <div class="second-menu-btn s1c-Bg box-show">
+                                <i class="MyIF double-arrow-up" :class="{'active':firstMenu === 'user'}" style="width:100%; height:100%; display:inline-block;"></i>
+                            </div>
+                        </div>
+                        <ul v-if="firstMenu === 'user'" style="padding-bottom:8px;">
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">
+                                <router-link to="/backstage/userList" class="menu-link" @click="changeSecondMenu('userList')">
+                                    <i class="MyIF all-user"></i><span style="margin-left:8px; font-size:15px;">用户列表</span>
+                                </router-link>
+                            </li>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">
+                                <router-link to="/backstage/addUser" class="menu-link" @click="changeSecondMenu('addUser')">
+                                    <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">添加用户</span>
+                                </router-link>
+                            </li>
+                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">
+                                <router-link to="/backstage/userBlacklist" class="menu-link" @click="changeSecondMenu('userBlacklist')">
+                                    <i class="MyIF delete-user"></i><span style="margin-left:8px; font-size:15px;">用户黑名单</span>
+                                </router-link>
+                            </li>
                         </ul>
                     </li>
                     <li style="width:100%; margin:0 0 8px;">
-                        <div class="glass-Bg box-show" @click="changeSecondMenu('category')" style="width:96%; height:30px; margin:0 auto;"></div>
-                        <ul v-if="secondMenu === 'category'">
+                        <div class="glass-Bg box-show" @click="changeFirstMenu('category')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                            <div class="second-menu-btn s1c-Bg box-show">
+                                <i class="MyIF double-arrow-up" :class="{'active':firstMenu === 'category'}" style="width:100%; height:100%; display:inline-block;"></i>
+                            </div>
+                        </div>
+                        <ul v-if="firstMenu === 'category'">
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">222</li>
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">222</li>
                         </ul>
                     </li>
                     <li style="width:100%; margin:0 0 8px;">
-                        <div class="glass-Bg box-show" @click="changeSecondMenu('article')" style="width:96%; height:30px; margin:0 auto;"></div>
-                        <ul v-if="secondMenu === 'article'">
+                        <div class="glass-Bg box-show" @click="changeFirstMenu('article')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                            <div class="second-menu-btn s1c-Bg box-show">
+                                <i class="MyIF double-arrow-up" :class="{'active':firstMenu === 'article'}" style="width:100%; height:100%; display:inline-block;"></i>
+                            </div>
+                        </div>
+                        <ul v-if="firstMenu === 'article'">
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
                             <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
@@ -79,7 +97,7 @@
         </div>
 
         <!-- 中心 & 右侧内容 -->
-        <div class="s1c-Bg" :class="{'leftmenu-is-close':showLeftMenu === false}" style="width:100%; height:100%; top:0; right:0; position:fixed; padding:63px 8px 35px 195px; box-sizing:border-box; z-index:5;">
+        <div class="s1c-Bg" :class="{'leftmenu-is-close':showLeftMenu === false}" style="width:100%; height:100%; top:0; right:0; position:fixed; padding:63px 8px 35px 195px; box-sizing:border-box; z-index:5; font-family:'宋体','Microsoft YaHei','黑体',sans-serif;">
             <div class="glass-Bg" style="width:100%; height:100%; overflow:auto; color:#DDD; position:relative;">
                 <router-view></router-view>
             </div>
@@ -104,6 +122,7 @@
         data() {
             return {
                 showLeftMenu: true,
+                firstMenu: '',
                 secondMenu: '',
             }
         },
@@ -139,12 +158,16 @@
             /**
              * 折叠/展开左侧二级菜单
              */
-            changeSecondMenu(type) {
-                if (this.secondMenu === type) {
-                    this.secondMenu = '';
+            changeFirstMenu(type) {
+                if (this.firstMenu === type) {
+                    this.firstMenu = '';
                 } else {
-                    this.secondMenu = type;
+                    this.firstMenu = type;
                 }
+            },
+
+            changeSecondMenu(type) {
+                this.secondMenu = type;
             }
         }
     }
@@ -154,15 +177,6 @@
     /**
      * 主页主体部分
      */
-    #mainBody {
-        width: 100%;
-        margin-bottom: 38px;
-        padding-top: 108px;
-        position: relative;
-    }
-
-
-
     #navMenuAdmin > div {
         display:none;
     }
@@ -186,7 +200,13 @@
         color:#2DBEFF;
     }
 
-
+    .show-left-menu-btn {
+        width:33px; height:33px; top:10px; left:128px; position:absolute; display:inline-block; font-size:22px; line-height:32px; color:#30cdff; text-align:center;
+        opacity:0.68;
+    }
+    .show-left-menu-btn:hover {
+        opacity:1;
+    }
     .leftmenu-is-show {
         left:0!important;
     }
@@ -194,8 +214,56 @@
         padding-left:7px!important;
     }
 
+    .second-menu-btn {
+        width:20px; height:20px; top:4px; right:5px; display:inline-block; position:absolute; font-size:16px; color:#30cdff; text-align:center; line-height:19px; opacity:0.68;
+    }
+    .second-menu-btn:hover {
+        opacity:1;
+    }
+    .second-menu-btn > i {
+        animation:menuSwitch 0.6s forwards; -webkit-animation:menuSwitch 0.6s forwards;
+    }
+    .second-menu-btn > i.active {
+        animation:menuSwitchActive 0.6s forwards; -webkit-animation:menuSwitchActive 0.6s forwards;
+    }
+    @keyframes menuSwitch /*IE 9 & Firefox & Opera*/  {
+        from { transform:rotate(-180deg); -ms-transform:rotate(-180deg); -moz-transform:rotate(-180deg); -o-transform:rotate(-180deg); } to { transform:rotate(0deg); -ms-transform:rotate(0deg); -moz-transform:rotate(0deg); -o-transform:rotate(0deg); }
+    }
+    @-webkit-keyframes menuSwitch /*Safari & Chrome*/  {
+        from { -webkit-transform:rotate(-180deg); } to { -webkit-transform:rotate(-0deg); }
+    }
+    @keyframes menuSwitchActive /*IE 9 & Firefox & Opera*/  {
+        to { transform:rotate(180deg); -ms-transform:rotate(180deg); -moz-transform:rotate(180deg); -o-transform:rotate(180deg); }
+    }
+    @-webkit-keyframes menuSwitchActive /*Safari & Chrome*/
+    {
+        to { -webkit-transform:rotate(180deg); }
+    }
 
 
     footer {  width:100%; height:28px; bottom:0; margin:0; padding:0 68px; box-sizing:border-box; border-radius:0; position:fixed; z-index:99; font-size:15px; color:#30CDFF; text-shadow:1px 1px 1px; line-height:28px; text-align:right;  }
+
+
+    .menu-link {
+        width:100%;
+        height:100%;
+        padding-left:8px;
+        display:inline-block;
+        position:relative;
+        line-height:21px;
+        color:#AAA;
+    }
+    .menu-link:hover {
+        color:#8CFFB2;
+    }
+    .menu-link:hover > i {
+        color: #9f8bff;
+    }
+    .menu-link.router-link-active {
+        color:#FFF;
+    }
+    .menu-link.router-link-active > i {
+        color:#67D4FF;
+    }
 
 </style>
