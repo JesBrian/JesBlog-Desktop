@@ -46,50 +46,80 @@
                 <ul>
                     <li style="width:100%; margin:0 0 8px;">
                         <div class="glass-Bg box-show" @click="changeFirstMenu('user')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                            <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
+                                <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>用户模块
+                            </p>
                             <div class="second-menu-btn s1c-Bg box-show">
                                 <i class="MyIF double-arrow-up" :class="{'active':firstMenu === 'user'}" style="width:100%; height:100%; display:inline-block;"></i>
                             </div>
                         </div>
                         <ul v-if="firstMenu === 'user'" style="padding-bottom:8px;">
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">
-                                <router-link to="/backstage/userList" class="menu-link" @click="changeSecondMenu('userList')">
+                            <li style="width:83%; height:25px; margin:3px auto 0;">
+                                <router-link to="/backstage/userList" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('userList')">
                                     <i class="MyIF all-user"></i><span style="margin-left:8px; font-size:15px;">用户列表</span>
+                                    <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
                                 </router-link>
                             </li>
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">
-                                <router-link to="/backstage/addUser" class="menu-link" @click="changeSecondMenu('addUser')">
+                            <li style="width:83%; height:25px; margin:3px auto 0;">
+                                <router-link to="/backstage/addUser" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('addUser')">
                                     <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">添加用户</span>
+                                    <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
                                 </router-link>
                             </li>
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">
-                                <router-link to="/backstage/userBlacklist" class="menu-link" @click="changeSecondMenu('userBlacklist')">
+                            <li style="width:83%; height:25px; margin:3px auto 0;">
+                                <router-link to="/backstage/userBlacklist" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('userBlacklist')">
                                     <i class="MyIF delete-user"></i><span style="margin-left:8px; font-size:15px;">用户黑名单</span>
+                                    <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </li>
+                    <li style="width:100%; margin:0 0 8px;">
+                        <div class="glass-Bg box-show" @click="changeFirstMenu('admin')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                            <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
+                                <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>管理员模块
+                            </p>
+                            <div class="second-menu-btn s1c-Bg box-show">
+                                <i class="MyIF double-arrow-up" :class="{'active':firstMenu === 'admin'}" style="width:100%; height:100%; display:inline-block;"></i>
+                            </div>
+                        </div>
+                        <ul v-if="firstMenu === 'admin'">
+                            <li style="width:83%; height:25px; margin:3px auto 0;">
+                                <router-link to="/backstage/adminList" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('adminList')">
+                                    <i class="MyIF all-user"></i><span style="margin-left:8px; font-size:15px;">管理员列表</span>
+                                    <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
+                                </router-link>
+                            </li>
+                            <li style="width:83%; height:25px; margin:3px auto 0;">
+                                <router-link to="/backstage/addAdmin" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('addAdmin')">
+                                    <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">添加管理员</span>
+                                    <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
                                 </router-link>
                             </li>
                         </ul>
                     </li>
                     <li style="width:100%; margin:0 0 8px;">
                         <div class="glass-Bg box-show" @click="changeFirstMenu('category')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                            <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
+                                <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>文章分类模块
+                            </p>
                             <div class="second-menu-btn s1c-Bg box-show">
                                 <i class="MyIF double-arrow-up" :class="{'active':firstMenu === 'category'}" style="width:100%; height:100%; display:inline-block;"></i>
                             </div>
                         </div>
                         <ul v-if="firstMenu === 'category'">
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">222</li>
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">222</li>
                         </ul>
                     </li>
                     <li style="width:100%; margin:0 0 8px;">
                         <div class="glass-Bg box-show" @click="changeFirstMenu('article')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                            <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
+                                <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>文章模块
+                            </p>
                             <div class="second-menu-btn s1c-Bg box-show">
                                 <i class="MyIF double-arrow-up" :class="{'active':firstMenu === 'article'}" style="width:100%; height:100%; display:inline-block;"></i>
                             </div>
                         </div>
                         <ul v-if="firstMenu === 'article'">
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
-                            <li class="s1c-Bg box-show" style="width:83%; height:23px; margin:3px auto 0;">333</li>
                         </ul>
                     </li>
                 </ul>
@@ -250,7 +280,8 @@
         padding-left:8px;
         display:inline-block;
         position:relative;
-        line-height:21px;
+        box-sizing:border-box;
+        line-height:23px;
         color:#AAA;
     }
     .menu-link:hover {
@@ -261,9 +292,16 @@
     }
     .menu-link.router-link-active {
         color:#FFF;
+        background:#161616;
     }
     .menu-link.router-link-active > i {
         color:#67D4FF;
+    }
+    .menu-link > i.double-arrow-left {
+        display:none;
+    }
+    .menu-link.router-link-active > i.double-arrow-left {
+        display:inline-block;
     }
 
 </style>

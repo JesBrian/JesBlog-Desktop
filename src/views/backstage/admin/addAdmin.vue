@@ -1,13 +1,12 @@
 <template>
     <div>
-        rtfgyuhnjimkl,.;'cdfvtghnjkm<br/>
-        admin
+        this is addAdmin
     </div>
 </template>
 
 <script>
     export default {
-        name: "admin"
+        name: "add-admin"
     }
 </script>
 

@@ -28,9 +28,13 @@ export default [
                 component: () => import('../../views/backstage/user/userBlacklist.vue'),
             },
             {
-                path: 'admin',
-                component: () => import('../../views/backstage/admin/admin.vue'),
-            }
+                path: 'adminList',
+                component: () => import('../../views/backstage/admin/adminList.vue'),
+            },
+            {
+                path: 'addAdmin',
+                component: () => import('../../views/backstage/admin/addAdmin.vue'),
+            },
         ]
     },
     /*****************--------------- PC后台页面路由[END] ---------------*****************/
