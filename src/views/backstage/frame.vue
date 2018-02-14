@@ -45,7 +45,7 @@
             <div style="width:100%; height:100%; overflow-y:auto; color:#DDD;">
                 <ul>
                     <li style="width:100%; margin:0 0 8px;">
-                        <div class="glass-Bg box-show" @click="changeFirstMenu('user')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                        <div class="glass-Bg box-show" @click="changeFirstMenu('user')" style="width:96%; height:30px; margin:0 auto; position:relative; cursor:pointer;">
                             <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
                                 <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>用户模块
                             </p>
@@ -75,7 +75,7 @@
                         </ul>
                     </li>
                     <li style="width:100%; margin:0 0 8px;">
-                        <div class="glass-Bg box-show" @click="changeFirstMenu('admin')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                        <div class="glass-Bg box-show" @click="changeFirstMenu('admin')" style="width:96%; height:30px; margin:0 auto; position:relative; cursor:pointer;">
                             <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
                                 <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>管理员模块
                             </p>
@@ -99,7 +99,7 @@
                         </ul>
                     </li>
                     <li style="width:100%; margin:0 0 8px;">
-                        <div class="glass-Bg box-show" @click="changeFirstMenu('category')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                        <div class="glass-Bg box-show" @click="changeFirstMenu('category')" style="width:96%; height:30px; margin:0 auto; position:relative; cursor:pointer;">
                             <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
                                 <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>文章分类模块
                             </p>
@@ -111,7 +111,7 @@
                         </ul>
                     </li>
                     <li style="width:100%; margin:0 0 8px;">
-                        <div class="glass-Bg box-show" @click="changeFirstMenu('article')" style="width:96%; height:30px; margin:0 auto; position:relative;">
+                        <div class="glass-Bg box-show" @click="changeFirstMenu('article')" style="width:96%; height:30px; margin:0 auto; position:relative; cursor:pointer;">
                             <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
                                 <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>文章模块
                             </p>
@@ -291,6 +291,7 @@
         color: #9f8bff;
     }
     .menu-link.router-link-active {
+        margin-left:8px;
         color:#FFF;
         background:#161616;
     }

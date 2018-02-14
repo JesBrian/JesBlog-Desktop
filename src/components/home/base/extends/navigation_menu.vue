@@ -5,7 +5,7 @@
 
             <!-- LOGO -->
             <router-link to="/" style="width:108px; height:48px; display:inline-block; vertical-align:middle; position:relative;">
-                <img v-lazy="'/src/assets/images/logo.png'" style="width:40px; margin-right:8px;">
+                <img v-lazy="'http://localhost/JesBlog-Backstage/web/img/logo.png'" style="width:40px; margin-right:8px;">
                 <span style="font-size:26px; margin-top:-8px; position:absolute; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">简记</span>
             </router-link>
 
@@ -57,7 +57,7 @@
             <!-- 登录注册 -->
             <div id="navMenuUser" style="width:48px; height:45px; margin-top:7px; margin-left:28px; position:relative; float:right;">
                 <span @click="loginRegister" class="superButton-Out" style="width:100%; height:100%;">
-                    <img class="superButton-In" v-if="this.$store.state.userInfo.id !== '0'" :src="'http://localhost/JesBlog-Backstage/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'" style="width:36px; height:34px;"/>
+                    <img class="superButton-In" v-if="this.$store.state.userInfo.id !== '0'" v-lazy="'http://localhost/JesBlog-Backstage/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'" style="width:36px; height:34px;"/>
                     <a class="superButton-In MyIF administrators-1" v-else style="width:36px; height:34px; line-height:35px!important; font-size:28px;"></a>
                 </span>
 

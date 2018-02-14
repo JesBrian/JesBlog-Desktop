@@ -1,45 +1,17 @@
 .DS_Store
 node_modules/
-dist/
-npm-debug.log
-yarn-error.log
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/test/unit/coverage/
+/test/e2e/reports/
+selenium-debug.log
 
 # Editor directories and files
+.idea
+.vscode
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-
-
-# phpstorm project files
-.idea
-
-# netbeans project files
-nbproject
-
-# zend studio for eclipse project files
-.buildpath
-.project
-.settings
-
-# windows thumbnail cache
-Thumbs.db
-
-# composer vendor dir
-/vendor
-
-# composer itself is not needed
-composer.phar
-
-# Mac DS_Store Files
-.DS_Store
-
-# phpunit itself is not needed
-phpunit.phar
-# local phpunit config
-/phpunit.xml
-
-tests/_output/*
-tests/_support/_generated
-/config/db.php
-"\346\225\264\347\220\206\350\265\204\346\272\220/Blog\346\226\207\347\253\240/Chrome/2 --/"
