@@ -24,7 +24,7 @@ export default {
     return {
       current: 1,
       showItem: 7,
-      allPage: 0
+      allPage: 12
     }
   },
 
@@ -69,7 +69,7 @@ export default {
     border-radius: 5px;
   }
 
-  #menu > > > li {
+  #menu >>> li {
     margin: 0 5px;
     display: inline-block;
     position: relative;
@@ -81,7 +81,7 @@ export default {
     top: 13px;
   }
 
-  #menu > > > li a {
+  #menu >>> li a {
     width: 42px;
     display: block;
     border-radius: 3px;
@@ -95,7 +95,7 @@ export default {
     box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 4px 4px rgba(0, 0, 0, 0.5), 0 4px 4px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;
   }
 
-  #menu > > > li a.MyIF {
+  #menu >>> li a.MyIF {
     width: 40px;
     height: 38px;
     font-size: 20px;
@@ -103,28 +103,28 @@ export default {
     color: #84AAFF;
   }
 
-  #menu > > > li a.MyIF:hover {
+  #menu >>> li a.MyIF:hover {
     color: #2dbeff;
   }
 
-  #menu > > > li a:hover {
+  #menu >>> li a:hover {
     background: #080808;
     color: lightgreen;
   }
 
-  #menu > > > li a:active, #menu > > > li a.active {
+  #menu >>> li a:active, #menu >>> li a.active {
     background: #000;
     bottom: -1px;
     box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px #272727, 0 2px #111, 0 4px 2px rgba(0, 0, 0, 0.3);
   }
 
-  #menu > > > li a.active {
+  #menu >>> li a.active {
     color: #2EE7FF;
     text-shadow: 0 0 5px #2ee7ff;
     cursor: not-allowed;
   }
 
-  #menu > > > li a.ban {
+  #menu >>> li a.ban {
     bottom: 0;
     color: #333 !important;
     cursor: not-allowed !important;

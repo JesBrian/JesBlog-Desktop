@@ -82,7 +82,7 @@ import username from '../author/username.vue'
 import follow from '../base/extends/follow.vue'
 import descript from '../base/extends/descript.vue'
 import articleComment from '../comment/article_comment.vue'
-import pagination from '../base/extends/pagination.vue'
+import pagination from '../../common/pagination/pagination.vue'
 
 export default {
   name: 'article_detail',

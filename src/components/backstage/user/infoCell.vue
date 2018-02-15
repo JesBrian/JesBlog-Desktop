@@ -1,9 +1,16 @@
 <template>
+  <!-- 列表单个信息组件 -->
   <!-- eslint-disable no-tabs -->
-	<tr>
+	<tr style="height:43px; line-height:42px; font-size:16px;">
+    <td></td>
     <td>1</td>
     <td>2</td>
     <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+    <td>8</td>
   </tr>
 </template>
 
