@@ -1,13 +1,13 @@
 <template>
-    <div>
-        this is userBlacklist
-    </div>
+  <div>
+    this is userBlacklist
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "user-blacklist"
-    }
+export default {
+  name: 'user-blacklist'
+}
 </script>
 
 <style scoped>

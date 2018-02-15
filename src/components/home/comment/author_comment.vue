@@ -1,19 +1,19 @@
 <template>
-    <div>
-        <!-- 评论列表组件 -->
-        <comment-list/>
-    </div>
+  <div>
+    <!-- 评论列表组件 -->
+    <comment-list/>
+  </div>
 </template>
 
 <script>
-    import commentList from './comment_list.vue';//评论列表组件
+import commentList from './comment_list.vue'
 
-    export default {
-        name: "author_comment",
-        components: {
-            commentList,
-        }
-    }
+export default {
+  name: 'author_comment',
+  components: {
+    commentList
+  }
+}
 </script>
 
 <style scoped>

@@ -1,58 +1,58 @@
 <template>
-    <div id="app">
-        <router-view></router-view>
-    </div>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-    import LocalStore from 'store';
+import LocalStore from 'store'
 
-
-    export default {
-        name: 'app',
-        data() {
-            return {
-                screenWidth: 0   // 这里是给到了一个默认值
-            }
-        },
-        mounted () {
-
-            //  vuex + localStorage实现读取保存用户信息
-            let userInfo = LocalStore.get('user');
-            if (userInfo) {
-                this.$store.commit('changeUserInfo', userInfo);
-            }
-
-            //  vue + 原生实现获取窗口宽度
-            window.onresize = () => {
-                this.$store.commit('changeScreenWidth', document.body.clientWidth);
-            }
-        },
+export default {
+  name: 'app',
+  data () {
+    return {
+      screenWidth: 0
     }
+  },
+  mounted () {
+    //  vuex + localStorage实现读取保存用户信息
+    let userInfo = LocalStore.get('user')
+    if (userInfo) {
+      this.$store.commit('changeUserInfo', userInfo)
+    }
+
+    //  vue + 原生实现获取窗口宽度
+    window.onresize = () => {
+      this.$store.commit('changeScreenWidth', document.body.clientWidth)
+    }
+  }
+}
 </script>
 
 <style>
-    .fade-enter-active {
-        transition: opacity .3s
-    }
-    .fade-leave-active {
-        transition: opacity .3s
-    }
-    .fade-enter, .fade-leave-to {
-        opacity: 0
-    }
+  .fade-enter-active {
+    transition: opacity .3s
+  }
 
+  .fade-leave-active {
+    transition: opacity .3s
+  }
 
-    .updown-enter-active {
-        transition: all .5s ease
-    }
-    .updown-leave-active {
-        transition: all .3s ease
-    }
-    .updown-enter, .updown-leave-to {
-        top:0!important;
-        opacity:0;
-    }
+  .fade-enter, .fade-leave-to {
+    opacity: 0
+  }
 
+  .updown-enter-active {
+    transition: all .5s ease
+  }
+
+  .updown-leave-active {
+    transition: all .3s ease
+  }
+
+  .updown-enter, .updown-leave-to {
+    top: 0 !important;
+    opacity: 0;
+  }
 
 </style>

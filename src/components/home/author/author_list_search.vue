@@ -1,28 +1,25 @@
 <template>
-    <ul id="authorList">
-        <li v-for="n in userList">
-            <!--单个搜索作家组件-->
-            <author-cell-search/>
-        </li>
-    </ul>
+  <ul id="authorList">
+    <li v-for="(item, index) in userList" :key="index">
+      <!--单个搜索作家组件-->
+      <author-cell-search/>
+    </li>
+  </ul>
 </template>
 
 <script>
-    import authorCellSearch from './author_cell_search.vue';//单个搜索作家组件
+import authorCellSearch from './author_cell_search.vue'
 
+export default {
+  name: 'author_list_search',
+  components: {
+    authorCellSearch
+  },
 
-    export default {
-        name: "author_list_search",
-        components:{
-            authorCellSearch
-        },
-
-        props: [
-            'userList',
-        ],
-
-
-    }
+  props: [
+    'userList'
+  ]
+}
 </script>
 
 <style scoped>

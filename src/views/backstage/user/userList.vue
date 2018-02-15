@@ -1,13 +1,13 @@
 <template>
-    <div>
-        this is userList
-    </div>
+  <div>
+    this is userList
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "user-list"
-    }
+export default {
+  name: 'user-list'
+}
 </script>
 
 <style scoped>

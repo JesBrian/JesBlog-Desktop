@@ -17,6 +17,7 @@ Vue.use(vueLazyload, {
   loading: 'http://localhost/JesBlog-Backstage/web/img/loading.svg'
 })
 
+/* eslint-disable no-new */
 new Vue({
   router,
   store,

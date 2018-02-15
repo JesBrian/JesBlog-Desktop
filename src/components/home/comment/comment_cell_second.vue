@@ -1,26 +1,27 @@
 <template>
-    <div class="s1c-Bg box-show" style="width:85%; margin:8px auto 0; padding:8px 12px 12px; border-radius:4px;">
-        <p style="font-size:14px; line-height:1.35em; word-break:break-all;">
-            <username class="username-author"/>：
-            城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机
-        </p>
-    </div>
+  <div class="s1c-Bg box-show" style="width:85%; margin:8px auto 0; padding:8px 12px 12px; border-radius:4px;">
+    <p style="font-size:14px; line-height:1.35em; word-break:break-all;">
+      <username class="username-author"/>：
+      城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机
+    </p>
+  </div>
 </template>
 
 <script>
-    import username from '../author/username.vue';
+import username from '../author/username.vue'
 
-
-    export default {
-        name: "comment_cell_second",
-        components: {
-            username,
-        }
-    }
+export default {
+  name: 'comment_cell_second',
+  components: {
+    username
+  }
+}
 </script>
 
 <style scoped>
-    .username-author {
-        margin:0 3px 0 16px; color:#33BCFF; font-size:16px;
-    }
+  .username-author {
+    margin: 0 3px 0 16px;
+    color: #33BCFF;
+    font-size: 16px;
+  }
 </style>
