@@ -1,5 +1,8 @@
 # jesblog-desktop
 
+使用了 vue2 + vue-router + vuex + axios + vue-lazyload + localStorage + vue-awesome-swiper + vue-quill-editor 等技术栈
+
+
 > A Vue.js project
 
 ## Build Setup
