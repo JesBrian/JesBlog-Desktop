@@ -56,18 +56,13 @@ export default {
      * 点击回到顶部
      */
     goToTop () {
-      let isTop = true
       let timer = null // 定时器、判断是否到达顶部
-
-      //
       timer = setInterval(function () {
         // 获取滚动条的滚动高度
         let osTop = document.documentElement.scrollTop || document.body.scrollTop
         // 用于设置速度差，产生缓动的效果
         let speed = Math.floor(-osTop / 6)
         document.documentElement.scrollTop = document.body.scrollTop = osTop + speed
-        // 用于阻止滚动事件清除定时器
-        isTop = true
         if (osTop === 0) {
           clearInterval(timer)
         }

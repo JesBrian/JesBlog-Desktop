@@ -1,7 +1,6 @@
 <template>
   <div>
-    drcftvrguhnjikm,lcfgvhbnjkml,;.<br/>
-    index
+    简记 - 后台管理系统主页
   </div>
 </template>
 

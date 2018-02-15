@@ -7,8 +7,8 @@
       <div style="width:1234px; height:100%; margin:0 auto; line-height:60px; position:relative;">
 
         <!-- LOGO -->
-        <router-link to="/" style="width:108px; height:48px; display:inline-block; vertical-align:middle; position:relative;">
-          <img v-lazy="'/src/assets/images/logo.png'" style="width:40px; margin-right:8px;">
+        <router-link to="/backstage" style="width:108px; height:48px; display:inline-block; vertical-align:middle; position:relative;">
+          <img v-lazy="'http://localhost/JesBlog-Backstage/web/img/logo.png'" style="width:40px; margin-right:8px;">
           <span style="font-size:26px; margin-top:-8px; position:absolute; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">简记</span>
         </router-link>
 
@@ -17,9 +17,9 @@
 
         <!-- 登录注册 -->
         <div id="navMenuAdmin" style="width:48px; height:45px; margin-top:4px; margin-right:68px; position:relative; float:right;">
-          <span class="superButton-Out" style="width:100%; height:100%;">
-            <img class="superButton-In" :src="'http://localhost/JesBlog-Backstage/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'" style="width:36px; height:34px;"/>
-          </span>
+          <router-link class="superButton-Out" to="/backstage/index" style="width:100%; height:100%;">
+            <img class="superButton-In" :src="'http://localhost/JesBlog-Backstage/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'" style="width:36px; height:34px; margin-top:-1px;"/>
+          </router-link>
 
           <div style="top:40px; left:-55%; position:absolute;">
             <div v-if="this.$store.state.userInfo.id !== '0'" class="s1c-Bg box-show" style="width:100px; margin-top:10px; padding:0 4px; text-align:center; line-height:30px;">
@@ -129,8 +129,9 @@
 
     <!-- 中心 & 右侧内容 -->
     <div class="s1c-Bg" :class="{'leftmenu-is-close':showLeftMenu === false}" style="width:100%; height:100%; top:0; right:0; position:fixed; padding:63px 8px 35px 195px; box-sizing:border-box; z-index:5; font-family:'宋体','Microsoft YaHei','黑体',sans-serif;">
-      <div class="glass-Bg" style="width:100%; height:100%; overflow:auto; color:#DDD; position:relative;">
-        <router-view></router-view>
+      <div class="glass-Bg" style="width:100%; height:100%; box-sizing:border-box; overflow:auto; color:#DDD; position:relative;">
+        <router-link class="s1c-Bg box-show MyIF home" to="/backstage" v-if="this.$route.path !== '/backstage/index'" style="width:33px; height:33px; top:22px; left:22px; position:absolute; z-index:99; color:#6DE1FF; font-size:23px; line-height:32px; text-align:center;" title="回到主页"></router-link>
+        <router-view style="min-width:1008px; padding:18px 28px; box-sizing:border-box;"></router-view>
       </div>
     </div>
 
