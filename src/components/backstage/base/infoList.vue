@@ -8,7 +8,7 @@
       <infoTitle/>
 
       <!-- 列表单个信息组件 -->
-      <info-cell v-for="item in 32" :key="item"/>
+      <info-cell v-for="item in contentList" :key="item.id" :userInfo="item"/>
 
     </table>
 
@@ -28,6 +28,23 @@ export default {
     infoCell,
     infoTitle,
     pagination
+  },
+  data () {
+    return {
+      contentList: []
+    }
+  },
+
+  created () {
+    let data = {}
+    let thisObj = this
+    this.axios.post('user/backstage-user-list', data).then(function (response) {
+      if (response.data.status === '01') {
+        thisObj.contentList = response.data.data
+      }
+    }).catch(function (error) {
+      console.log(error)
+    })
   }
 }
 </script>

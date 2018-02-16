@@ -4,19 +4,33 @@
 	<tr style="height:43px; line-height:42px; font-size:16px;">
     <td></td>
     <td>1</td>
-    <td>2</td>
+    <td>{{ userInfo.username }}</td>
     <td>3</td>
     <td>4</td>
-    <td>5</td>
+    <td>{{ userInfo.mail }}</td>
     <td>6</td>
     <td>7</td>
-    <td>8</td>
+    <td style="text-align:center;">{{ timestampToTime(userInfo.create_time) }}</td>
   </tr>
 </template>
 
 <script>
+import helpFunc from '../../../assets/js/common.js'
+
 export default {
-  name: 'info-cell'
+  name: 'info-cell',
+
+  components: {},
+
+  props: [
+    'userInfo'
+  ],
+
+  methods: {
+    timestampToTime (timestamp) {
+      return helpFunc.timestampToTime(timestamp)
+    }
+  }
 }
 </script>
 
