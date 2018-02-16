@@ -35,6 +35,14 @@ export default [
       {
         path: 'addAdmin',
         component: () => import('../../views/backstage/admin/addAdmin.vue')
+      },
+      {
+        path: 'categoryList',
+        component: () => import('../../views/backstage/category/categoryList.vue')
+      },
+      {
+        path: 'addCategory',
+        component: () => import('../../views/backstage/category/addCategory.vue')
       }
     ]
   }

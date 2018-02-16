@@ -5,10 +5,10 @@
     <table class="box-show" style="width:100%; height:100%;">
 
       <!-- 列表信息标题组件 -->
-      <infoTitle/>
+      <component :is="contentTitleType"/>
 
       <!-- 列表单个信息组件 -->
-      <info-cell v-for="item in contentList" :key="item.id" :userInfo="item"/>
+      <component :is="contentListType" v-for="item in contentList" :key="item.id" :info="item"/>
 
     </table>
 
@@ -18,19 +18,25 @@
 </template>
 
 <script>
-import infoCell from '../user/infoCell.vue'
-import infoTitle from '../user/infoTitle.vue'
+import userInfoTitle from '../user/infoTitle.vue'
+import userInfoCell from '../user/infoCell.vue'
+import categoryInfoTitle from '../category/infoTitle.vue'
+import categoryInfoCell from '../category/infoCell.vue'
 import pagination from '../../common/pagination/pagination.vue'
 
 export default {
   name: 'info-list',
   components: {
-    infoCell,
-    infoTitle,
+    userInfoTitle,
+    userInfoCell,
+    categoryInfoTitle,
+    categoryInfoCell,
     pagination
   },
   data () {
     return {
+      contentTitleType: '',
+      contentListType: '',
       contentList: []
     }
   },
@@ -38,7 +44,19 @@ export default {
   created () {
     let data = {}
     let thisObj = this
-    this.axios.post('user/backstage-user-list', data).then(function (response) {
+    let url = ''
+
+    if (this.$route.path === '/backstage/userList') {
+      this.contentTitleType = 'userInfoTitle'
+      this.contentListType = 'userInfoCell'
+      url = 'user/backstage-user-list'
+    } else if (this.$route.path === '/backstage/categoryList') {
+      this.contentTitleType = 'categoryInfoTitle'
+      this.contentListType = 'categoryInfoCell'
+      url = 'category/backstage-category-list'
+    }
+
+    this.axios.post(url, data).then(function (response) {
       if (response.data.status === '01') {
         thisObj.contentList = response.data.data
       }
