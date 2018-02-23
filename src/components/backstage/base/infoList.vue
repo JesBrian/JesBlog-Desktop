@@ -54,6 +54,10 @@ export default {
       this.contentTitleType = 'categoryInfoTitle'
       this.contentListType = 'categoryInfoCell'
       url = 'category/backstage-category-list'
+    } else if (this.$route.path === '/backstage/adminList') {
+      // this.contentTitleType = 'categoryInfoTitle'
+      // this.contentListType = 'categoryInfoCell'
+      // url = 'category/backstage-category-list'
     }
 
     this.axios.post(url, data).then(function (response) {

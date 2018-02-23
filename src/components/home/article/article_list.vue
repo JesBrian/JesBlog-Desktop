@@ -63,27 +63,19 @@ export default {
     content: '';
     width: 86%;
     height: 1px;
+    left:50%;
+    transform:translate(-50%, 0);
     position: absolute;
   }
 
   .articleList:before {
     top: 286px;
-    background: #444;
-    background: -webkit-linear-gradient(left, #111, #222, #444, #222, #111);
-    background: -moz-linear-gradient(left, #111, #222, #444, #222, #111);
-    background: -o-linear-gradient(left, #111, #222, #444, #222, #111);
-    background: -ms-linear-gradient(left, #111, #222, #444, #222, #111);
-    background: linear-gradient(left, #111, #222, #444, #222, #111);
+    background: #333;
   }
 
   .articleList:after {
     top: 285.3px;
     background: #000;
-    background: -webkit-linear-gradient(left, #111, #050505, #000, #050505, #111);
-    background: -moz-linear-gradient(left, #111, #050505, #000, #050505, #111);
-    background: -o-linear-gradient(left, #111, #050505, #000, #050505, #111);
-    background: -ms-linear-gradient(left, #111, #050505, #000, #050505, #111);
-    background: linear-gradient(left, #111, #050505, #000, #050505, #111);
   }
 
   li:last-child > .articleList:after, li:last-child > .articleList:before {

@@ -8,7 +8,7 @@
 
         <!-- LOGO -->
         <router-link to="/backstage" style="width:108px; height:48px; display:inline-block; vertical-align:middle; position:relative;">
-          <img v-lazy="'http://localhost/JesBlog-Backstage/web/img/logo.png'" style="width:40px; margin-right:8px;">
+          <img v-lazy="'http://jesbrian.cn/JesBlog-Backstage/web/img/logo.png'" style="width:40px; margin-right:8px;">
           <span style="font-size:26px; margin-top:-8px; position:absolute; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">简记</span>
         </router-link>
 
@@ -157,6 +157,7 @@
 <script>
 export default {
   name: 'frame',
+
   components: {},
 
   data () {
