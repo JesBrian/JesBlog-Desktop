@@ -7,8 +7,7 @@
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
-      <div id="bodyLayout" class="glass-Bg box-show"
-           style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
+      <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
 
         <div style="width:80%; margin:18px auto;">
           <div style="width:100%; color:#EDE;">
@@ -54,7 +53,8 @@
               </span>
             </div>
 
-            <articleList :articleList="articleList"/>
+            <articleList :articleList="articleList" v-if="loadData"/>
+            <page-loading v-else />
 
             <p style="line-height:208px; font-size:22px; font-weight:700; color:#DDD; text-align:center; letter-spacing:2px;">{{ articleText }}</p>
           </div>
@@ -82,6 +82,7 @@ import floatBlock from '../../components/home/base/extends/float_block.vue'
 import articleList from '../../components/home/article/article_list.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
+import pageLoading from '../../components/common/loading/pageLoading.vue'
 
 import LocalStore from 'store'
 
@@ -92,11 +93,13 @@ export default {
     floatBlock,
     articleList,
     pageFooter,
-    modal
+    modal,
+    pageLoading
   },
 
   data () {
     return {
+      loadData: false,
       searchKey: '',
       contentType: 'publishList',
       articleNum: 0,
@@ -131,7 +134,7 @@ export default {
 
   computed: {
     avatar () {
-      return 'http://localhost/JesBlog/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'
+      return this.$store.state.baseHost + 'upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'
     }
   },
 
@@ -141,6 +144,9 @@ export default {
      * 改变文章列表内容
      */
     changeContent (type) {
+      this.loadData = false
+      this.articleText = ''
+
       if (type !== '') {
         this.contentType = type
       }
@@ -161,11 +167,12 @@ export default {
       this.axios.post('article/get-simple-info', data).then(function (response) {
         if (response.data.status === '01') {
           thisObj.articleList = response.data.data
-          thisObj.articleText = ''
         } else {
           thisObj.articleText = response.data.msg
           thisObj.articleList = []
         }
+
+        thisObj.loadData = true
       }).catch(function (error) {
         console.log(error)
       })

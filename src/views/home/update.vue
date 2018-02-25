@@ -7,14 +7,12 @@
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
-      <div id="bodyLayout" class="glass-Bg box-show"
-           style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
+      <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
 
         <!-- 更新个人资料 -->
         <div style="width:80%; height:100%; margin:0 auto; color:#AAA; position:relative;">
 
-          <h3 style="font-size:32px; font-weight:500; line-height:2em; font-style:italic; color:#EEE;">{{
-            this.$store.state.userInfo.username }} ：</h3>
+          <h3 style="font-size:32px; font-weight:500; line-height:2em; font-style:italic; color:#EEE;">{{ this.$store.state.userInfo.username }} ：</h3>
 
           <!-- 修改头像 -->
           <div style="width:128px; top:128px; right:58px; position:absolute; text-align:center;">
@@ -157,7 +155,7 @@ export default {
   computed: {
     avatar () {
       if (this.$store.state.userInfo.id !== '0') {
-        return 'http://localhost/JesBlog/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'
+        return this.$store.state.baseHost + 'upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'
       } else {
         return ''
       }

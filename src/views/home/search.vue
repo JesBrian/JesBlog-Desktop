@@ -50,7 +50,8 @@
             </span>
           </div>
 
-          <component :is="searchType" :articleList="contentItem" :userList="contentItem" :categoryList="contentItem"/>
+          <component :is="searchType" v-if="loadData" :articleList="contentItem" :userList="contentItem" :categoryList="contentItem"/>
+          <page-loading v-if="!loadData" style="margin-left:88px;"/>
 
           <!-- 分页组件 -->
           <pagination/>
@@ -84,6 +85,7 @@ import pagination from '../../components/common/pagination/pagination.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
+import pageLoading from '../../components/common/loading/pageLoading.vue'
 
 export default {
   name: 'search',
@@ -97,10 +99,12 @@ export default {
     pagination,
     floatBlock,
     pageFooter,
-    modal
+    modal,
+    pageLoading
   },
   data () {
     return {
+      loadData: false,
       searchType: 'searchArticleList',
       searchKey: '',
       contentItem: []
@@ -123,6 +127,8 @@ export default {
      * 改变内容
      */
     changeContent () {
+      this.loadData = false
+
       let data = {
         'key': this.searchKey
       }
@@ -147,6 +153,7 @@ export default {
         } else {
           thisObj.contentItem = []
         }
+        thisObj.loadData = true
       }).catch(function (error) {
         console.log(error)
       })
