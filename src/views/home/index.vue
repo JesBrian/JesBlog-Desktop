@@ -16,37 +16,37 @@
           <ul style="height:100%;">
             <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
               <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="'http://jesbrian.cn/JesBlog-Backstage/web/img/tag/tag1.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
+                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag1.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
                 <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">sfdvgchjkdfbgjhjk</p>
               </router-link>
             </li>
             <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
               <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="'http://jesbrian.cn/JesBlog-Backstage/web/img/tag/tag2.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
+                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag2.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
                 <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">参考了吗 马上出来看吗系栏目下吗1mkm</p>
               </router-link>
             </li>
             <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
               <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="'http://jesbrian.cn/JesBlog-Backstage/web/img/tag/tag3.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
+                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag3.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
                 <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">参考了吗 马上出来看吗系栏目下吗1mkm</p>
               </router-link>
             </li>
             <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
               <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="'http://jesbrian.cn/JesBlog-Backstage/web/img/tag/tag1.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
+                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag1.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
                 <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">参考ubhjnkk看吗系栏目下吗1mkm</p>
               </router-link>
             </li>
             <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
               <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="'http://jesbrian.cn/JesBlog-Backstage/web/img/tag/tag2.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
+                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag2.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
                 <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">需要发u562参数表</p>
               </router-link>
             </li>
             <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
               <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="'http://jesbrian.cn/JesBlog-Backstage/web/img/tag/tag3.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
+                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag3.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
                 <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">参vhg考46cdugyb51参cdv加454csjkm</p>
               </router-link>
             </li>

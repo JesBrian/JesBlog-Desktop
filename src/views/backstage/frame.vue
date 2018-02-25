@@ -8,7 +8,7 @@
 
         <!-- LOGO -->
         <router-link to="/backstage" style="width:108px; height:48px; display:inline-block; vertical-align:middle; position:relative;">
-          <img v-lazy="'http://jesbrian.cn/JesBlog-Backstage/web/img/logo.png'" style="width:40px; margin-right:8px;">
+          <img v-lazy="this.$store.state.baseHost + 'img/logo.png'" style="width:40px; margin-right:8px;">
           <span style="font-size:26px; margin-top:-8px; position:absolute; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">简记</span>
         </router-link>
 
@@ -18,7 +18,7 @@
         <!-- 登录注册 -->
         <div id="navMenuAdmin" style="width:48px; height:45px; margin-top:4px; margin-right:68px; position:relative; float:right;">
           <router-link class="superButton-Out" to="/backstage/index" style="width:100%; height:100%;">
-            <img class="superButton-In" :src="'http://localhost/JesBlog-Backstage/web/upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'" style="width:36px; height:34px; margin-top:-1px;"/>
+            <img class="superButton-In" :src="this.$store.state.baseHost + 'upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'" style="width:36px; height:34px; margin-top:-1px;"/>
           </router-link>
 
           <div style="top:40px; left:-55%; position:absolute;">
