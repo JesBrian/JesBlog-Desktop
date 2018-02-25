@@ -187,7 +187,7 @@ export default {
           thisObj.summary = articleData.summary
           thisObj.content = articleData.content
 
-          thisObj.warningText = '更新该篇文章'
+          thisObj.warningText = '更新该文章'
         } else {
           console.log(response)
           setTimeout(function () {
@@ -207,6 +207,10 @@ export default {
      */
     chooseCategory () {
       this.$store.commit('changeModal', 'category')
+    },
+    sureCategory (category) {
+      this.categoryid = category.id
+      this.categoryName = category.name
     },
 
     /**

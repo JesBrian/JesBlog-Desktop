@@ -12,7 +12,7 @@
     <close-button/>
 
     <!-- "选择文章分类"拟态框内容 -->
-    <div style="">
+    <div>
       <div id="categoryModalSearchForm" class="glass-Bg box-show" style="width:508px; height:50px; margin:0 auto; padding:0; position:relative;">
         <input type="text" placeholder=" 输入想要搜索的分类 [ 支持模糊搜索 ] " v-model="categoryKey" style="width:423px; height:30px; top:11px; left:10px; padding:0 10px; position:absolute; border:none!important; box-shadow:none; background:#444; color:#DDD; font-size:18px;">
         <span class="superButton-Out" @click="searchCategory" style="width:40px; height:39px; margin:5.5px; float:right;">
@@ -20,41 +20,41 @@
         </span>
       </div>
 
-      <div style="width:90%; height:188px; margin:26px auto; padding:0 0 0 5px; overflow-y:scroll;">
-        <div class="glass-Bg box-show" v-for="item in categoryData" :key="item.id" @click="closeModal" style="width:105px; height:30px; margin:0 9px 16px 0; border-radius:2px; display:inline-block; cursor:pointer; color:#2EE7FF; line-height:31px; font-size:17.5px; text-align:center; letter-spacing:1.5px;">
-          {{ item.name }}
+      <div style="width:90%; height:188px; margin:26px auto; padding:0 0 0 5px; overflow-y:auto;">
+        <div v-if="loadData">
+          <div class="categoey glass-Bg box-show" v-for="item in categoryData" :key="item.id" @click="chooseCategory(item)" style="width:105px; height:30px; margin:0 9px 16px 0; border-radius:2px; display:inline-block; cursor:pointer; color:#999; line-height:31px; font-size:17.5px; text-align:center; letter-spacing:1.5px;">
+            {{ item.name }}
+          </div>
+          <p style="font-size:20px; text-align:center; line-height:168px;">{{ categoryTips }}</p>
         </div>
 
-        <p style="font-size:20px; text-align:center; line-height:168px;">{{ categoryTips }}</p>
+        <base-loading v-else style="margin-top:38px;"/>
       </div>
+
     </div>
   </div>
 </template>
 
 <script>
 import closeButton from '../close_button.vue'
+import baseLoading from '../../loading/baseLoading.vue'
 
 export default {
   name: 'category',
   components: {
-    closeButton
+    closeButton,
+    baseLoading
   },
   data () {
     return {
+      loadData: false,
       categoryKey: '',
       categoryData: [],
-
       categoryTips: ''
     }
   },
   created () {
-    let thisObj = this
-
-    this.axios.post('category/simple-list').then(function (response) {
-      thisObj.categoryData = response.data.data
-    }).catch(function (error) {
-      console.log(error)
-    })
+    this.searchCategory()
   },
   methods: {
     closeModal () {
@@ -65,6 +65,8 @@ export default {
      * 搜索文章分类
      */
     searchCategory () {
+      this.loadData = false
+
       let data = {
         key: this.categoryKey
       }
@@ -78,14 +80,27 @@ export default {
           thisObj.categoryData = []
           thisObj.categoryTips = response.data.msg
         }
+        thisObj.loadData = true
       }).catch(function (error) {
         console.log(error)
       })
+    },
+
+    /**
+     * 选择文章分类
+     */
+    chooseCategory (category) {
+      this.$parent.chooseCategory(category)
+      this.closeModal()
     }
   }
 }
 </script>
 
 <style scoped>
-
+  .categoey.box-show:hover {
+    color: #3ee1ff !important;
+    background:#181818;
+    box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 8px 8px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;
+  }
 </style>

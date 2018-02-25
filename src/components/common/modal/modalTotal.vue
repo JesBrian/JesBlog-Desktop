@@ -41,6 +41,10 @@ export default {
   methods: {
     makeSure () {
       this.$emit('makeSure')
+    },
+
+    chooseCategory (category) {
+      this.$parent.sureCategory(category)
     }
   }
 }
