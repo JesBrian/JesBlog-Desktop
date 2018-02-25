@@ -6,7 +6,7 @@
       <swiper-slide v-for="(slide, index) in swiperSlides" class="s1c-Bg" style="border-radius:3px;" :key="index">
         <img :data-src="slide" class="swiper-lazy" style="width:98%; height:96%; margin:1%;"/>
         <!--<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>-->
-        <baseLoading class="my-lazy-preloader" style="margin-top:13%;"/>
+        <baseLoading class="my-lazy-preloader" style="top:50%; left:50%; transform:translate(-50%, -50%); position:absolute;"/>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination" style="bottom:-38px; position:absolute;"></div>
     </swiper>

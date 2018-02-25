@@ -27,7 +27,7 @@
           <div style="width:238px; height:188px; right:98px; position:absolute;">
             <div class="s1c-Bg box-show" style="width:100%; height:138px;" title="点击上传缩略图">
               <p style="width:100%; top:38%; left:50%; position:absolute; transform:translate(-50%, -50%); font-size:18px; font-weight:700; color:#DDD; text-align:center; letter-spacing:1px;">不使用缩略图 !</p>
-              <img src="" class="box-show" @click="uploadThumbnail" style="width:95%; height:128px; margin:5px 6px; background:#111;"/>
+              <img class="box-show" @click="uploadThumbnail" style="width:95%; height:128px; margin:5px 6px; background:#111;"/>
             </div>
             <span class="superButton-Out" @click="uploadThumbnail" style="width:128px; height:35px; bottom:3px; left:50%; transform:translate(-50%, 0); position:absolute;" title="点击上传缩略图">
               <a class="superButton-In MyIF uploadImg" style="width:118px; height:25px; top:48%; line-height:25px;"> 上传缩略图</a>
@@ -68,11 +68,13 @@
               </td>
               <td>
                 <input id="newArticleTag" v-model="tagTemp" class="s1c-Bg box-show" style="width:168px; padding:3px 8px; font-size:20px;" type="text"/>
-                <input type="hidden" v-model="tags"/>
                 <span class="superButton-Out" style="width:108px; height:38px; top:13px;">
-                  <a class="superButton-In MyIF makesure" style="width:98px; height:28px; line-height:28px;"> 确定保存</a>
+                  <a class="superButton-In MyIF makesure" @click="saveTag" style="width:98px; height:28px; line-height:28px;"> 确定保存</a>
                 </span>
-                <i style="margin-left:18px;">最多保存三个不同的标签</i>
+                <i style="margin-left:12px;">最多保存三个不同的标签</i>
+                <div v-if="tags.length" style="margin:18px 0 38px;">
+                  <span class="glass-Bg box-show" style="width:138px; height:32px; margin-right:28px; display:inline-block; line-height:32px; text-align:center;">XXX</span>
+                </div>
               </td>
             </tr>
 
@@ -153,7 +155,7 @@ export default {
       categoryid: 0,
       categoryName: '',
       tagTemp: '',
-      tags: '',
+      tags: [],
       summary: '',
       content: '',
       status: 1,
@@ -183,7 +185,7 @@ export default {
           thisObj.id = articleData.id
           thisObj.title = articleData.title
           thisObj.categoryid = articleData.categoryid
-          thisObj.tags = articleData.tags
+          thisObj.tags = articleData.tags.split(',')
           thisObj.summary = articleData.summary
           thisObj.content = articleData.content
 
@@ -211,6 +213,17 @@ export default {
     sureCategory (category) {
       this.categoryid = category.id
       this.categoryName = category.name
+    },
+
+    /**
+     *
+     */
+    saveTag () {
+      if (this.tagTemp !== '') {
+        if ((this.tags.length !== 0) && this.tags.includes(this.tagTemp)) return false
+        this.tags.push(this.tagTemp)
+        this.tagTemp = ''
+      }
     },
 
     /**
@@ -273,7 +286,7 @@ export default {
         userid: this.$store.state.userInfo.id,
         title: this.title,
         categoryid: this.categoryid,
-        tags: this.tags,
+        tags: this.tags.join(','),
         summary: this.summary,
         content: this.content,
         status: this.status
