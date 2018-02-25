@@ -1,7 +1,7 @@
 <template>
   <div class="loader">
     <div class="loading-1"></div>
-    <div class="loading-2">Page is Loading ...</div>
+    <div class="loading-2">Loading ...</div>
   </div>
 </template>
 
@@ -14,8 +14,10 @@ export default {
 <style scoped>
   .loader {
     width: 208px;
-    margin: 50px auto 70px;
-    position: relative;
+    top:48%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    position:absolute;
   }
 
   .loader .loading-1 {

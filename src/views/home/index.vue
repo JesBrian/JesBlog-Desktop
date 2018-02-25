@@ -7,12 +7,12 @@
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
-      <div class="glass-Bg box-show" style="width:888px; height:348px; margin:0 auto; border-radius:8px; clear:both;">
+      <div class="glass-Bg box-show" style="width:888px; height:348px; margin:0 auto; position:relative; border-radius:8px; clear:both;">
         <!-- 轮播图组件 -->
         <slide-box style="width:72%; height:88.4%; display:inline-block;"/>
 
         <!-- 推荐文章分类 -->
-        <div style="width:20%; height:92%; margin:23px 23px 0 0; display:inline-block; float:right;">
+        <div v-if="loadData" style="width:20%; height:92%; margin:23px 23px 0 0; display:inline-block; float:right;">
           <ul style="height:100%;">
             <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
               <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
@@ -52,29 +52,35 @@
             </li>
           </ul>
         </div>
+
+        <base-loading v-if="!loadData" style="top:50%; right:0; margin-right:68px; transform:translate(0, -50%); position:absolute;"/>
+
       </div>
 
       <!-- 搜索框组件 -->
       <search-box/>
 
       <!-- 主页内容 -->
-      <div id="bodyLayout" class="glass-Bg box-show"
-           style="width:1080px; min-height:1288px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
+      <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; min-height:1288px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
 
-        <div style="width:68%; display:inline-block;">
-          <!-- 文章列表组件 -->
-          <article-list :articleList="articleList"/>
+        <div v-if="loadData" >
+          <div style="width:68%; display:inline-block;">
+            <!-- 文章列表组件 -->
+            <article-list :articleList="articleList"/>
+          </div>
+
+          <div style="width:28%; display:inline-block; float:right;">
+            <!-- 推荐作者列表组件 -->
+            <author-list/>
+
+            <!-- 留言板组件 -->
+            <bulletin-board :bulletinList="bulletinList"/>
+          </div>
         </div>
 
-        <div style="width:28%; display:inline-block; float:right;">
-          <!-- 推荐作者列表组件 -->
-          <author-list/>
+        <page-loading v-if="!loadData"/>
 
-          <!-- 留言板组件 -->
-          <bulletin-board :bulletinList="bulletinList"/>
-        </div>
       </div>
-
     </div>
 
     <!-- 浮动块[回到顶部]组件 -->
@@ -103,6 +109,8 @@ import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import alertTips from '../../components/common/alertTips/alertTips.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
+import baseLoading from '../../components/common/loading/baseLoading.vue'
+import pageLoading from '../../components/common/loading/pageLoading.vue'
 
 export default {
   name: 'index',
@@ -116,10 +124,13 @@ export default {
     floatBlock,
     pageFooter,
     alertTips,
-    modal
+    modal,
+    baseLoading,
+    pageLoading
   },
   data () {
     return {
+      loadData: false,
       articleList: [],
       authorList: [],
       bulletinList: []
@@ -134,6 +145,7 @@ export default {
 
     this.axios.post('home/index', data).then(function (response) {
       if (response.data.status === '01') {
+        thisObj.loadData = true
         thisObj.articleList = response.data.data.articleList
         thisObj.bulletinList = response.data.data.bulletinList
       }

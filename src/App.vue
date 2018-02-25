@@ -33,11 +33,9 @@ export default {
   .fade-enter-active {
     transition: opacity .3s
   }
-
   .fade-leave-active {
     transition: opacity .3s
   }
-
   .fade-enter, .fade-leave-to {
     opacity: 0
   }
@@ -45,14 +43,22 @@ export default {
   .updown-enter-active {
     transition: all .5s ease
   }
-
   .updown-leave-active {
     transition: all .3s ease
   }
-
   .updown-enter, .updown-leave-to {
     top: 0 !important;
     opacity: 0;
   }
 
+  .downup-enter-active {
+    transition: all .5s ease
+  }
+  .downup-leave-active {
+    transition: all .3s ease
+  }
+  .downup-enter, .downup-leave-to {
+    top: 0 !important;
+    opacity: 0;
+  }
 </style>

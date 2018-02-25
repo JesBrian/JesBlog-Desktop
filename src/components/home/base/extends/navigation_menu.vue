@@ -1,6 +1,6 @@
 <template>
   <!-- 导航栏部分 -->
-  <nav class="glass-Bg box-show" style="width:100%; height:60px; position:fixed; z-index:555; box-sizing:border-box; border-radius:0;">
+  <nav class="glass-Bg box-show" style="width:100%; height:60px; top:0; left:0; position:fixed; z-index:555; box-sizing:border-box; border-radius:0;">
     <div style="width:1234px; height:100%; margin:0 auto; line-height:60px; position:relative;">
 
       <!-- LOGO -->
