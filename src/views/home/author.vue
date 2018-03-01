@@ -14,9 +14,7 @@
           <div style="width:100%; color:#EDE;">
 
             <div class="s1c-Bg box-show" style="width:68px; height:68px; margin:0 18px 0 28px; float:left;">
-              <img
-                v-lazy="'http://localhost/JesBlog/web/upload/avatar/' + this.$route.params.id + '-' + userInfo.username + '.jpg'"
-                class="box-show" style="width:62px; height:62px; margin:3px;">
+              <img v-lazy="this.$store.state.baseHost + 'upload/avatar/' + this.$route.params.id + '-' + userInfo.username + '.jpg'" class="box-show" style="width:62px; height:62px; margin:3px;">
             </div>
 
             <div style="height:68px; margin-top:18px;">

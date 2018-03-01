@@ -1,6 +1,6 @@
 <template>
   <!-- 头像组件 -->
-  <router-link :to="'/author/' + userid"><img class="box-show" src="../../../assets/images/touxiang.jpg"></router-link>
+  <router-link :to="'/author/' + userid"><img class="box-show" v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'"></router-link>
 </template>
 
 <script>
