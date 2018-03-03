@@ -46,28 +46,51 @@
       </div>
 
       <!-- 其他授权登陆方式 -->
-      <div
-        style="width:28%; height:100%; float:right; box-sizing:border-box; border-left:1px solid #000; border-image:linear-gradient(#25b8dd, #3072cc, #25b8dd) 2; text-align:center;">
-        <!-- 微信 -->
-        <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:11px 0;">
-          <a class="superButton-In MyIF wechat" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
-        </a>
-        <!-- QQ -->
-        <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:11px 0;">
-          <a class="superButton-In MyIF qq" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
-        </a>
-        <!-- 微博 -->
-        <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:11px 0;">
-          <a class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
-        </a>
-        <!-- Github -->
-        <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:11px 0;">
-          <a class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
-        </a>
-        <!-- Gitee -->
-        <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:11px 0;">
-          <a class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
-        </a>
+      <div style="width:28%; height:100%; padding-top:13px; float:right; box-sizing:border-box; border-left:1px solid #000; border-image:linear-gradient(#25b8dd, #3072cc, #25b8dd) 2; text-align:center;">
+        <table style="width:88%;">
+          <tr>
+            <td style="text-align:right;">
+              <!-- 微信 -->
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" class="superButton-Out" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">
+                <a class="superButton-In MyIF wechat" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              </a>
+            </td>
+            <td>
+              <!-- QQ -->
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" class="superButton-Out" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">
+                <a class="superButton-In MyIF qq" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align:right;">
+              <!-- 微博 -->
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" class="superButton-Out" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">
+                <a class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              </a>
+            </td>
+            <td>
+              <!-- Github -->
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="superButton-Out" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
+                <a class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align:right;">
+              <!-- Gitee -->
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" class="superButton-Out" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">
+                <a class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              </a>
+            </td>
+            <td>
+              <!-- Github -->
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:8px 0;">
+                <a class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              </a>
+            </td>
+          </tr>
+        </table>
       </div>
 
     </div>
