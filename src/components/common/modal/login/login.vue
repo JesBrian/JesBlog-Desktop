@@ -51,42 +51,42 @@
           <tr>
             <td style="text-align:right;">
               <!-- 微信 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" class="superButton-Out" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">
-                <a class="superButton-In MyIF wechat" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">
+                <span class="superButton-In MyIF wechat" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
             <td>
               <!-- QQ -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" class="superButton-Out" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">
-                <a class="superButton-In MyIF qq" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">
+                <span class="superButton-In MyIF qq" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
           </tr>
           <tr>
             <td style="text-align:right;">
               <!-- 微博 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" class="superButton-Out" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">
-                <a class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">
+                <span class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
             <td>
               <!-- Github -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="superButton-Out" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
-                <a class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
+                <span class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
           </tr>
           <tr>
             <td style="text-align:right;">
               <!-- Gitee -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" class="superButton-Out" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">
-                <a class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">
+                <span class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
             <td>
               <!-- Github -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:8px 0;">
-                <a class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" style="width:40px; height:40px; margin:8px 0;">
+                <span class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
           </tr>
@@ -103,15 +103,23 @@ import closeButton from '../close_button.vue'
 
 export default {
   name: 'login',
+
   components: {
     closeButton
   },
+
   data () {
     return {
       username: '',
       passwd: ''
     }
   },
+
+  beforeDestroy () {
+    let thisObj = this
+    clearInterval(thisObj.timer)
+  },
+
   methods: {
     register () {
       this.$store.commit('changeModal', 'register')
@@ -148,9 +156,25 @@ export default {
       })
     },
 
-    loginOAuth ($type) {
-      this.$store.commit('changeOAuth', $type)
-      this.$store.commit('changeModal', 'oauth')
+    // loginOAuth ($type) {
+    //   this.$store.commit('changeOAuth', $type)
+    //   this.$store.commit('changeModal', 'oauth')
+    // }
+
+    checkOAuthLogin () {
+      let thisObj = this
+      setTimeout(function () {
+        thisObj.timer = setInterval(function () {
+          thisObj.axios.post('oauth/check-login').then(function (response) {
+            if (response.data.status === '01') {
+              clearInterval(thisObj.timer)
+            }
+            console.log(response)
+          }).catch(function (error) {
+            console.log(error)
+          })
+        }, 3000)
+      }, 5000)
     }
   }
 }

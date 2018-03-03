@@ -12,6 +12,7 @@
 <script>
 import register from './register/register.vue'
 import login from './login/login.vue'
+// import oauth from './oauth/oauth.vue'
 import repasswd from './repasswd/repasswd.vue'
 import category from './category/category.vue'
 import warning from './warning/warning.vue'
@@ -22,6 +23,7 @@ export default {
   components: {
     register,
     login,
+    // oauth,
     repasswd,
     category,
     warning,
