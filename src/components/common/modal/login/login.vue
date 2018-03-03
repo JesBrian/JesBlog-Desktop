@@ -49,17 +49,25 @@
       <div
         style="width:28%; height:100%; float:right; box-sizing:border-box; border-left:1px solid #000; border-image:linear-gradient(#25b8dd, #3072cc, #25b8dd) 2; text-align:center;">
         <!-- 微信 -->
-        <span class="superButton-Out" style="width:128px; height:40px; margin:11px 0;">
-          <a class="superButton-In MyIF wechat" style="width:118px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"> 微信登陆</a>
-        </span>
+        <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:11px 0;">
+          <a class="superButton-In MyIF wechat" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+        </a>
         <!-- QQ -->
-        <span class="superButton-Out" style="width:128px; height:40px; margin:11px 0;">
-          <a class="superButton-In MyIF qq" style="width:118px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;">&nbsp;&nbsp;QQ登陆</a>
-        </span>
+        <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:11px 0;">
+          <a class="superButton-In MyIF qq" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+        </a>
         <!-- 微博 -->
-        <span class="superButton-Out" style="width:128px; height:40px; margin:11px 0;">
-          <a class="superButton-In MyIF weibo" style="width:118px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"> 微博登陆</a>
-        </span>
+        <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:11px 0;">
+          <a class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+        </a>
+        <!-- Github -->
+        <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:11px 0;">
+          <a class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+        </a>
+        <!-- Gitee -->
+        <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" class="superButton-Out" style="width:40px; height:40px; margin:11px 0;">
+          <a class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></a>
+        </a>
       </div>
 
     </div>
@@ -115,6 +123,11 @@ export default {
       }).catch(function (error) {
         console.log(error)
       })
+    },
+
+    loginOAuth ($type) {
+      this.$store.commit('changeOAuth', $type)
+      this.$store.commit('changeModal', 'oauth')
     }
   }
 }

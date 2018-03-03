@@ -42,8 +42,14 @@ export default {
 
         effect: 'cube',
 
-        autoplay: true, // 自动滑动
+        autoplay: {
+          delay: 3000,
+          stopOnLastSlide: false,
+          disableOnInteraction: false
+        },
+
         loop: true, // 循环
+
         lazy: {
           loadPrevNext: true,
           loadOnTransitionStart: true,
