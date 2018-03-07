@@ -11,6 +11,7 @@ import vueLazyload from 'vue-lazyload'
 // axios.defaults.withCredentials = true
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.baseURL = store.state.baseHost + 'index.php/'
+// axios.defaults.baseURL = store.state.baseHost
 Vue.prototype.axios = axios
 Vue.use(vueLazyload, {
   error: store.state.baseHost + 'img/loading.svg',

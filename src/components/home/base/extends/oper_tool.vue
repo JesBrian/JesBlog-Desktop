@@ -33,7 +33,7 @@ export default {
     height: 100%;
     display: inline-block;
     color: #0A0A0A;
-    font-size: 38px;
+    font-size: 32px;
     line-height: 46px;
     text-align: center;
     text-shadow: 0 -0.8px 0 #000;
