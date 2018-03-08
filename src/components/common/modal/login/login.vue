@@ -70,8 +70,8 @@
               </a>
             </td>
             <td>
-              <!-- Github -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
+              <!-- 百度 -->
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Baidu'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" style="width:40px; height:40px; margin:8px 0;">
                 <span class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
@@ -85,7 +85,7 @@
             </td>
             <td>
               <!-- Github -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
@@ -155,11 +155,6 @@ export default {
         console.log(error)
       })
     },
-
-    // loginOAuth ($type) {
-    //   this.$store.commit('changeOAuth', $type)
-    //   this.$store.commit('changeModal', 'oauth')
-    // }
 
     checkOAuthLogin () {
       let thisObj = this

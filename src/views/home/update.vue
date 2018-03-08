@@ -102,7 +102,7 @@
 </template>
 
 <script>
-import navigationBar from '../../components/home/base/extends/navigation_menu.vue'
+import navigationBar from '../../components/home/base/extends/navigationMenu.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'

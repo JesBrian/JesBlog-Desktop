@@ -7,7 +7,7 @@
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
-      <div class="glass-Bg box-show" style="width:888px; height:348px; margin:0 auto; position:relative; border-radius:8px; clear:both;">
+      <div class="glass-Bg box-show" style="width:888px; height:348px; margin:0 auto 38px; position:relative; border-radius:8px; clear:both;">
         <!-- 轮播图组件 -->
         <slide-box style="width:72%; height:88.4%; display:inline-block;"/>
 
@@ -54,7 +54,6 @@
         </div>
 
         <base-loading v-if="!loadData" style="top:50%; right:0; margin-right:68px; transform:translate(0, -50%); position:absolute;"/>
-
       </div>
 
       <!-- 搜索框组件 -->
@@ -99,9 +98,9 @@
 </template>
 
 <script>
-import navigationBar from '../../components/home/base/extends/navigation_menu.vue'
+import navigationBar from '../../components/home/base/extends/navigationMenu.vue'
 import slideBox from '../../components/home/base/extends/slide_box.vue'
-import searchBox from '../../components/home/base/extends/search_box.vue'
+import searchBox from '../../components/home/base/extends/searchBox.vue'
 import articleList from '../../components/home/article/article_list.vue'
 import authorList from '../../components/home/author/author_list_recom.vue'
 import bulletinBoard from '../../components/home/base/extends/bulletin_board.vue'

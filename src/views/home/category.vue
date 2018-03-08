@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import navigationBar from '../../components/home/base/extends/navigation_menu.vue'
+import navigationBar from '../../components/home/base/extends/navigationMenu.vue'
 import follow from '../../components/home/base/extends/follow.vue'
 import articleList from '../../components/home/article/article_list.vue'
 import authorList from '../../components/home/author/author_list_recom.vue'

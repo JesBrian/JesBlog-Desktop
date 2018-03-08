@@ -54,7 +54,7 @@
       </ul>
 
       <!-- 登录注册 -->
-      <div id="navMenuUser" style="width:48px; height:45px; margin-top:7px; margin-left:28px; position:relative; float:right;">
+      <div id="navMenuUser" style="width:48px; height:45px; margin-top:6px; margin-left:28px; position:relative; float:right;">
         <span @click="loginRegister" class="superButton-Out" style="width:100%; height:100%;">
           <img class="superButton-In" v-if="this.$store.state.userInfo.id !== '0'" v-lazy="this.$store.state.baseHost + 'upload/avatar/' + this.$store.state.userInfo.id + '-' + this.$store.state.userInfo.username + '.jpg'" style="width:36px; height:34px;"/>
           <a class="superButton-In MyIF administrators-1" v-else style="width:36px; height:34px; line-height:35px!important; font-size:28px;"></a>
@@ -81,7 +81,7 @@
       </div>
 
       <!-- 搜索框 -->
-      <div id="navSearchForm" style="width:48px; height:45px; margin-top:7px; padding:0; position:relative; float:right;">
+      <div id="navSearchForm" style="width:48px; height:45px; margin-top:6px; padding:0; position:relative; float:right;">
         <input type="text" placeholder=" 搜索一下, 更加精彩 " style="width:0; height:30px; top:9px; left:10px; padding:0; position:absolute; border:none!important; background:#444; color:#DDD;">
         <span class="superButton-Out" style="width:100%; height:100%;">
           <a class="superButton-In MyIF search"></a>
@@ -94,7 +94,7 @@
 
 <script>
 export default {
-  name: 'navigation_bar',
+  name: 'navigation-menu',
   data () {
     return {}
   },
