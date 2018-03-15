@@ -29,7 +29,7 @@
                   </router-link>
                 </li>
                 <li>
-                  <router-link to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
+                  <router-link to="/backstage/updateAdmin"><i class="MyIF gears"></i> 修改资料</router-link>
                 </li>
                 <li @click="logout">
                   <a><i class="MyIF exit-1"></i> 安全退出</a>
@@ -134,14 +134,14 @@
             </div>
             <ul v-if="firstMenu === 'article'">
               <li style="width:83%; height:25px; margin:3px auto 0;">
-                <router-link to="/backstage/addArticle" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('addCategory')">
-                  <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">添加文章</span>
+                <router-link to="/backstage/articleList" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('articleList')">
+                  <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">文章列表</span>
                   <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
                 </router-link>
               </li>
               <li style="width:83%; height:25px; margin:3px auto 0;">
-                <router-link to="/backstage/articleList" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('articleList')">
-                  <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">文章列表</span>
+                <router-link to="/backstage/addArticle" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('addCategory')">
+                  <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">添加文章</span>
                   <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
                 </router-link>
               </li>

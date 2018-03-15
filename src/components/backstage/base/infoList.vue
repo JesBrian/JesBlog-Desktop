@@ -21,8 +21,12 @@
 <script>
 import userInfoTitle from '../user/infoTitle.vue'
 import userInfoCell from '../user/infoCell.vue'
+import adminInfoTitle from '../admin/infoTitle.vue'
+import adminInfoCell from '../admin/infoCell.vue'
 import categoryInfoTitle from '../category/infoTitle.vue'
 import categoryInfoCell from '../category/infoCell.vue'
+import articleInfoTitle from '../article/infoTitle.vue'
+import articleInfoCell from '../article/infoCell.vue'
 import pagination from '../../common/pagination/pagination.vue'
 
 export default {
@@ -30,8 +34,12 @@ export default {
   components: {
     userInfoTitle,
     userInfoCell,
+    adminInfoTitle,
+    adminInfoCell,
     categoryInfoTitle,
     categoryInfoCell,
+    articleInfoTitle,
+    articleInfoCell,
     pagination
   },
   data () {
@@ -56,8 +64,12 @@ export default {
       this.contentListType = 'categoryInfoCell'
       url = 'category/backstage-category-list'
     } else if (this.$route.path === '/backstage/adminList') {
-      // this.contentTitleType = 'categoryInfoTitle'
-      // this.contentListType = 'categoryInfoCell'
+      this.contentTitleType = 'adminInfoTitle'
+      this.contentListType = 'adminInfoCell'
+      // url = 'category/backstage-category-list'
+    } else if (this.$route.path === '/backstage/articleList') {
+      this.contentTitleType = 'articleInfoTitle'
+      this.contentListType = 'articleInfoCell'
       // url = 'category/backstage-category-list'
     }
 
@@ -89,9 +101,6 @@ export default {
     background:#666;
   }
   table tr:hover{
-    background:#444;
-  }
-  table >>> td:hover{
-    background:#333;
+    background:#3F3F3F;
   }
 </style>

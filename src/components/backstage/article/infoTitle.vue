@@ -5,6 +5,8 @@
     <th style="width:33px;"><input type="checkbox"/></th>
     <th >操作</th>
     <th >名称</th>
+    <th >缩略图</th>
+    <th >点赞</th>
     <th >状态</th>
   </tr>
 </template>
