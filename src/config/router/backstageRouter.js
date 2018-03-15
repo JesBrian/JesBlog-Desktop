@@ -25,6 +25,10 @@ export default [
         component: () => import('../../views/backstage/user/addUser.vue')
       },
       {
+        path: 'updateUser',
+        component: () => import('../../views/backstage/user/updateUser.vue')
+      },
+      {
         path: 'userBlacklist',
         component: () => import('../../views/backstage/user/userBlacklist.vue')
       },
@@ -37,6 +41,10 @@ export default [
         component: () => import('../../views/backstage/admin/addAdmin.vue')
       },
       {
+        path: 'updateAdmin',
+        component: () => import('../../views/backstage/admin/updateAdmin.vue')
+      },
+      {
         path: 'categoryList',
         component: () => import('../../views/backstage/category/categoryList.vue')
       },
@@ -45,12 +53,20 @@ export default [
         component: () => import('../../views/backstage/category/addCategory.vue')
       },
       {
+        path: 'updateCategory',
+        component: () => import('../../views/backstage/category/updateCategory.vue')
+      },
+      {
         path: 'articleList',
         component: () => import('../../views/backstage/article/articleList.vue')
       },
       {
         path: 'addArticle',
         component: () => import('../../views/backstage/article/addArticle.vue')
+      },
+      {
+        path: 'updateArticle',
+        component: () => import('../../views/backstage/article/updateArticle.vue')
       }
     ]
   }
