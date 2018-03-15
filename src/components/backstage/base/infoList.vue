@@ -12,6 +12,7 @@
 
     </table>
 
+    <!-- 分页组件 -->
     <pagination/>
 
   </div>
@@ -86,5 +87,11 @@ export default {
   }
   table tr:nth-child(even){
     background:#666;
+  }
+  table tr:hover{
+    background:#444;
+  }
+  table >>> td:hover{
+    background:#333;
   }
 </style>

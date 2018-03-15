@@ -43,6 +43,14 @@ export default [
       {
         path: 'addCategory',
         component: () => import('../../views/backstage/category/addCategory.vue')
+      },
+      {
+        path: 'articleList',
+        component: () => import('../../views/backstage/article/articleList.vue')
+      },
+      {
+        path: 'addArticle',
+        component: () => import('../../views/backstage/article/addArticle.vue')
       }
     ]
   }

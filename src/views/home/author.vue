@@ -71,8 +71,7 @@
           </div>
 
           <div id="authorContent">
-            <component :is="contentType" :descript="contentList" :articleList="contentList"
-                       :categoryList="contentList"/>
+            <component :is="contentType" :descript="contentList" :articleList="contentList" :categoryList="contentList"/>
           </div>
 
         </div>
