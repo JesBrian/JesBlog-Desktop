@@ -43,7 +43,7 @@
 
     <!-- 左侧手风琴菜单栏 -->
     <div id="leftMenu" class="glass-Bg box-show" :class="{'leftmenu-is-show':showLeftMenu === true}" style="width:188px; height:100%; top:0; left:-188px; padding:60px 0 30px; box-sizing:border-box; position:fixed; z-index:9;  font-family:'宋体','Microsoft YaHei','黑体',sans-serif;">
-      <div style="width:100%; height:100%; overflow-y:auto; color:#DDD;">
+      <div style="width:100%; height:100%; padding-top:6px; overflow-y:auto; color:#DDD;">
         <ul>
           <li style="width:100%; margin:0 0 8px;">
             <div class="glass-Bg box-show" @click="changeFirstMenu('user')" style="width:96%; height:30px; margin:0 auto; position:relative; cursor:pointer;">

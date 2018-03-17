@@ -20,6 +20,15 @@ export default new Vuex.Store({
   mutations: {
 
     /**
+     * 重置 Vuex 变量
+     * @param state
+     */
+    resetVuexStore (state) {
+      state.modalType = ''
+      state.alertTips = false
+    },
+
+    /**
      * 弹出各种拟态框 OR 关闭拟态框
      */
     changeModal (state, type = '') {

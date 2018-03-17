@@ -25,3 +25,9 @@ new Vue({
   el: '#app',
   render: h => h(App)
 })
+
+// 每次路由跳转执行操作 - 重置 vuex 变量
+router.beforeEach((to, from, next) => {
+  store.commit('resetVuexStore')
+  next()
+})
