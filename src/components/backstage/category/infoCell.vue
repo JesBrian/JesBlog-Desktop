@@ -2,7 +2,7 @@
   <!-- 列表单个信息组件 -->
   <!-- eslint-disable no-tabs -->
 	<tr style="height:30px; line-height:30px; font-size:16px;">
-    <td style="text-align:center;"><label class="super-checkbox"><input type="checkbox"/><i>√</i></label></td>
+    <td style="text-align:center;"><label class="super-checkbox"><input type="checkbox" :checked="this.isSelectAll" /><i>√</i></label></td>
     <td class="accountTableOper"><i class="accountOperIframeUrl MyIF tool" title="修改"></i></td>
     <td class="accountTableOper"><i class="MyIF search" title="查看详情"></i></td>
     <td class="accountTableOper"><i class="MyIF recycle-2" title="删除"></i></td>
@@ -23,7 +23,8 @@ export default {
   components: {},
 
   props: [
-    'info'
+    'info',
+    'isSelectAll'
   ]
 }
 </script>

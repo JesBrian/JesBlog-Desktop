@@ -8,7 +8,7 @@
       <component :is="contentTitleType"/>
 
       <!-- 列表单个信息组件 -->
-      <component :is="contentListType" v-for="item in contentList" :key="item.id" :info="item"/>
+      <component :is="contentListType" v-for="item in contentList" :key="item.id" :info="item" :isSelectAll="isSelectAll" />
     </table>
 
     <!-- 加载等待loading组件 -->
@@ -56,7 +56,8 @@ export default {
     return {
       contentTitleType: '',
       contentListType: '',
-      contentList: []
+      contentList: [],
+      isSelectAll: false
     }
   },
 
@@ -94,6 +95,13 @@ export default {
     }).catch(function (error) {
       console.log(error)
     })
+  },
+
+  methods: {
+    selectAll (type) {
+      // console.log(type)
+      this.isSelectAll = type
+    }
   }
 }
 </script>
