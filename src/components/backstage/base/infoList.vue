@@ -147,7 +147,7 @@ export default {
   table >>> input[type=checkbox] {
     display:none;
   }
-  table >>> .super-checkbox {
+  table >>> .super-checkbox > i {
     width:20px;
     height:20px;
     margin:0;
@@ -157,25 +157,23 @@ export default {
     font-size:18px;
     font-weight:900;
     line-height:22px;
-    color: #0e0e0e;
+    color: #111;
+    text-align:left;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
     text-decoration: none;
     cursor: pointer;
-    border: 0.5px solid #464646;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #444444), color-stop(100%, #373738));
-    background-image: -moz-linear-gradient(#444444, #373738);
-    background-image: -webkit-linear-gradient(#444444, #373738);
-    background-image: linear-gradient(#444444, #373738);
+    border: 0.5px solid #333;
+    background-image: linear-gradient(#2e3537, #333);
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(0, 0, 0, 0.3), 0 0 1px rgba(255, 255, 255, 0.05), 0 0 3px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 1px 0 rgba(128, 128, 128, 0.6), inset 0 -1px 0 rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.5), 0 2px 2px rgba(0, 0, 0, 0.4);
     -moz-user-select:none;/*火狐*/
     -webkit-user-select:none;/*webkit浏览器*/
     -ms-user-select:none;/*IE10*/
     user-select:none;
   }
-  table >>> .super-checkbox:after {
+  table >>> .super-checkbox > i:after {
     content:'';
     width:22px;
     height:22px;
@@ -184,17 +182,9 @@ export default {
     position:absolute;
     z-index:-1;
   }
-  table >>> .super-checkbox > i {
-    width:100%; height:100%;
-    margin-left:-3px;
-    display:inline-block;
-    /*background:lightgreen;*/
-  }
   table >>> .super-checkbox:hover > i {
     color: #AEAEAE;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
-  }
-  table >>> .super-checkbox:hover:after > i {
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #545454), color-stop(100%, #373738));
     background-image: -moz-linear-gradient(#545454, #373738);
     background-image: -webkit-linear-gradient(#545454, #373738);
@@ -207,7 +197,7 @@ export default {
     background-image: -moz-linear-gradient(#262627, #2d2d2e);
     background-image: -webkit-linear-gradient(#262627, #2d2d2e);
     background-image: linear-gradient(#262627, #2d2d2e);
-    box-shadow: inset 0 5px 6px rgba(0, 0, 0, 0.3), inset 0 0 4px rgba(0, 0, 0, 0.9), 0 0 0 black,  0 0 0 rgba(0, 193, 255, 0.2), 0 0 1px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.05), 0 0 6px rgba(0, 193, 255, 0.1);
+    box-shadow: inset 0 5px 6px rgba(0, 0, 0, 0.3), inset 0 0 4px rgba(0, 0, 0, 0.9), 0 0 0 black,  0 0 8px rgba(0, 193, 255, 0.2), 0 0 1px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.05), 0 0 6px rgba(0, 193, 255, 0.1);
 
   }
 </style>
