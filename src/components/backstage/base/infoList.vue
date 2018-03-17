@@ -9,8 +9,12 @@
 
       <!-- 列表单个信息组件 -->
       <component :is="contentListType" v-for="item in contentList" :key="item.id" :info="item"/>
-
     </table>
+
+    <!-- 加载等待loading组件 -->
+    <div v-if="contentList.length === 0" style="width:100%; height:288px; position:relative;">
+      <page-loading/>
+    </div>
 
     <!-- 分页组件 -->
     <pagination/>
@@ -27,7 +31,10 @@ import categoryInfoTitle from '../category/infoTitle.vue'
 import categoryInfoCell from '../category/infoCell.vue'
 import articleInfoTitle from '../article/infoTitle.vue'
 import articleInfoCell from '../article/infoCell.vue'
+import slideInfoTitle from '../slide/infoTitle.vue'
+import slideInfoCell from '../slide/infoCell.vue'
 import pagination from '../../common/pagination/pagination.vue'
+import pageLoading from '../../common/loading/pageLoading.vue'
 
 export default {
   name: 'info-list',
@@ -40,7 +47,10 @@ export default {
     categoryInfoCell,
     articleInfoTitle,
     articleInfoCell,
-    pagination
+    slideInfoTitle,
+    slideInfoCell,
+    pagination,
+    pageLoading
   },
   data () {
     return {
@@ -71,6 +81,10 @@ export default {
       this.contentTitleType = 'articleInfoTitle'
       this.contentListType = 'articleInfoCell'
       // url = 'category/backstage-category-list'
+    } else if (this.$route.path === '/backstage/slideList') {
+      this.contentTitleType = 'slideTitle'
+      this.contentListType = 'slideInfoCell'
+      // url = 'category/backstage-category-list'
     }
 
     this.axios.post(url, data).then(function (response) {
@@ -90,6 +104,8 @@ export default {
   }
 
   table tr, table >>> td, table >>> th {
+    margin:0;
+    padding:0;
     box-sizing:border-box;
     border: 1px solid #222;
   }
@@ -102,5 +118,29 @@ export default {
   }
   table tr:hover{
     background:#3F3F3F;
+  }
+
+  table >>> .accountTableOper {
+    width:33px;
+    border-radius:4px;
+    text-align:center;
+    position:relative;
+    z-index:8888;
+  }
+  table >>> .accountTableOper:hover {
+    background:#191919;
+    box-shadow:inset 0 0 2px #FFF, 0 0 5px #000;
+    z-index:9999;
+  }
+  table >>> .accountTableOper > .MyIF {
+    width:100%;
+    height:100%;
+    display:inline-block;
+    font-size:18px;
+    cursor:pointer;
+  }
+  table >>> .accountTableOper:hover > .MyIF {
+    color: #46dfff;
+    text-shadow:0.2px 0.2px 0.2px #000;
   }
 </style>

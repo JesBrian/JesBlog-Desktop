@@ -3,7 +3,7 @@
   <!-- eslint-disable no-tabs -->
   <tr class="glass-Bg" style="height:33px; line-height:33px; font-size:18px; font-weight:700; color:#FFF; background:#333; border-radius:0;">
     <th style="width:33px;"><input type="checkbox"/></th>
-    <th >操作</th>
+    <th colspan="3">操作</th>
     <th >分类名</th>
     <th >图标</th>
     <th >火热程度</th>

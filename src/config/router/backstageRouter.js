@@ -67,6 +67,18 @@ export default [
       {
         path: 'updateArticle',
         component: () => import('../../views/backstage/article/updateArticle.vue')
+      },
+      {
+        path: 'slideList',
+        component: () => import('../../views/backstage/slide/slideList.vue')
+      },
+      {
+        path: 'addSlide',
+        component: () => import('../../views/backstage/slide/addSlide.vue')
+      },
+      {
+        path: 'updateSlide',
+        component: () => import('../../views/backstage/slide/updateSlide.vue')
       }
     ]
   }

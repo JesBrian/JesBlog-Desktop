@@ -1,9 +1,11 @@
 <template>
   <!-- 列表单个信息组件 -->
   <!-- eslint-disable no-tabs -->
-	<tr style="height:33px; line-height:33px; font-size:16px;">
+	<tr style="height:30px; line-height:30px; font-size:16px;">
     <td style="text-align:center;"><input type="checkbox"/></td>
-    <td>1</td>
+    <td class="accountTableOper"><i class="accountOperIframeUrl MyIF tool" title="修改"></i></td>
+    <td class="accountTableOper"><i class="MyIF search" title="查看详情"></i></td>
+    <td class="accountTableOper"><i class="MyIF recycle-2" title="删除"></i></td>
     <td>{{ info.name }}</td>
     <td>3</td>
     <td>4</td>

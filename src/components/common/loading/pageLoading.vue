@@ -1,4 +1,5 @@
 <template>
+  <!-- 加载等待loading组件 -->
   <div class="loader">
     <div class="loading-1"></div>
     <div class="loading-2">Loading ...</div>
