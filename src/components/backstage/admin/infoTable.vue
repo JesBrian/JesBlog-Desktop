@@ -1,14 +1,13 @@
 <template>
+  <!-- 管理员列表表格 -->
   <table class="box-show" style="width:100%; height:100%;">
     <tr class="glass-Bg" style="height:33px; line-height:33px; font-size:18px; font-weight:700; color:#FFF; background:#333; border-radius:0;">
       <th style="width:33px;"><label class="super-checkbox"><input v-model="selectAll" value="selectAll" type="checkbox"/><i>√</i></label></th>
       <th colspan="3">操作</th>
-      <th >分类名</th>
-      <th >图标</th>
-      <th >火热程度</th>
-      <th >关注人数</th>
-      <th >收录文章</th>
-      <th >状态</th>
+      <th >名称</th>
+      <th >头像</th>
+      <th >创建时间</th>
+      <th >账户最后登录时间</th>
     </tr>
 
     <tr v-for="item in contentList" :key="item.id" style="height:30px; line-height:30px; font-size:16px;">
@@ -16,12 +15,10 @@
       <td class="accountTableOper"><i class="accountOperIframeUrl MyIF tool" title="修改"></i></td>
       <td class="accountTableOper"><i class="MyIF search" title="查看详情"></i></td>
       <td class="accountTableOper"><i class="MyIF recycle-2" title="删除"></i></td>
-      <td>{{ item.name }}</td>
+      <td>{{ item.username }}</td>
       <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-      <td>7</td>
+      <td>{{ item.create_time }}</td>
+      <td>{{ item.last_login }}</td>
     </tr>
   </table>
 </template>

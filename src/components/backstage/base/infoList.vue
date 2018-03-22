@@ -56,7 +56,7 @@ export default {
       url = 'category/backstage-category-list'
     } else if (this.$route.path === '/backstage/adminList') {
       this.listType = 'adminInfoTable'
-      // url = 'category/backstage-category-list'
+      url = 'admin/backstage-list'
     } else if (this.$route.path === '/backstage/articleList') {
       this.listType = 'articleInfoTable'
       url = 'article/backstage-list'

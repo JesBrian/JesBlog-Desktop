@@ -1,4 +1,5 @@
 <template>
+  <!-- 文章分类列表表格 -->
   <table class="box-show" style="width:100%; height:100%;">
     <tr class="glass-Bg" style="height:33px; line-height:33px; font-size:18px; font-weight:700; color:#FFF; background:#333; border-radius:0;">
       <th style="width:33px;"><label class="super-checkbox"><input v-model="selectAll" value="selectAll" type="checkbox"/><i>√</i></label></th>
