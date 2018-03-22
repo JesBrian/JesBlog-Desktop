@@ -18,11 +18,11 @@
       <td class="accountTableOper"><i class="MyIF search" title="查看详情"></i></td>
       <td class="accountTableOper"><i class="MyIF recycle-2" title="删除"></i></td>
       <td>{{ item.username }}</td>
-      <td>3</td>
-      <td>4</td>
+      <td>{{ item.avata }}</td>
+      <td>{{ numToSex(item.sex) }}</td>
       <td>{{ item.mail }}</td>
-      <td>6</td>
-      <td>7</td>
+      <td>{{ item.home }}</td>
+      <td>{{ item.status }}</td>
       <td style="text-align:center;">{{ timestampToTime(item.create_time) }}</td>
     </tr>
   </table>
@@ -57,6 +57,17 @@ export default {
   },
 
   methods: {
+
+    numToSex (num) {
+      if (num === 1) {
+        return '男'
+      } else if (num === 2) {
+        return '女'
+      } else {
+        return '保密'
+      }
+    },
+
     timestampToTime (timestamp) {
       return helpFunc.timestampToTime(timestamp)
     }

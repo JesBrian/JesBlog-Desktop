@@ -59,10 +59,10 @@ export default {
       // url = 'category/backstage-category-list'
     } else if (this.$route.path === '/backstage/articleList') {
       this.listType = 'articleInfoTable'
-      // url = 'category/backstage-category-list'
+      url = 'article/backstage-list'
     } else if (this.$route.path === '/backstage/slideList') {
       this.listType = 'slideInfoTable'
-      // url = 'category/backstage-category-list'
+      url = 'slide/backstage-list'
     }
 
     this.axios.post(url, data).then(function (response) {

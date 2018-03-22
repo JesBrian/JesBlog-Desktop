@@ -2,11 +2,13 @@
   <table class="box-show" style="width:100%; height:100%;">
     <tr class="glass-Bg" style="height:33px; line-height:33px; font-size:18px; font-weight:700; color:#FFF; background:#333; border-radius:0;">
       <th style="width:33px;"><label class="super-checkbox"><input v-model="selectAll" value="selectAll" type="checkbox"/><i>√</i></label></th>
-      <th >操作</th>
-      <th >名称</th>
-      <th >缩略图</th>
-      <th >点赞</th>
-      <th >状态</th>
+      <th colspan="3">操作</th>
+      <th>名称</th>
+      <th>缩略图</th>
+      <th>点赞</th>
+      <th>状态</th>
+      <th>点赞</th>
+      <th>状态</th>
     </tr>
 
     <tr v-for="item in contentList" :key="item.id" style="height:30px; line-height:30px; font-size:16px;">
@@ -15,11 +17,11 @@
       <td class="accountTableOper"><i class="MyIF search" title="查看详情"></i></td>
       <td class="accountTableOper"><i class="MyIF recycle-2" title="删除"></i></td>
       <td>{{ item.name }}</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-      <td>7</td>
+      <td>366</td>
+      <td>466</td>
+      <td>566</td>
+      <td>466</td>
+      <td>566</td>
     </tr>
   </table>
 </template>

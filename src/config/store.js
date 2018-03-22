@@ -6,8 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    baseHost: 'http://jesbrian.cn/JesBlog-Backstage/web/', // 配置域名
-    // baseHost: 'http://blog.jesbrian.cn/', // 配置域名
+    baseHost: 'http://jesbrian.cn/JesBlog-Backstage/web/', // 本地开发配置域名
+    // baseHost: 'http://blog.jesbrian.cn/', // 服务器生产配置域名
     modalType: '', // 拟态框类型
     alertTips: false, // 弹出的操作提示
     screenWidth: document.body.clientWidth, // 浏览器宽度
