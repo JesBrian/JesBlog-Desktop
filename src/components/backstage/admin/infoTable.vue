@@ -17,13 +17,16 @@
       <td class="accountTableOper"><i class="MyIF recycle-2" title="删除"></i></td>
       <td>{{ item.username }}</td>
       <td>3</td>
-      <td>{{ item.create_time }}</td>
-      <td>{{ item.last_login }}</td>
+      <td>{{ timestampToTime(item.create_time) }}</td>
+      <td>{{ timestampToTime(item.last_login) }}</td>
     </tr>
   </table>
 </template>
 
 <script>
+
+import helpFunc from '../../../assets/js/common.js'
+
 export default {
   name: 'info-table',
 
@@ -46,6 +49,13 @@ export default {
           this.selectIds.push(this.contentList[i].id)
         }
       }
+    }
+  },
+
+  methods: {
+
+    timestampToTime (timestamp) {
+      return helpFunc.timestampToTime(timestamp)
     }
   }
 }
