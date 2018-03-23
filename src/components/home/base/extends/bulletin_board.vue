@@ -61,9 +61,18 @@ export default {
         username: this.$store.state.userInfo.username,
         bulletin: this.bulletin
       }
+      let thisObj = this
 
       this.axios.post('bulletin/create', data).then(function (response) {
-        console.log(response)
+        // console.log(response)
+        if (response.data.status === '01') {
+          thisObj.bulletinList.unshift({
+            username: thisObj.$store.state.userInfo.username === ''?'游客':thisObj.$store.state.userInfo.username,
+            content: thisObj.bulletin,
+            create_time: response.data.data.timestamp
+          })
+          thisObj.bulletin = ''
+        }
       }).catch(function (error) {
         console.log(error)
       })
