@@ -45,6 +45,10 @@ export default [
         component: () => import('../../views/backstage/admin/updateAdmin.vue')
       },
       {
+        path: 'navigationList',
+        component: () => import('../../views/backstage/navigation/navigationList.vue')
+      },
+      {
         path: 'categoryList',
         component: () => import('../../views/backstage/category/categoryList.vue')
       },
@@ -79,6 +83,10 @@ export default [
       {
         path: 'updateSlide',
         component: () => import('../../views/backstage/slide/updateSlide.vue')
+      },
+      {
+        path: 'bulletinList',
+        component: () => import('../../views/backstage/bulletin/bulletinList.vue')
       }
     ]
   }

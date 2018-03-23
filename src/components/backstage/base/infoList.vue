@@ -22,6 +22,7 @@ import adminInfoTable from '../admin/infoTable.vue'
 import categoryInfoTable from '../category/infoTable.vue'
 import articleInfoTable from '../article/infoTable.vue'
 import slideInfoTable from '../slide/infoTable.vue'
+import bulletinInfoTable from '../bulletin/infoTable.vue'
 import pagination from '../../common/pagination/pagination.vue'
 import pageLoading from '../../common/loading/pageLoading.vue'
 
@@ -33,6 +34,7 @@ export default {
     categoryInfoTable,
     articleInfoTable,
     slideInfoTable,
+    bulletinInfoTable,
     pagination,
     pageLoading
   },
@@ -63,6 +65,9 @@ export default {
     } else if (this.$route.path === '/backstage/slideList') {
       this.listType = 'slideInfoTable'
       url = 'slide/backstage-list'
+    } else if (this.$route.path === '/backstage/bulletinList') {
+      this.listType = 'bulletinInfoTable'
+      url = 'bulletin/backstage-list'
     }
 
     this.axios.post(url, data).then(function (response) {

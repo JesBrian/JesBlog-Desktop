@@ -100,6 +100,24 @@
             </ul>
           </li>
           <li style="width:100%; margin:0 0 8px;">
+            <div class="glass-Bg box-show" @click="changeFirstMenu('navigation')" style="width:96%; height:30px; margin:0 auto; position:relative; cursor:pointer;">
+              <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
+                <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>导航栏模块
+              </p>
+              <div class="second-menu-btn s1c-Bg box-show">
+                <i class="MyIF double-arrow-up" :class="{'active':firstMenu === 'navigation'}" style="width:100%; height:100%; display:inline-block;"></i>
+              </div>
+            </div>
+            <ul v-if="firstMenu === 'navigation'">
+              <li style="width:83%; height:25px; margin:3px auto 0;">
+                <router-link to="/backstage/navigationList" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('navigationList')">
+                  <i class="MyIF all-user"></i><span style="margin-left:8px; font-size:15px;">菜单列表</span>
+                  <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
+                </router-link>
+              </li>
+            </ul>
+          </li>
+          <li style="width:100%; margin:0 0 8px;">
             <div class="glass-Bg box-show" @click="changeFirstMenu('slide')" style="width:96%; height:30px; margin:0 auto; position:relative; cursor:pointer;">
               <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
                 <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>幻灯片模块
@@ -171,6 +189,30 @@
               </li>
             </ul>
           </li>
+          <li style="width:100%; margin:0 0 8px;">
+            <div class="glass-Bg box-show" @click="changeFirstMenu('bulletin')" style="width:96%; height:30px; margin:0 auto; position:relative; cursor:pointer;">
+              <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
+                <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>留言模块
+              </p>
+              <div class="second-menu-btn s1c-Bg box-show">
+                <i class="MyIF double-arrow-up" :class="{'active':firstMenu === 'bulletin'}" style="width:100%; height:100%; display:inline-block;"></i>
+              </div>
+            </div>
+            <ul v-if="firstMenu === 'bulletin'">
+              <li style="width:83%; height:25px; margin:3px auto 0;">
+                <router-link to="/backstage/bulletinList" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('bulletinList')">
+                  <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">留言列表</span>
+                  <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
+                </router-link>
+              </li>
+              <li style="width:83%; height:25px; margin:3px auto 0;">
+                <router-link to="/666" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('666')">
+                  <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">留言黑名单</span>
+                  <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
+                </router-link>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -178,8 +220,8 @@
     <!-- 中心 & 右侧内容 -->
     <div class="s1c-Bg" :class="{'leftmenu-is-close':showLeftMenu === false}" style="width:100%; height:100%; top:0; right:0; position:fixed; padding:63px 8px 35px 195px; box-sizing:border-box; z-index:5; font-family:'宋体','Microsoft YaHei','黑体',sans-serif;">
       <div class="glass-Bg" style="width:100%; height:100%; box-sizing:border-box; overflow:auto; color:#DDD; position:relative;">
-        <router-link class="s1c-Bg box-show MyIF home" to="/backstage" v-if="this.$route.path !== '/backstage/index'" style="width:33px; height:33px; top:22px; left:22px; position:absolute; z-index:99; color:#6DE1FF; font-size:23px; line-height:32px; text-align:center;" title="回到主页"></router-link>
-        <router-view style="min-width:1008px; padding:18px 28px; box-sizing:border-box;"></router-view>
+        <router-link class="s1c-Bg box-show MyIF home" to="/backstage" v-if="this.$route.path !== '/backstage/index'" style="width:33px; height:33px; top:22px; left:22px; position:absolute; z-index:99; color:#6DE1FF; font-size:23px; line-height:32px; text-align:center;" title="回到主页" />
+        <router-view style="min-width:1008px; padding:18px 28px; box-sizing:border-box;" />
       </div>
     </div>
 
