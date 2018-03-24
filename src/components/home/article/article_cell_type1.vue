@@ -11,7 +11,7 @@
     <br/>
     <router-link class="article-list-title text-effect text-hidden" to="/article">{{ article.title }}</router-link>
 
-    <!-- 文章列表分类组件 -->
+    <!-- 文章列表标签组件 -->
     <article-category/>
 
     <div style="width:96%; height:180px; margin:15px auto;">
@@ -43,8 +43,6 @@ export default {
 </script>
 
 <style scoped>
-
-  /* 主体 - 文章列表 */
   .articleList {
     width: 95%;
     height: 278px;

@@ -9,8 +9,8 @@
       <textarea v-model="bulletin" class="s1c-Bg box-show" style="width:81%; height:68px; padding:10px 43px 10px 8px; color:#0febe5; background:#222; border-color:#111; font-size:15px; resize:none;" placeholder="谢谢你的评论"></textarea>
     </form>
 
-    <div style="margin-top:28px; max-height:508px; min-height:508px;">
-      <ul>
+    <div style="margin-top:28px; max-height:508px; min-height:508px; padding:0 6px; box-sizing:border-box; overflow-y:auto;">
+      <ul style="padding-bottom:8px;">
         <li class="glass-Bg box-show" v-for="item in bulletinList" :key="item.username" style="width:100%; min-height:48px; margin-bottom:8px; padding:8px 6px 3px; box-sizing:border-box;">
           <!--<avatar style="width:38px; height:38px;"/>-->
           <img class="box-show" src="../../../../assets/images/touxiang.jpg" style="width:33px; height:33px; margin:-2px 6px 0 0; border-radius:4px; float:left;">
@@ -46,7 +46,6 @@ export default {
   computed: {},
 
   methods: {
-
     /**
      *
      * @returns {boolean}
@@ -64,10 +63,9 @@ export default {
       let thisObj = this
 
       this.axios.post('bulletin/create', data).then(function (response) {
-        // console.log(response)
         if (response.data.status === '01') {
           thisObj.bulletinList.unshift({
-            username: thisObj.$store.state.userInfo.username === ''?'游客':thisObj.$store.state.userInfo.username,
+            username: thisObj.$store.state.userInfo.username === '' ? '游客' : thisObj.$store.state.userInfo.username,
             content: thisObj.bulletin,
             create_time: response.data.data.timestamp
           })
