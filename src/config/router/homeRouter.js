@@ -43,12 +43,16 @@ export default [
     component: () => import('../../views/home/category.vue')
   },
   {
-    path: '/search',
+    path: '/search/:type/:key',
     component: () => import('../../views/home/search.vue')
   },
   {
-    path: '/search/:key',
+    path: '/search/:type',
     component: () => import('../../views/home/search.vue')
+  },
+  {
+    path: '/search',
+    redirect: '/search/titles'
   },
   {
     path: '/write',

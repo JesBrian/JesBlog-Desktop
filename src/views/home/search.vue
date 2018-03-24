@@ -20,19 +20,19 @@
 
             <ul style="text-align:center;">
               <li>
-                <input id="searchTitle" class="superInput" type="radio" v-model="searchType" value="searchArticleList">
+                <input id="searchTitle" class="superInput" type="radio" v-model="searchType" value="titles">
                 <label for="searchTitle"><i class="MyIF cubes-1" style="font-weight:500; font-size:24px;"></i>搜索标题</label>
               </li>
               <li>
-                <input id="searchAuthor" class="superInput" type="radio" v-model="searchType" value="searchAuthorList">
+                <input id="searchAuthor" class="superInput" type="radio" v-model="searchType" value="author">
                 <label for="searchAuthor"><i class="MyIF mysteryman" style="font-weight:500; font-size:24px;"></i> 搜索作家</label>
               </li>
               <li>
-                <input id="searchCategory" class="superInput" type="radio" v-model="searchType" value="searchCategoryList">
+                <input id="searchCategory" class="superInput" type="radio" v-model="searchType" value="category">
                 <label for="searchCategory"><i class="MyIF theme" style="font-weight:500; font-size:24px;"></i>搜索分类</label>
               </li>
               <li>
-                <input id="searchTag" class="superInput" type="radio" v-model="searchType" value="searchTagList">
+                <input id="searchTag" class="superInput" type="radio" v-model="searchType" value="tag">
                 <label for="searchTag"><i class="MyIF kinds" style="font-weight:500; font-size:24px;"></i> 搜索标签</label>
               </li>
             </ul>
@@ -44,7 +44,7 @@
 
           <!-- 搜索框 -->
           <div id="searchForm" class="glass-Bg box-show search-box" style="width:508px; height:53px; left:28px; margin:20px auto 38px; padding:0; position:relative;">
-            <input type="text" placeholder=" 请输入文章标题 [ 支持模糊搜索 ] " v-model="searchKey" style="width:420px; height:30px; top:50%; left:10px; transform:translate(0,-50%); padding:0 10px; position:absolute; border: 1px solid #222; background:#444; color:#DDD; font-size:18px;">
+            <input type="text" placeholder=" 请输入文章标题 [ 支持模糊搜索 ] " v-model="searchKeyTemp" style="width:420px; height:30px; top:50%; left:10px; transform:translate(0,-50%); padding:0 10px; position:absolute; border: 1px solid #222; background:#444; color:#DDD; font-size:18px;">
             <span class="superButton-Out" @click="changeContent" style="width:40px; height:39px; top:50%; right:6px; transform:translate(0,-50%); float:right;">
               <a class="superButton-In MyIF search" style="width:30px; height:29px; line-height:29px; font-size:23px;"></a>
             </span>
@@ -77,10 +77,10 @@
 <script>
 import navigationMenu from '../../components/home/base/extends/navigationMenu.vue'
 import searchBox from '../../components/home/base/extends/searchBox.vue'
-import searchArticleList from '../../components/home/article/article_list.vue'
-import searchAuthorList from '../../components/home/author/author_list_search.vue'
-import searchCategoryList from '../../components/home/category/category_list.vue'
-import searchTagList from '@/components/home/article/article_list.vue'
+import titles from '../../components/home/article/article_list.vue'
+import author from '../../components/home/author/author_list_search.vue'
+import category from '../../components/home/category/category_list.vue'
+import tag from '@/components/home/article/article_list.vue'
 import pagination from '../../components/common/pagination/pagination.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
@@ -92,10 +92,10 @@ export default {
   components: {
     navigationMenu,
     searchBox,
-    searchArticleList,
-    searchAuthorList,
-    searchCategoryList,
-    searchTagList,
+    titles,
+    author,
+    category,
+    tag,
     pagination,
     floatBlock,
     pageFooter,
@@ -105,19 +105,52 @@ export default {
   data () {
     return {
       loadData: false,
-      searchType: 'searchArticleList',
+      searchType: 'titles',
       searchKey: '',
+      searchKeyTemp: '',
       contentItem: []
     }
   },
 
   watch: {
-    'searchType': function () {
+    '$route' () {
+      if (typeof (this.$route.params.type) !== 'undefined' && typeof (this.$route.params.key) === 'undefined') {
+        this.searchKey = ''
+        this.$route.params.key = ''
+        this.searchType = this.$route.params.type
+      } else if (typeof (this.$route.params.type) === 'undefined') {
+        this.searchKey = ''
+        this.searchType = ''
+      } else {
+        this.searchType = this.$route.params.type
+        this.searchKey = this.$route.params.key
+      }
+      this.searchKeyTemp = this.searchKey
       this.changeContent()
+    },
+
+    'searchType' () {
+      this.$router.push({path: '/search/' + this.searchType + '/' + this.searchKey})
+    },
+
+    'searchKey' () {
+      this.$router.push({path: '/search/' + this.searchType + '/' + this.searchKey})
     }
   },
 
   created () {
+    if (typeof (this.$route.params.type) !== 'undefined' && typeof (this.$route.params.key) === 'undefined') {
+      this.searchKey = ''
+      this.$route.params.key = ''
+      this.searchType = this.$route.params.type
+    } else if (typeof (this.$route.params.type) === 'undefined') {
+      this.searchKey = ''
+      this.searchType = ''
+    } else {
+      this.searchType = this.$route.params.type
+      this.searchKey = this.$route.params.key
+    }
+    this.searchKeyTemp = this.searchKey
     this.changeContent()
   },
 
@@ -128,6 +161,7 @@ export default {
      */
     changeContent () {
       this.loadData = false
+      this.searchKey = this.searchKeyTemp
 
       let data = {
         'key': this.searchKey
@@ -135,13 +169,13 @@ export default {
       let thisObj = this
       let url = ''
 
-      if (this.searchType === 'searchArticleList') {
+      if (this.searchType === 'titles') {
         url = 'search/title'
-      } else if (this.searchType === 'searchAuthorList') {
+      } else if (this.searchType === 'author') {
         url = 'search/author'
-      } else if (this.searchType === 'searchCategoryList') {
+      } else if (this.searchType === 'category') {
         url = 'search/category'
-      } else if (this.searchType === 'searchTagList') {
+      } else if (this.searchType === 'tag') {
         url = 'search/tag'
       }
 
