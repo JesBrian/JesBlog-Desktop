@@ -5,11 +5,10 @@
     <router-link class="hover-underline" :to="'/author/' + article.userid" style="margin:0 18px 0 8px; color:#09D0EE; line-height:1.7em;">JesBrian UserName</router-link>
 
     <!-- 文章列表操作栏组件 -->
-    <article-oper :article="article"/>
+    <article-oper :article="article"/><br/>
 
-    <span style="padding-right:38px; text-align:right; font-size:14px; float:right;">2017-11-05 14:00</span>
-    <br/>
     <router-link :to="'/article/' + article.id" class="article-list-title text-effect text-hidden">{{ article.title }}</router-link>
+    <span style="padding-right:38px; text-align:right; font-size:14px; float:right;">2017-11-05 14:00</span>
 
     <!-- 文章列表标签组件 -->
     <article-category/>

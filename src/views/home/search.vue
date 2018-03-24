@@ -3,7 +3,9 @@
   <div style="position:relative;">
 
     <!-- 导航栏组件 -->
-    <navigation-bar/>
+    <keep-alive include="navigation-menu">
+      <navigation-menu/>
+    </keep-alive>
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
@@ -38,7 +40,7 @@
         </div>
 
         <!---->
-        <div id="searchContent" style="width:68%; min-height:138px; display:inline-block;">
+        <div id="searchContent" style="width:72%; min-height:138px; display:inline-block;">
 
           <!-- 搜索框 -->
           <div id="searchForm" class="glass-Bg box-show search-box" style="width:508px; height:53px; left:28px; margin:20px auto 38px; padding:0; position:relative;">
@@ -73,7 +75,7 @@
 </template>
 
 <script>
-import navigationBar from '../../components/home/base/extends/navigationMenu.vue'
+import navigationMenu from '../../components/home/base/extends/navigationMenu.vue'
 import searchBox from '../../components/home/base/extends/searchBox.vue'
 import searchArticleList from '../../components/home/article/article_list.vue'
 import searchAuthorList from '../../components/home/author/author_list_search.vue'
@@ -88,7 +90,7 @@ import pageLoading from '../../components/common/loading/pageLoading.vue'
 export default {
   name: 'search',
   components: {
-    navigationBar,
+    navigationMenu,
     searchBox,
     searchArticleList,
     searchAuthorList,

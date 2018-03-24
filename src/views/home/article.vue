@@ -3,7 +3,9 @@
   <div style="position:relative;">
 
     <!-- 导航栏组件 -->
-    <navigation-bar/>
+    <keep-alive include="navigation-menu">
+      <navigation-menu/>
+    </keep-alive>
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
@@ -39,7 +41,7 @@
 </template>
 
 <script>
-import navigationBar from '../../components/home/base/extends/navigationMenu.vue'
+import navigationMenu from '../../components/home/base/extends/navigationMenu.vue'
 import articleList from '../../components/home/article/article_list.vue'
 import authorList from '../../components/home/author/author_list_recom.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
@@ -50,7 +52,7 @@ import modal from '../../components/common/modal/modalTotal.vue'
 export default {
   name: 'articlePage',
   components: {
-    navigationBar,
+    navigationMenu,
     articleDetail,
     articleList,
     authorList,

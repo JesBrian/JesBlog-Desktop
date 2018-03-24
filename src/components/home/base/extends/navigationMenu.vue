@@ -98,9 +98,11 @@
 <script>
 export default {
   name: 'navigation-menu',
+
   data () {
     return {}
   },
+
   methods: {
     /**
      * 用户登录 OR 注册
@@ -336,6 +338,9 @@ export default {
   }
 
   #navMenuUser li a {
+    width:100%;
+    height:100%;
+    display:inline-block;
     color: #AAA;
   }
 

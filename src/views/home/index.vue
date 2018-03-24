@@ -3,7 +3,9 @@
   <div style="position:relative;">
 
     <!-- 导航栏组件 -->
-    <navigation-bar/>
+    <keep-alive include="navigation-menu">
+      <navigation-menu/>
+    </keep-alive>
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
@@ -98,7 +100,7 @@
 </template>
 
 <script>
-import navigationBar from '../../components/home/base/extends/navigationMenu.vue'
+import navigationMenu from '../../components/home/base/extends/navigationMenu.vue'
 import slideBox from '../../components/home/base/extends/slide_box.vue'
 import searchBox from '../../components/home/base/extends/searchBox.vue'
 import articleList from '../../components/home/article/article_list.vue'
@@ -114,7 +116,7 @@ import pageLoading from '../../components/common/loading/pageLoading.vue'
 export default {
   name: 'index',
   components: {
-    navigationBar,
+    navigationMenu,
     slideBox,
     searchBox,
     articleList,

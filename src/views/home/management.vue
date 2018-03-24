@@ -3,7 +3,9 @@
   <div style="position:relative;">
 
     <!-- 导航栏组件 -->
-    <navigation-bar/>
+    <keep-alive include="navigation-menu">
+      <navigation-menu/>
+    </keep-alive>
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
@@ -77,7 +79,7 @@
 </template>
 
 <script>
-import navigationBar from '../../components/home/base/extends/navigationMenu.vue'
+import navigationMenu from '../../components/home/base/extends/navigationMenu.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import articleList from '../../components/home/article/article_list.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
@@ -89,7 +91,7 @@ import LocalStore from 'store'
 export default {
   name: 'article-management',
   components: {
-    navigationBar,
+    navigationMenu,
     floatBlock,
     articleList,
     pageFooter,

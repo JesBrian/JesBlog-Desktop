@@ -13,10 +13,9 @@
 export default {
   name: 'article_oper',
 
-
   data () {
     return {
-      likeType: 'non-collection',
+      likeType: 'non-collection'
     }
   },
 
