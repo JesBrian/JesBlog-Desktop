@@ -1,6 +1,6 @@
 <template>
   <!-- 用户 or 游客新留言 -->
-  <div class="s1c-Bg box-show" style="width:98%; margin:38px 23px 10px 0; padding:18px 8px 8px; float:right;">
+  <div class="s1c-Bg box-show" style="width:98%; margin:38px 23px 10px 0; padding:18px 8px; float:right;">
     <form style="width:100%; margin:0 auto 10px; text-align:center; position:relative;">
       <img class="box-show" src="../../../../assets/images/touxiang.jpg" style="width:38px; height:38px; margin:0 0 12px 10px; border-radius:4px; float:left;">
       <p style="line-height:1.4em; color:#DDD; text-align:left; font-weight:700; text-indent:1em;">{{ this.$store.state.userInfo.username === ''?'游客':this.$store.state.userInfo.username }}</p>

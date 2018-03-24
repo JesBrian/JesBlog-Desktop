@@ -2,8 +2,8 @@
   <!-- 文章列表组件 -->
   <ul id="articleListComponent" style="width:100%; color:#999;">
     <li v-for="item in articleList" :key="item.id">
-      <article-cell-type-a :article="item" />
-      <article-cell-type-b :article="item" />
+      <article-cell-type-a v-if="item.thumbnail !== ''" :article="item" />
+      <article-cell-type-b v-else :article="item" />
     </li>
   </ul>
 </template>

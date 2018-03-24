@@ -67,6 +67,9 @@
                 <router-link :to="'/author/' + this.$store.state.userInfo.id"><i class="MyIF home"></i> 个人信息</router-link>
               </li>
               <li>
+                <router-link to="/write"><i class="MyIF IDcard-1"></i> 编写文章</router-link>
+              </li>
+              <li>
                 <router-link to="/management"><i class="MyIF add-data"></i> 文章管理</router-link>
               </li>
               <li>

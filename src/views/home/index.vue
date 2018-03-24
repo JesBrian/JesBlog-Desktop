@@ -60,7 +60,7 @@
       <search-box/>
 
       <!-- 主页内容 -->
-      <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; min-height:1288px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
+      <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; min-height:388px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
 
         <div v-if="loadData" >
           <div style="width:68%; display:inline-block;">
