@@ -72,8 +72,11 @@
               class="MyIF feedback"></i> 分类</a>
           </div>
 
-          <div id="authorContent">
+          <div v-if="contentList !== null" id="authorContent">
             <component :is="contentType" :descript="contentList" :articleList="contentList" :categoryList="contentList"/>
+          </div>
+          <div v-else style="width:100%; height:108px; padding-bottom:28px; position:relative;">
+            <page-loading />
           </div>
 
         </div>
@@ -111,6 +114,7 @@ import authorList from '../../components/home/author/author_list_recom.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
+import pageLoading from '../../components/common/loading/pageLoading.vue'
 
 export default {
   name: 'author',
@@ -125,7 +129,8 @@ export default {
     authorList,
     floatBlock,
     pageFooter,
-    modal
+    modal,
+    pageLoading
   },
   data () {
     return {
@@ -168,6 +173,7 @@ export default {
   methods: {
     changeContent (type = 'authorDescript') {
       this.contentType = type
+      this.contentList = null
 
       let data = {
         userid: this.$route.params.id,

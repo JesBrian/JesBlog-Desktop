@@ -21,13 +21,11 @@
             <div style="height:68px; margin-top:18px;">
               <p style="float:left; font-size:28px; line-height:1.5em;">{{ this.$store.state.userInfo.username }}</p>
 
-              <router-link to="/update" class="superButton-Out"
-                           style="width:106px; height:32px; margin-right:88px; float:right;">
+              <router-link to="/update" class="superButton-Out" style="width:106px; height:32px; margin-right:88px; float:right;">
                 <span class="superButton-In MyIF alter-information" style="width:96px; height:23px; line-height:23px;"> 修改资料</span>
               </router-link>
-              <router-link to="/write" class="superButton-Out"
-                           style="width:106px; height:32px; margin-right:28px; float:right;">
-                <span class="superButton-In MyIF alter-information" style="width:96px; height:23px; line-height:23px;"> 编写文章</span>
+              <router-link to="/write" class="superButton-Out" style="width:106px; height:32px; margin-right:28px; float:right;">
+                <span class="superButton-In MyIF IDcard-1" style="width:96px; height:23px; line-height:23px;"> 编写文章</span>
               </router-link>
 
               <p style="width:80%; display:inline-block; clear:both; line-height:2em; text-indent:2em;">共有 {{ articleNum }} 篇文章</p>
@@ -56,7 +54,7 @@
             </div>
 
             <articleList :articleList="articleList" v-if="loadData"/>
-            <page-loading v-else />
+            <page-loading v-else style="margin-top:38px;" />
 
             <p style="line-height:208px; font-size:22px; font-weight:700; color:#DDD; text-align:center; letter-spacing:2px;">{{ articleText }}</p>
           </div>
