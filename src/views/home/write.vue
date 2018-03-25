@@ -69,13 +69,16 @@
                 <label for="newArticleTag" class="MyIF kinds" style="font-size:20px; font-weight:700;">标签</label>
               </td>
               <td>
-                <input id="newArticleTag" v-model="tagTemp" class="s1c-Bg box-show" style="width:168px; padding:3px 8px; font-size:20px;" type="text"/>
-                <span class="superButton-Out" style="width:108px; height:38px; top:13px;">
-                  <a class="superButton-In MyIF makesure" @click="saveTag" style="width:98px; height:28px; line-height:28px;"> 确定保存</a>
+                <input id="newArticleTag" v-model.trim="tagTemp" class="s1c-Bg box-show" style="width:168px; padding:3px 8px; font-size:20px;" type="text"/>
+                <span @click="saveTag" class="superButton-Out" style="width:108px; height:38px; top:13px;">
+                  <span class="superButton-In MyIF makesure" style="width:98px; height:28px; line-height:28px;"> 确定保存</span>
                 </span>
                 <i style="margin-left:12px;">最多保存三个不同的标签</i>
-                <div v-if="tags.length" style="margin:18px 0 38px;">
-                  <span class="glass-Bg box-show" style="width:138px; height:32px; margin-right:28px; display:inline-block; line-height:32px; text-align:center;">XXX</span>
+                <div v-if="tags.length !== 0" style="margin:18px 0 38px;">
+                  <span v-for="(item, index) in tags" :key="" class="glass-Bg box-show tag-item">
+                    <i @click="delTagsItem(index)">X</i>
+                    {{ item }}
+                  </span>
                 </div>
               </td>
             </tr>
@@ -221,11 +224,14 @@ export default {
      *
      */
     saveTag () {
-      if (this.tagTemp !== '') {
+      if ((this.tagTemp !== '') && (this.tags.length < 3)) {
         if ((this.tags.length !== 0) && this.tags.includes(this.tagTemp)) return false
         this.tags.push(this.tagTemp)
         this.tagTemp = ''
       }
+    },
+    delTagsItem (index) {
+      this.tags.splice(index, 1)
     },
 
     /**
@@ -313,5 +319,14 @@ export default {
 </script>
 
 <style scoped>
-
+  .tag-item {
+    max-width:138px; height:32px; margin-right:28px; padding:0 16px; position:relative; display:inline-block; line-height:32px; text-align:center; letter-spacing:0.8px; cursor:pointer;
+  }
+  .tag-item > i {
+    top:-14px;
+    right:-6px;
+    position:absolute;
+    color:#DDD;
+    font-size:16px;
+  }
 </style>
