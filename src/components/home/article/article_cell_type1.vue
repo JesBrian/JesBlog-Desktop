@@ -8,18 +8,20 @@
     <article-oper :article="article"/><br/>
 
     <router-link :to="'/article/' + article.id" class="article-list-title text-effect text-hidden">{{ article.title }}</router-link>
-    <span style="padding-right:38px; text-align:right; font-size:14px; float:right;">2017-11-05 14:00</span>
 
     <!-- 文章列表标签组件 -->
-    <article-category/>
+    <article-category v-if="article.tags !== ''" :tags="article.tags.split(',')" />
 
-    <div style="width:96%; height:180px; margin:15px auto;">
+    <div style="width:96%; height:208px; margin:15px auto;">
       <router-link :to="'/article/' + article.id">
         <img class="box-show" v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'" style="width:168px; height:128px; float:right; margin-top:15px; border-radius:4px;">
       </router-link>
-      <router-link :to="'/article/' + article.id" class="text-effect box-show" style="width:72%; height:86%; padding:8px 12px; display:inline-block; box-sizing:border-box; overflow:hidden; text-indent:2em; font-size:15px; color:#888;">
+      <router-link :to="'/article/' + article.id" class="text-effect box-show" style="width:68%; height:78%; margin:0 0 8px 23px; padding:8px 12px; display:inline-block; box-sizing:border-box; border-radius:5px; overflow:hidden; text-indent:2em; font-size:15px; color:#888;">
         换成你的离开，acskmsldv成绩单深v领看电视剧出口减少了几次啦才能使拉开门出口量hbnjlkm
       </router-link>
+
+      <router-link :to="'/category/' + article.categoryid" style="margin-left:38px; padding:3px 9px; display:inline-block; box-shadow:0 0 3px #0febe5; border-radius:2px; letter-spacing:2px; font-size:16px; color:#BBB; line-height:1.2em;" >666</router-link>
+      <span style="margin-right:38px; text-align:right; font-size:14px; float:right;">2017-11-05 14:00</span>
     </div>
   </div>
 </template>
@@ -46,7 +48,6 @@ export default {
 <style scoped>
   .articleList {
     width: 95%;
-    height: 278px;
     margin: 16px 0;
     display: inline-block;
     box-sizing: border-box;
@@ -63,12 +64,13 @@ export default {
   }
 
   .articleList:before {
-    top: 286px;
+    bottom: -1px;
     background: #333;
+    z-index:9;
   }
 
   .articleList:after {
-    top: 285.3px;
+    bottom: -0.5px;
     background: #000;
   }
 

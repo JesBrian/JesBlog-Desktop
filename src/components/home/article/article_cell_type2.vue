@@ -8,15 +8,17 @@
     <article-oper :article="article"/><br/>
 
     <router-link :to="'/article/' + article.id" class="article-list-title text-effect text-hidden">{{ article.title }}</router-link>
-    <span style="padding-right:38px; text-align:right; font-size:14px; float:right;">2017-11-05 14:00</span>
 
     <!-- 文章列表标签组件 -->
-    <article-category/>
+    <article-category v-if="article.tags !== ''" :tags="article.tags.split(',')" />
 
-    <div style="width:90%; height:180px; margin:15px auto;">
-      <router-link :to="'/article/' + article.id" class="text-effect box-show" style="width:100%; height:86%; padding:8px 12px; display:inline-block; box-sizing:border-box; overflow:hidden; text-indent:2em; font-size:15px; color:#888;">
+    <div style="width:90%; height:208px; margin:15px auto;">
+      <router-link :to="'/article/' + article.id" class="text-effect box-show" style="width:100%; height:78%; margin-bottom:8px; padding:8px 12px; display:inline-block; box-sizing:border-box; border-radius:5px; overflow:hidden; text-indent:2em; font-size:15px; color:#888;">
         cjxkv距ds成交量的lds;km;ij交量ldvs成交量的时空距ds成lkjij的时空时lvas空距ds成交量的时dsl看电kjd交量的lds;km;ij交量ldvs成交量的时空距ds成lkjij的时空时lvas空距ds成交量的时dsl看电kjd空距离视
       </router-link>
+
+      <router-link :to="'/category/' + article.categoryid" style="margin-left:18px; padding:3px 9px; display:inline-block; box-shadow:0 0 3px #0febe5; border-radius:2px; letter-spacing:2px; font-size:16px; color:#BBB; line-height:1.2em;" >666</router-link>
+      <span style="margin-right:18px; text-align:right; font-size:14px; float:right;">2017-11-05 14:00</span>
     </div>
   </div>
 </template>
@@ -42,7 +44,6 @@ export default {
 <style scoped>
   .articleList {
     width: 95%;
-    height: 278px;
     margin: 16px 0;
     display: inline-block;
     box-sizing: border-box;
@@ -59,12 +60,13 @@ export default {
   }
 
   .articleList:before {
-    top: 286px;
+    bottom: -1px;
     background: #333;
+    z-index:9;
   }
 
   .articleList:after {
-    top: 285.3px;
+    bottom: -0.5px;
     background: #000;
   }
 
