@@ -85,10 +85,10 @@
 
       <!-- 搜索框 -->
       <div id="navSearchForm" style="width:48px; height:45px; margin-top:6px; padding:0; position:relative; float:right;">
-        <input type="text" placeholder=" 搜索一下, 更加精彩 " style="width:0; height:30px; top:9px; left:10px; padding:0; position:absolute; border:none!important; background:#444; color:#DDD;">
-        <span class="superButton-Out" style="width:100%; height:100%;">
+        <input type="text" v-model="searchKey" placeholder=" 搜索一下, 更加精彩 " style="width:0; height:30px; top:9px; left:10px; padding:0; position:absolute; border:none!important; background:#444; color:#DDD;">
+        <router-link :to="'/search/titles/' + this.searchKey" class="superButton-Out" style="width:100%; height:100%;">
           <a class="superButton-In MyIF search"></a>
-        </span>
+        </router-link>
       </div>
 
     </div>
@@ -100,7 +100,9 @@ export default {
   name: 'navigation-menu',
 
   data () {
-    return {}
+    return {
+      searchKey: ''
+    }
   },
 
   methods: {

@@ -2,7 +2,7 @@
   <!-- 搜索框 -->
   <div id="searchForm" class="glass-Bg box-show search-box" style="width:508px; height:53px; left:28px; margin:20px auto 38px; padding:0; position:relative;">
     <input type="text" placeholder=" 搜索一下更精彩 " v-model="searchKey" style="width:420px; height:30px; top:50%; left:10px; transform:translate(0,-50%); padding:0 10px; position:absolute; border: 1px solid #222; background:#444; color:#DDD; font-size:18px;">
-    <span class="superButton-Out" @click="changeContent" style="width:40px; height:39px; top:50%; right:6px; transform:translate(0,-50%); float:right;">
+    <span @click="goSearch"  class="superButton-Out" style="width:40px; height:39px; top:50%; right:6px; transform:translate(0,-50%); float:right;">
       <a class="superButton-In MyIF search" style="width:30px; height:29px; line-height:29px; font-size:23px;"></a>
     </span>
   </div>
@@ -10,7 +10,19 @@
 
 <script>
 export default {
-  name: 'search-box'
+  name: 'search-box',
+
+  data () {
+    return {
+      searchKey: ''
+    }
+  },
+
+  methods: {
+    goSearch () {
+      this.$emit('search', this.searchKey)
+    }
+  }
 }
 </script>
 

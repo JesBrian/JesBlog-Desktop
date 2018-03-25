@@ -59,7 +59,7 @@
       </div>
 
       <!-- 搜索框组件 -->
-      <search-box/>
+      <search-box @search="goSearch" />
 
       <!-- 主页内容 -->
       <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; min-height:388px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
@@ -160,7 +160,11 @@ export default {
       return this.$store.state.alertTips
     }
   },
-  methods: {}
+  methods: {
+    goSearch (key) {
+      this.$router.push('/search/titles/' + key)
+    }
+  }
 }
 </script>
 
