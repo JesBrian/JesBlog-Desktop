@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import helpFunc from '../../../assets/js/common.js'
+import {timestampToTime} from '../../../assets/js/common.js'
 
 export default {
   name: 'info-table',
@@ -62,7 +62,7 @@ export default {
   methods: {
 
     timestampToTime (timestamp) {
-      return helpFunc.timestampToTime(timestamp)
+      return timestampToTime(timestamp)
     }
   }
 }

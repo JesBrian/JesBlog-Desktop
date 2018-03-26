@@ -19,18 +19,24 @@
           </p>
           <p style="text-align:right; line-height:1.5em; font-size:14px; color:#DDD;">{{ timestampToTime(item.create_time) }}</p>
         </li>
+        <li>
+          <end-tips />
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+import endTips from '../../../common/endTips/endTips.vue'
+
 import helpFunc from '../../../../assets/js/common.js'
 
 export default {
   name: 'bulletin_board',
 
   components: {
+    endTips
   },
 
   props: [
@@ -89,5 +95,8 @@ export default {
 </script>
 
 <style scoped>
-
+  li >>> .end-tips {
+    width:68%;
+    left:51%;
+  }
 </style>
