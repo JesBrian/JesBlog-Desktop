@@ -9,15 +9,14 @@
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
-      <div id="bodyLayout" class="glass-Bg box-show"
-           style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
+      <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
 
         <!-- 文章详情组件 -->
         <article-detail :articleId="this.$route.params.id"/>
 
         <div style="width:68%; display:inline-block;">
           <!-- 文章列表组件 -->
-          <article-list/>
+          <article-list :articleList="this.recomArticleList" />
         </div>
 
         <div style="width:28%; display:inline-block; float:right;">
@@ -62,12 +61,34 @@ export default {
   },
 
   data () {
-    return {}
+    return {
+      recomArticleList: []
+    }
   },
 
   beforeCreate () {
     if (!this.$route.params.id) {
       this.$router.push({path: '/'})
+    }
+  },
+
+  mounted () {
+    this.getRecommondArticleList()
+  },
+
+  methods: {
+    getRecommondArticleList () {
+      let thisObj = this
+
+      this.axios.post('article/recommond-list').then(function (response) {
+        if (response.data.status === '01') {
+          thisObj.recomArticleList = response.data.data
+        } else {
+
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
   }
 
