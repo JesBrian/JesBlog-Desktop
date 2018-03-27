@@ -13,7 +13,7 @@
 
         <div style="width:68%; display:inline-block;">
           <div style="width:100%; color:#EDE;">
-            <img src="../../assets/images/touxiang.jpg" class="box-show" style="width:68px; height:68px; margin:0 18px 0 28px; float:left; border-radius:4px;">
+            <img v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'" class="box-show" style="width:68px; height:68px; margin:0 18px 0 28px; float:left; border-radius:4px;">
             <div style="height:68px; margin-top:18px;">
               <p style="float:left; font-size:28px;">{{ categoryData.name }}</p>
 

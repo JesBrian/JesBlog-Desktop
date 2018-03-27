@@ -48,15 +48,15 @@
       <!-- 文章标签分类 -->
       <div style="width:88%; margin:0 auto; font-size:14.5px; line-height:30px; text-align:right;">
         <router-link class="s1c-button s1c-Bg box-show tagList hover-underline" to="/category">
-          <img src="../../../assets/images/tag-1.png" style="width:42px; height:42px; top:-5.5px; left:-28px; position:absolute;">
+          <img v-lazy="this.$store.state.baseHost + 'img/tag/tag1.png'" style="width:42px; height:42px; top:-5.5px; left:-28px; position:absolute;">
           <p class="text-hidden">XXX产生变化</p>
         </router-link>
         <router-link class="s1c-button s1c-Bg box-show tagList hover-underline" to="/category">
-          <img src="../../../assets/images/tag-2.png" style="width:42px; height:42px; top:-5.5px; left:-28px; position:absolute;">
+          <img v-lazy="this.$store.state.baseHost + 'img/tag/tag2.png'" style="width:42px; height:42px; top:-5.5px; left:-28px; position:absolute;">
           <p class="text-hidden">ggdch产生变化空间fdghjkfghjkl</p>
         </router-link>
         <router-link class="s1c-button s1c-Bg box-show tagList hover-underline" to="/category">
-          <img src="../../../assets/images/tag-3.png" style="width:42px; height:42px; top:-5.5px; left:-28px; position:absolute;">
+          <img v-lazy="this.$store.state.baseHost + 'img/tag/tag3.png'" style="width:42px; height:42px; top:-5.5px; left:-28px; position:absolute;">
           <p class="text-hidden">XXX产生变化</p>
         </router-link>
       </div>

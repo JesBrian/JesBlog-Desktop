@@ -1,7 +1,6 @@
 <template>
   <div>
-    <img class="box-show" src="../../../assets/images/touxiang.jpg"
-         style="width:43px; height:43px; margin:0 18px 38px 38px; border-radius:4px;">
+    <img v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'" class="box-show" style="width:43px; height:43px; margin:0 18px 38px 38px; border-radius:4px;">
 
     <textarea class="s1c-Bg box-show text-effect super-text" v-model="comment"
               style="width:83%; height:88px; margin-top:18px; padding:8px; font-size:17px; color:#CCC; text-indent:1em; resize:none;"></textarea>

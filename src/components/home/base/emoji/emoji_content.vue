@@ -36,10 +36,10 @@ export default {
       this.$parent.writeEmoji(info)
     },
     showEmoji (index) {
-      document.getElementById('showEmoji').src = '/src/assets/images/emoji/' + index + '.png'
+      document.getElementById('showEmoji').src = this.$store.state.baseHost + 'img/emoji/' + index + '.png'
     },
     hiddenEmoji () {
-      document.getElementById('showEmoji').src = '/src/assets/images/emoji/0.jpg'
+      document.getElementById('showEmoji').src = this.$store.state.baseHost + 'img/emoji/0.jpg'
     }
   }
 }

@@ -14,7 +14,7 @@ export default {
   },
   data () {
     return {
-      src: '/src/assets/images/emoji/' + this.index + '.png'
+      src: this.$store.state.baseHost + 'img/emoji/' + this.index + '.png'
     }
   },
   methods: {
