@@ -7,7 +7,7 @@
 
     <div style="width:88%; margin:0 auto 48px;">
       <!-- 创建新评论组件 -->
-      <comment-create/>
+      <comment-create />
     </div>
 
     <!-- 评论列表组件 -->

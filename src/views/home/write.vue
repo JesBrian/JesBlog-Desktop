@@ -75,7 +75,7 @@
                 </span>
                 <i style="margin-left:12px;">最多保存三个不同的标签</i>
                 <div v-if="tags.length !== 0" style="margin:18px 0 38px;">
-                  <span v-for="(item, index) in tags" :key="" class="glass-Bg box-show tag-item">
+                  <span v-for="(item, index) in tags" class="glass-Bg box-show tag-item">
                     <i @click="delTagsItem(index)">X</i>
                     {{ item }}
                   </span>

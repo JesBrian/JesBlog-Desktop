@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <!-- 头像组件 -->
     <avatar class="avatar-author"/>
 

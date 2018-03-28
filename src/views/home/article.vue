@@ -48,7 +48,7 @@ import articleDetail from '../../components/home/article/article_detail.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
 
-import {scrollToLoadData} from "../../assets/js/common"
+import {scrollToLoadData} from '../../assets/js/common.js'
 
 export default {
   name: 'articlePage',

@@ -11,9 +11,10 @@
 
     <div style="margin-top:28px; max-height:508px; min-height:508px; padding:0 6px; box-sizing:border-box; overflow-y:auto;">
       <ul style="padding-bottom:8px;">
-        <li class="glass-Bg box-show" v-for="item in bulletinList" :key="item.username" style="width:100%; min-height:48px; margin-bottom:8px; padding:8px 6px 3px; box-sizing:border-box;">
-          <!--<avatar style="width:38px; height:38px;"/>-->
-          <img v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'" class="box-show" style="width:33px; height:33px; margin:-2px 6px 0 0; border-radius:4px; float:left;">
+        <li class="glass-Bg box-show" v-for="item in bulletinList" style="width:100%; min-height:48px; margin-bottom:8px; padding:8px 6px 3px; box-sizing:border-box;">
+          <!--BUG 无法显示图片 -->
+          <!--<img class="box-show" v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'" style="width:33px; height:33px; margin:-2px 6px 0 0; border-radius:4px; float:left;">-->
+          <img class="box-show" style="width:33px; height:33px; margin:-2px 6px 0 0; border-radius:4px; float:left;" />
           <p class="text-effect" style="width:100%; line-height:1.2em; text-indent:0.8em; font-size:14.5px; color:#AAA;">
             <span style="font-size:15px; font-weight:700; color:#DDD;">{{ item.username === ''?'游客':item.username }}：</span>{{ item.content }}
           </p>
@@ -30,7 +31,7 @@
 <script>
 import endTips from '../../../common/endTips/endTips.vue'
 
-import {timestampToTime} from "../../../../assets/js/common";
+import {timestampToTime} from '../../../../assets/js/common'
 
 export default {
   name: 'bulletin_board',
@@ -48,8 +49,6 @@ export default {
       bulletin: ''
     }
   },
-
-  computed: {},
 
   methods: {
     /**
