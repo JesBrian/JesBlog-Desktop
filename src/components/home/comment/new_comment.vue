@@ -13,8 +13,10 @@
         限制<i style="margin:0 3px;">125</i>字
       </span>
 
-      <!-- "评论"按钮组件 -->
-      <comment-button style="margin-right:38px;"/>
+      <!-- "发表评论"按钮 -->
+      <span @click="createComment(0)" class="superButton-Out" style="width:105px; height:32px; position:relative; float:right; border-radius:2px;">
+        <span class="superButton-In MyIF feedback" style="width:96px; height:23px; top:48.5%; line-height:24px;"> 发表评论</span>
+      </span>
 
       <transition name="fade">
         <!-- 表情区组件 -->
@@ -40,7 +42,7 @@ export default {
   data () {
     return {
       emojiContent: '',
-      comment: 'User Name：'
+      comment: this.$store.state.userInfo.username + '：'
     }
   },
   methods: {
@@ -56,6 +58,26 @@ export default {
     },
     writeEmoji (info) {
       this.comment += '[-' + info + '-]'
+    },
+
+    createComment (parentid = 0) {
+      let data = {
+        articleid: this.$route.params.id,
+        parentid: parentid,
+        userid: this.$store.state.userInfo.id,
+        content: this.comment
+      }
+      let thisObj = this
+
+      this.axios.post('comment/create-comment', data).then(function (response) {
+        if (response.data.status === '01') {
+          thisObj.comment = ''
+          console.log(response.data.data)
+        } else {
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
   }
 }

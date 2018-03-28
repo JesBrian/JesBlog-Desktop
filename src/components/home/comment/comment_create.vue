@@ -62,7 +62,7 @@ export default {
     /**
      *
      */
-    createComment (parentid) {
+    createComment (parentid = 0) {
       let data = {
         articleid: this.$route.params.id,
         parentid: parentid,

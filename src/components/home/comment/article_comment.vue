@@ -11,7 +11,7 @@
     </div>
 
     <!-- 评论列表组件 -->
-    <comment-list/>
+    <comment-list style="width:82%; margin:0 auto;" />
   </div>
 </template>
 
