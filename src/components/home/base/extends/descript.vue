@@ -7,6 +7,7 @@
 
 <script>
 import 'quill/dist/quill.snow.css'
+import '@/assets/css/editor.css'
 
 export default {
   name: 'descript',
