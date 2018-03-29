@@ -142,15 +142,14 @@ export default {
     let data = {
       userid: this.$store.state.userInfo.id
     }
-    let thisObj = this
 
-    this.axios.post('home/index', data).then(function (response) {
+    this.axios.post('home/index', data).then( (response) => {
       if (response.data.status === '01') {
-        thisObj.loadData = true
-        thisObj.articleList = response.data.data.articleList
-        thisObj.bulletinList = response.data.data.bulletinList
+        this.loadData = true
+        this.articleList = response.data.data.articleList
+        this.bulletinList = response.data.data.bulletinList
       }
-    }).catch(function (error) {
+    }).catch( (error) => {
       console.log(error)
     })
   },

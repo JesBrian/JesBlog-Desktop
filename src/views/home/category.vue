@@ -108,15 +108,14 @@ export default {
       id: this.$route.params.id,
       userid: this.$store.state.userInfo.id
     }
-    let thisObj = this
 
-    this.axios.post('category/category-show-info', data).then(function (response) {
+    this.axios.post('category/category-show-info', data).then( (response) => {
       if (response.data.status === '01') {
-        thisObj.categoryData = response.data.data
+        this.categoryData = response.data.data
       } else {
         console.log(response.data.msg)
       }
-    }).catch(function (error) {
+    }).catch( (error) => {
       console.log(error)
     })
   },
@@ -131,15 +130,14 @@ export default {
         categoryid: this.$route.params.id,
         order: 'create_time'
       }
-      let thisObj = this
       if (this.contentType === 'hot') {
         data.order = 'likes'
       }
-      this.axios.post('article/article-list', data).then(function (response) {
+      this.axios.post('article/article-list', data).then( (response) => {
         if (response.data.status === '01') {
-          thisObj.categoryData.articleList = response.data.data
+          this.categoryData.articleList = response.data.data
         }
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     }

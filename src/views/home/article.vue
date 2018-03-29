@@ -81,15 +81,14 @@ export default {
 
   methods: {
     getRecommondArticleList () {
-      let thisObj = this
 
-      this.axios.post('article/recommond-list').then(function (response) {
+      this.axios.post('article/recommond-list').then( (response) => {
         if (response.data.status === '01') {
-          thisObj.recomArticleList = response.data.data
+          this.recomArticleList = response.data.data
         } else {
 
         }
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     }

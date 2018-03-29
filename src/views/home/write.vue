@@ -181,27 +181,26 @@ export default {
         id: this.$route.params.id,
         userid: this.$store.state.userInfo.id
       }
-      let thisObj = this
 
-      this.axios.post('article/get-detail-info', data).then(function (response) {
+      this.axios.post('article/get-detail-info', data).then( (response) => {
         if (response.data.status === '01') {
           let articleData = response.data.data
 
-          thisObj.id = articleData.id
-          thisObj.title = articleData.title
-          thisObj.categoryid = articleData.categoryid
-          thisObj.tags = articleData.tags.split(',')
-          thisObj.summary = articleData.summary
-          thisObj.content = articleData.content
+          this.id = articleData.id
+          this.title = articleData.title
+          this.categoryid = articleData.categoryid
+          this.tags = articleData.tags.split(',')
+          this.summary = articleData.summary
+          this.content = articleData.content
 
-          thisObj.warningText = '更新该文章'
+          this.warningText = '更新该文章'
         } else {
           console.log(response)
           setTimeout(function () {
-            thisObj.$router.push({path: '/write'})
+            this.$router.push({path: '/write'})
           }, 2000)
         }
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     }
@@ -238,7 +237,6 @@ export default {
      * 上传缩略图
      */
     uploadThumbnail () {
-      let thisObj = this
       let uploadThumbnailDom = document.getElementById('uploadThumbnail')
       uploadThumbnailDom.click()
       uploadThumbnailDom.onchange = function (event) {
@@ -253,10 +251,10 @@ export default {
         }
         let data = new FormData()
         data.append('file', file, file.name)
-        data.append('userid', thisObj.$store.state.userInfo.id)
-        thisObj.axios.post('article/thumbnail', data).then(function (response) {
+        data.append('userid', this.$store.state.userInfo.id)
+        this.axios.post('article/thumbnail', data).then( (response) => {
           console.log(response)
-        }).catch(function (error) {
+        }).catch( (error) => {
           console.log(error)
         })
       }
@@ -299,7 +297,6 @@ export default {
         content: this.content,
         status: this.status
       }
-      // let thisObj = this
       let url = ''
 
       if (this.$route.params.id) {
@@ -308,9 +305,9 @@ export default {
         url = 'article/create'
       }
 
-      this.axios.post(url, data).then(function (response) {
+      this.axios.post(url, data).then( (response) => {
         console.log(response)
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     }

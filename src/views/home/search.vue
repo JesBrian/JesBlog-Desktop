@@ -166,7 +166,6 @@ export default {
       let data = {
         'key': this.searchKey
       }
-      let thisObj = this
       let url = ''
 
       if (this.searchType === 'titles') {
@@ -179,16 +178,16 @@ export default {
         url = 'search/tag'
       }
 
-      this.axios.post(url, data).then(function (response) {
+      this.axios.post(url, data).then( (response) => {
         // console.log(response);
         if (response.data.status === '01') {
-          thisObj.contentItem = response.data.data
+          this.contentItem = response.data.data
           console.log(response.data.data)
         } else {
-          thisObj.contentItem = []
+          this.contentItem = []
         }
-        thisObj.loadData = true
-      }).catch(function (error) {
+        this.loadData = true
+      }).catch( (error) => {
         console.log(error)
       })
     }

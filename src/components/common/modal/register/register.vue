@@ -103,14 +103,13 @@ export default {
       let data = {
         username: this.username
       }
-      let thisObj = this
-      this.axios.post('user/check', data).then(function (response) {
+      this.axios.post('user/check', data).then( (response) => {
         if (response.data.status === '00') {
-          thisObj.warningUsername = true
+          this.warningUsername = true
         } else {
-          thisObj.warningUsername = false
+          this.warningUsername = false
         }
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     },
@@ -160,21 +159,20 @@ export default {
         passwd: this.passwd,
         mail: this.mail
       }
-      let thisObj = this
 
-      this.axios.post('user/register', data).then(function (response) {
+      this.axios.post('user/register', data).then( (response) => {
         if (response.data.status === '01') {
           let userInfo = {
             'id': response.data.id,
-            'username': thisObj.username,
+            'username': this.username,
             'avatar': ''
           }
-          thisObj.$store.commit('changeUserInfo', userInfo)
-          thisObj.$store.commit('changeModal')
+          this.$store.commit('changeUserInfo', userInfo)
+          this.$store.commit('changeModal')
           console.log(response.data.msg)
         } else {
         }
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     }

@@ -73,7 +73,7 @@
           </div>
 
           <div v-if="contentList !== null" id="authorContent">
-            <component :is="contentType" :descript="contentList" :articleList="contentList" :categoryList="contentList"/>
+            <component :is="contentType" :descript="contentList" :articleList="contentList" :categoryList="contentList" :userList="contentList" :commentGroupData="contentList"/>
           </div>
           <div v-else style="width:100%; height:108px; padding-bottom:28px; position:relative;">
             <page-loading />
@@ -108,7 +108,7 @@ import follow from '../../components/home/base/extends/follow.vue'
 import authorDescript from '../../components/home/base/extends/descript.vue'
 import articleList from '../../components/home/article/article_list.vue'
 import fansList from '../../components/home/author/author_list_search.vue'
-import commentList from '../../components/home/comment/author_comment.vue'
+import commentList from '../../components/home/comment/comment_list.vue'
 import categoryList from '../../components/home/category/category_list.vue'
 import authorList from '../../components/home/author/author_list_recom.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
@@ -138,7 +138,7 @@ export default {
       contentList: null,
       followType: 'user',
       followTypeId: this.$route.params.id,
-      contentType: 'authorDescript',
+      contentType: '',
       personal: false
     }
   },
@@ -154,14 +154,13 @@ export default {
       'id': this.$route.params.id,
       'userid': this.$store.state.userInfo.id
     }
-    let thisObj = this
 
-    this.axios.post('user/get-detail-info', data).then(function (response) {
+    this.axios.post('user/get-detail-info', data).then( (response) => {
       if (response.data.status === '01') {
-        thisObj.userInfo = response.data.data
-        thisObj.changeContent()
+        this.userInfo = response.data.data
+        this.changeContent()
       }
-    }).catch(function (error) {
+    }).catch( (error) => {
       console.log(error)
     })
 
@@ -172,6 +171,10 @@ export default {
 
   methods: {
     changeContent (type = 'authorDescript') {
+      if (type === this.contentType) {
+        return false
+      }
+
       this.contentType = type
       this.contentList = null
 
@@ -179,30 +182,29 @@ export default {
         userid: this.$route.params.id,
         status: 1
       }
-      let thisObj = this
       let url = ''
 
       if (this.contentType === 'articleList') {
         url = 'article/get-simple-info'
       } else if (this.contentType === 'fansList') {
-        url = 'attention/'
+        url = 'attention/fans-group-data'
       } else if (this.contentType === 'commentList') {
-        url = ''
+        url = 'comment/group-data-by-user-id'
       } else if (this.contentType === 'categoryList') {
         url = 'category/user-follows'
         data.categoryIds = this.userInfo.category
       } else {
-        thisObj.contentList = thisObj.userInfo.descript
+        this.contentList = this.userInfo.descript
         return false
       }
 
-      this.axios.post(url, data).then(function (response) {
+      this.axios.post(url, data).then( (response) => {
         if (response.data.status === '01') {
-          thisObj.contentList = response.data.data
+          this.contentList = response.data.data
         } else if (response.data.status === '00') {
           console.log(response.data.msg)
         }
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     }

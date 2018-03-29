@@ -113,17 +113,16 @@ export default {
       id: this.articleId,
       userid: this.$store.state.userInfo.id
     }
-    let thisObj = this
 
-    this.axios.post('article/show-article-info', data).then(function (response) {
+    this.axios.post('article/show-article-info', data).then( (response) => {
       if (response.data.status === '01') {
-        thisObj.articleData = response.data.data
-        thisObj.haveLike = !thisObj.articleData.hasLike
-        thisObj.followTypeId = thisObj.articleData.userid
+        this.articleData = response.data.data
+        this.haveLike = !this.articleData.hasLike
+        this.followTypeId = this.articleData.userid
       } else {
 
       }
-    }).catch(function (error) {
+    }).catch( (error) => {
       console.log(error)
     })
   },
@@ -139,21 +138,20 @@ export default {
         userid: this.$store.state.userInfo.id,
         status: status
       }
-      let thisObj = this
 
-      this.axios.post('attention/like-article', data).then(function (response) {
+      this.axios.post('attention/like-article', data).then( (response) => {
         if (response.data.status === '01') {
           if (status) {
-            thisObj.haveLike = true
-            thisObj.articleData.likes++
+            this.haveLike = true
+            this.articleData.likes++
           } else {
-            thisObj.haveLike = false
-            thisObj.articleData.likes--
+            this.haveLike = false
+            this.articleData.likes--
           }
         } else {
 
         }
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     }

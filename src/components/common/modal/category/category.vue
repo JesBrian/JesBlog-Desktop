@@ -41,10 +41,12 @@ import baseLoading from '../../loading/baseLoading.vue'
 
 export default {
   name: 'category',
+
   components: {
     closeButton,
     baseLoading
   },
+
   data () {
     return {
       loadData: false,
@@ -53,9 +55,11 @@ export default {
       categoryTips: ''
     }
   },
+
   created () {
     this.searchCategory()
   },
+
   methods: {
     closeModal () {
       this.$store.commit('changeModal')
@@ -70,18 +74,17 @@ export default {
       let data = {
         key: this.categoryKey
       }
-      let thisObj = this
 
-      this.axios.post('category/simple-list', data).then(function (response) {
+      this.axios.post('category/simple-list', data).then( (response) => {
         if (response.data.status === '01') {
-          thisObj.categoryData = response.data.data
-          thisObj.categoryTips = ''
+          this.categoryData = response.data.data
+          this.categoryTips = ''
         } else {
-          thisObj.categoryData = []
-          thisObj.categoryTips = response.data.msg
+          this.categoryData = []
+          this.categoryTips = response.data.msg
         }
-        thisObj.loadData = true
-      }).catch(function (error) {
+        this.loadData = true
+      }).catch( (error) => {
         console.log(error)
       })
     },

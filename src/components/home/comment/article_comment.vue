@@ -11,7 +11,7 @@
     </div>
 
     <!-- 评论列表组件 -->
-    <comment-list style="width:82%; margin:0 auto;" />
+    <comment-list :commentGroupData="commentGroupData" />
   </div>
 </template>
 
@@ -21,10 +21,32 @@ import commentList from './comment_list.vue'
 
 export default {
   name: 'article_comment',
+
   components: {
     commentCreate,
     commentList
-  }
+  },
+
+  data () {
+    return {
+      commentGroupData: []
+    }
+  },
+
+  created () {
+    let data = {
+      'articleid': this.$route.params.id
+    }
+
+    this.axios.post('comment/home-group-data', data).then( (response) => {
+      if (response.data.status === '01') {
+        // console.log(response.data.data)
+        this.commentGroupData = response.data.data
+      }
+    }).catch( (error) => {
+      console.log(error)
+    })
+  },
 }
 </script>
 

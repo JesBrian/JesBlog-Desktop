@@ -119,13 +119,12 @@ export default {
     let data = {
       userid: this.$store.state.userInfo.id
     }
-    let thisObj = this
 
-    this.axios.post('article/article-num', data).then(function (response) {
+    this.axios.post('article/article-num', data).then( (response) => {
       if (response.data.status === '01') {
-        thisObj.articleNum = response.data.data
+        this.articleNum = response.data.data
       }
-    }).catch(function (error) {
+    }).catch( (error) => {
       console.log(error)
     })
 
@@ -156,7 +155,6 @@ export default {
         'status': 1,
         'key': this.searchKey
       }
-      let thisObj = this
 
       if (this.contentType === 'draftList') {
         data.status = 2
@@ -164,16 +162,16 @@ export default {
         data.status = 0
       }
 
-      this.axios.post('article/get-simple-info', data).then(function (response) {
+      this.axios.post('article/get-simple-info', data).then( (response) => {
         if (response.data.status === '01') {
-          thisObj.articleList = response.data.data
+          this.articleList = response.data.data
         } else {
-          thisObj.articleText = response.data.msg
-          thisObj.articleList = []
+          this.articleText = response.data.msg
+          this.articleList = []
         }
 
-        thisObj.loadData = true
-      }).catch(function (error) {
+        this.loadData = true
+      }).catch( (error) => {
         console.log(error)
       })
     }

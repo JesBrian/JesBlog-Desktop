@@ -47,7 +47,6 @@ export default {
 
   created () {
     let data = {}
-    let thisObj = this
     let url = ''
 
     if (this.$route.path === '/backstage/userList') {
@@ -70,11 +69,11 @@ export default {
       url = 'bulletin/backstage-list'
     }
 
-    this.axios.post(url, data).then(function (response) {
+    this.axios.post(url, data).then( (response) => {
       if (response.data.status === '01') {
-        thisObj.contentList = response.data.data
+        this.contentList = response.data.data
       }
-    }).catch(function (error) {
+    }).catch( (error) => {
       console.log(error)
     })
   }

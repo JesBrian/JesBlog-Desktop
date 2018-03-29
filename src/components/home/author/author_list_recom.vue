@@ -34,10 +34,9 @@ export default {
   methods: {
     changeRecomAuthor () {
       this.active = true
-      let thisObj = this
-      setTimeout(function () {
-        thisObj.active = false
-        thisObj.dataItem = 8
+      setTimeout( () => {
+        this.active = false
+        this.dataItem = 8
       }, 4000)
     },
     followNext (authorCell) {

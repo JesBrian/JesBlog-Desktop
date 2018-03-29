@@ -28,7 +28,6 @@ export default {
         hasFollow: this.hasFollow
       }
       let url = ''
-      let thisObj = this
 
       if (this.type === 'category') {
         url = 'attention/follow-category'
@@ -38,11 +37,11 @@ export default {
         data.followid = this.typeId
       }
 
-      this.axios.post(url, data).then(function (response) {
+      this.axios.post(url, data).then( (response) => {
         if (response.data.status === '01') {
-          thisObj.hasFollow = !thisObj.hasFollow
+          this.hasFollow = !this.hasFollow
         }
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     }

@@ -116,8 +116,7 @@ export default {
   },
 
   beforeDestroy () {
-    let thisObj = this
-    clearInterval(thisObj.timer)
+    clearInterval(this.timer)
   },
 
   methods: {
@@ -137,35 +136,32 @@ export default {
         passwd: this.passwd
       }
 
-      let thisObj = this
-
-      this.axios.post('user/login', data).then(function (response) {
+      this.axios.post('user/login', data).then( (response) => {
         // console.log(response);
         if (response.data.status === '01') {
           let userInfo = {
             'id': response.data.id,
-            'username': thisObj.username,
+            'username': this.username,
             'avatar': response.data.avatar
           }
-          thisObj.$store.commit('changeUserInfo', userInfo)
-          thisObj.$store.commit('changeModal')
-          thisObj.$router.go(0)
+          this.$store.commit('changeUserInfo', userInfo)
+          this.$store.commit('changeModal')
+          this.$router.go(0)
         }
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     },
 
     checkOAuthLogin () {
-      let thisObj = this
       setTimeout(function () {
-        thisObj.timer = setInterval(function () {
-          thisObj.axios.post('oauth/check-login').then(function (response) {
+        this.timer = setInterval( () => {
+          this.axios.post('oauth/check-login').then( (response) => {
             if (response.data.status === '01') {
-              clearInterval(thisObj.timer)
+              clearInterval(this.timer)
             }
             console.log(response)
-          }).catch(function (error) {
+          }).catch( (error) => {
             console.log(error)
           })
         }, 3000)

@@ -1,5 +1,5 @@
 <template>
-  <ul style="color:#999;">
+  <ul style="width:82%; margin:0 auto; color:#999;">
     <comment-cell @newComment="nowNewComment" v-for="item in commentGroupData" :key="item.id" :commentData="item" />
   </ul>
 </template>
@@ -14,26 +14,14 @@ export default {
     commentCell
   },
 
+  props: [
+    'commentGroupData'
+  ],
+
   data () {
     return {
-      newNewCommentObj: null,
-      commentGroupData: []
+      newNewCommentObj: null
     }
-  },
-
-  created () {
-    let data = {
-      'articleid': this.$route.params.id
-    }
-
-    this.axios.post('comment/home-group-data', data).then( (response) => {
-      if (response.data.status === '01') {
-        // console.log(response.data.data)
-        this.commentGroupData = response.data.data
-      }
-    }).catch( (error) => {
-      console.log(error)
-    })
   },
 
   methods: {

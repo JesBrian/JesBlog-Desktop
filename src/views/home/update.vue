@@ -143,13 +143,12 @@ export default {
   },
 
   created () {
-    let thisObj = this
-    this.axios.post('user/get-info', {'id': this.$store.state.userInfo.id}).then(function (response) {
-      thisObj.sex = response.data.data.sex
-      thisObj.home = response.data.data.home
-      thisObj.mail = response.data.data.mail
-      thisObj.descript = response.data.data.descript
-    }).catch(function (error) {
+    this.axios.post('user/get-info', {'id': this.$store.state.userInfo.id}).then( (response) => {
+      this.sex = response.data.data.sex
+      this.home = response.data.data.home
+      this.mail = response.data.data.mail
+      this.descript = response.data.data.descript
+    }).catch( (error) => {
       console.log(error)
     })
   },
@@ -179,11 +178,10 @@ export default {
         'descript': this.descript,
         'id': this.$store.state.userInfo.id
       }
-      // let thisObj = this
 
-      this.axios.post('user/update', data).then(function (response) {
+      this.axios.post('user/update', data).then( (response) => {
         console.log(response)
-      }).catch(function (error) {
+      }).catch( (error) => {
         console.log(error)
       })
     },
@@ -193,7 +191,6 @@ export default {
      */
     uploadAvatar () {
       let uploadAvatarDom = document.getElementById('uploadAvatar')
-      let thisObj = this
 
       uploadAvatarDom.click()
       uploadAvatarDom.onchange = function (event) {
@@ -208,11 +205,11 @@ export default {
         }
         let data = new FormData() // 创建form对象
         data.append('file', file, file.name) // 通过append向form对象添加数据
-        data.append('id', thisObj.$store.state.userInfo.id) // 添加form表单中其他数据 - 用户id
-        data.append('username', thisObj.$store.state.userInfo.username) // 添加form表单中其他数据 - 用户名
-        thisObj.axios.post('user/avatar', data).then(function (response) {
+        data.append('id', this.$store.state.userInfo.id) // 添加form表单中其他数据 - 用户id
+        data.append('username', this.$store.state.userInfo.username) // 添加form表单中其他数据 - 用户名
+        this.axios.post('user/avatar', data).then( (response) => {
           console.log(response)
-        }).catch(function (error) {
+        }).catch( (error) => {
           console.log(error)
         })
       }
