@@ -79,6 +79,7 @@ import modal from '../../components/common/modal/modalTotal.vue'
 
 export default {
   name: 'category',
+
   components: {
     navigationMenu,
     follow,
@@ -88,6 +89,13 @@ export default {
     pageFooter,
     modal
   },
+
+  watch: {
+    '$route' () {
+      this.$router.go(0)
+    }
+  },
+
   data () {
     return {
       categoryData: {},

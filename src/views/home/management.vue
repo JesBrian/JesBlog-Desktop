@@ -88,6 +88,7 @@ import LocalStore from 'store'
 
 export default {
   name: 'article-management',
+
   components: {
     navigationMenu,
     floatBlock,

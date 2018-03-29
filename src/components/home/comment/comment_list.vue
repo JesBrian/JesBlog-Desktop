@@ -1,17 +1,20 @@
 <template>
   <ul style="width:82%; margin:0 auto; color:#999;">
     <comment-cell @newComment="nowNewComment" v-for="item in commentGroupData" :key="item.id" :commentData="item" />
+    <end-tips />
   </ul>
 </template>
 
 <script>
 import commentCell from './comment_cell.vue'
+import endTips from '../../common/endTips/endTips'
 
 export default {
   name: 'comment_list',
 
   components: {
-    commentCell
+    commentCell,
+    endTips
   },
 
   props: [

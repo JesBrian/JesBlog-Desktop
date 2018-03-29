@@ -145,12 +145,19 @@ import LocalStore from 'store'
 
 export default {
   name: 'write',
+
   components: {
     navigationMenu,
     quillEditor,
     floatBlock,
     pageFooter,
     modal
+  },
+
+  watch: {
+    '$route' () {
+      this.$router.go(0)
+    }
   },
 
   data () {

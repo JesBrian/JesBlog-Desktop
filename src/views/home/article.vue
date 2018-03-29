@@ -51,7 +51,8 @@ import modal from '../../components/common/modal/modalTotal.vue'
 import {scrollToLoadData} from '../../assets/js/common.js'
 
 export default {
-  name: 'articlePage',
+  name: 'article',
+
   components: {
     navigationMenu,
     articleDetail,
@@ -60,6 +61,12 @@ export default {
     floatBlock,
     pageFooter,
     modal
+  },
+
+  watch: {
+    '$route' () {
+      this.$router.go(0)
+    }
   },
 
   data () {

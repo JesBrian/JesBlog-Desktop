@@ -72,10 +72,10 @@
               class="MyIF feedback"></i> 分类</a>
           </div>
 
-          <div v-if="contentList !== null" id="authorContent">
+          <div v-if="contentList !== null" style="min-height:278px;">
             <component :is="contentType" :descript="contentList" :articleList="contentList" :categoryList="contentList" :userList="contentList" :commentGroupData="contentList"/>
           </div>
-          <div v-else style="width:100%; height:108px; padding-bottom:28px; position:relative;">
+          <div v-else style="width:100%; height:278px; padding-bottom:168px; position:relative; box-sizing:border-box;">
             <page-loading />
           </div>
 
@@ -118,6 +118,7 @@ import pageLoading from '../../components/common/loading/pageLoading.vue'
 
 export default {
   name: 'author',
+
   components: {
     navigationMenu,
     follow,
@@ -132,6 +133,7 @@ export default {
     modal,
     pageLoading
   },
+
   data () {
     return {
       userInfo: {},
@@ -140,6 +142,12 @@ export default {
       followTypeId: this.$route.params.id,
       contentType: '',
       personal: false
+    }
+  },
+
+  watch: {
+    '$route' () {
+      this.$router.go(0)
     }
   },
 
@@ -194,13 +202,14 @@ export default {
         url = 'category/user-follows'
         data.categoryIds = this.userInfo.category
       } else {
-        this.contentList = this.userInfo.descript
+        this.contentList = this.userInfo.descript === null ? '' : this.userInfo.descript
         return false
       }
 
       this.axios.post(url, data).then( (response) => {
         if (response.data.status === '01') {
           this.contentList = response.data.data
+          console.log(this.userInfo.descript)
         } else if (response.data.status === '00') {
           console.log(response.data.msg)
         }

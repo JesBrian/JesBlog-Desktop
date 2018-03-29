@@ -116,7 +116,8 @@ import {quillEditor} from 'vue-quill-editor'
 import LocalStore from 'store'
 
 export default {
-  name: 'write',
+  name: 'update',
+
   components: {
     navigationMenu,
     quillEditor,
