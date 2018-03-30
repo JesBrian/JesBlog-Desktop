@@ -143,7 +143,7 @@ export default {
       userid: this.$store.state.userInfo.id
     }
 
-    this.axios.post('home/index', data).then( (response) => {
+    this.axios.post('index/home-index', data).then( (response) => {
       if (response.data.status === '01') {
         this.loadData = true
         this.articleList = response.data.data.articleList

@@ -44,7 +44,7 @@
     <!-- 左侧手风琴菜单栏 -->
     <div id="leftMenu" class="glass-Bg box-show" :class="{'leftmenu-is-show':showLeftMenu === true}" style="width:188px; height:100%; top:0; left:-188px; padding:60px 0 28px; box-sizing:border-box; position:fixed; z-index:9;  font-family:'宋体','Microsoft YaHei','黑体',sans-serif;">
       <div style="width:100%; height:100%; padding:6px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box;">
-        <gemini-scrollbar class="myScrollbar">
+        <gemini-scrollbar class="my-scroll-bar">
           <ul>
             <li style="width:100%; margin:0 0 8px;">
               <div class="glass-Bg box-show" @click="changeFirstMenu('user')" style="width:96%; height:30px; margin:0 auto; position:relative; cursor:pointer;">
@@ -222,7 +222,7 @@
     <!-- 中心 & 右侧内容 -->
     <div class="s1c-Bg" :class="{'leftmenu-is-close':showLeftMenu === false}" style="width:100%; height:100%; top:0; right:0; position:fixed; padding:63px 8px 35px 195px; box-sizing:border-box; z-index:5; font-family:'宋体','Microsoft YaHei','黑体',sans-serif;">
         <div class="glass-Bg" style="width:100%; height:100%; box-sizing:border-box; color:#DDD; position:relative;">
-          <gemini-scrollbar class="myScrollbar">
+          <gemini-scrollbar class="my-scroll-bar">
             <router-link class="s1c-Bg box-show MyIF home" to="/backstage" v-if="this.$route.path !== '/backstage/index'" style="width:33px; height:33px; top:22px; left:22px; position:absolute; z-index:99; color:#6DE1FF; font-size:23px; line-height:32px; text-align:center;" title="回到主页" />
             <router-view style="min-width:1008px; padding:18px 28px; box-sizing:border-box;" />
           </gemini-scrollbar>
@@ -481,4 +481,16 @@ export default {
   .menu-link.router-link-active > i.double-arrow-left {
     display: inline-block;
   }
+
+
+  /**
+   * 滚动条样式重写
+   */
+  .my-scroll-bar >>> .gm-scrollbar .thumb {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .my-scroll-bar >>> .gm-scrollbar .thumb:hover, .my-scroll-bar >>> .gm-scrollbar .thumb:active{
+    background: rgba(70, 223, 255, 0.5);
+  }
+
 </style>

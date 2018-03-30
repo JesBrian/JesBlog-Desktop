@@ -10,7 +10,7 @@
     </form>
 
     <div style="height:580px; margin-top:28px; padding:1px; box-sizing:border-box;">
-      <gemini-scrollbar>
+      <gemini-scrollbar class="my-scroll-bar">
         <ul style="padding:0 13px 0 3px; box-sizing:border-box;">
           <li class="glass-Bg box-show" v-for="item in bulletinList" style="width:100%; min-height:48px; margin-bottom:8px; padding:8px 6px 3px; box-sizing:border-box;">
             <!--BUG 无法显示图片 -->
@@ -99,4 +99,15 @@ export default {
     width:68%;
     left:51%;
   }
+
+  /**
+ * 滚动条样式重写
+ */
+  .my-scroll-bar >>> .gm-scrollbar .thumb {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .my-scroll-bar >>> .gm-scrollbar .thumb:hover, .my-scroll-bar >>> .gm-scrollbar .thumb:active{
+    background: rgba(70, 223, 255, 0.5);
+  }
+
 </style>
