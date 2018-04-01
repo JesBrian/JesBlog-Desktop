@@ -74,6 +74,12 @@
                     <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
                   </router-link>
                 </li>
+                <li style="width:83%; height:25px; margin:3px auto 0;">
+                  <router-link to="/backstage/userStatistics" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('userStatistics')">
+                    <i class="MyIF delete-user"></i><span style="margin-left:8px; font-size:15px;">用户统计</span>
+                    <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
+                  </router-link>
+                </li>
               </ul>
             </li>
             <li style="width:100%; margin:0 0 8px;">
@@ -183,8 +189,14 @@
                   </router-link>
                 </li>
                 <li style="width:83%; height:25px; margin:3px auto 0;">
-                  <router-link to="/backstage/addArticle" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('addCategory')">
+                  <router-link to="/backstage/addArticle" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('addArticle')">
                     <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">添加文章</span>
+                    <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
+                  </router-link>
+                </li>
+                <li style="width:83%; height:25px; margin:3px auto 0;">
+                  <router-link to="/backstage/articleStatistics" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('articleStatistics')">
+                    <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">文章统计</span>
                     <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
                   </router-link>
                 </li>

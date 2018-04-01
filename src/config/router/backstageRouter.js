@@ -33,6 +33,10 @@ export default [
         component: () => import('../../views/backstage/user/userBlacklist.vue')
       },
       {
+        path: 'userStatistics',
+        component: () => import('../../views/backstage/user/userStatistics.vue')
+      },
+      {
         path: 'adminList',
         component: () => import('../../views/backstage/admin/adminList.vue')
       },
@@ -71,6 +75,10 @@ export default [
       {
         path: 'updateArticle',
         component: () => import('../../views/backstage/article/updateArticle.vue')
+      },
+      {
+        path: 'articleStatistics',
+        component: () => import('../../views/backstage/article/articleStatistics.vue')
       },
       {
         path: 'slideList',
