@@ -1,12 +1,12 @@
 <template>
   <div>
-    this is use statistics
+    this is search statistics
   </div>
 </template>
 
 <script>
 export default {
-  name: 'user-statistics'
+  name: 'searchStatistics'
 }
 </script>
 

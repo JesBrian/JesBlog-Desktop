@@ -226,6 +226,30 @@
                 </li>
               </ul>
             </li>
+            <li style="width:100%; margin:0 0 8px;">
+              <div class="glass-Bg box-show" @click="changeFirstMenu('search')" style="width:96%; height:30px; margin:0 auto; position:relative; cursor:pointer;">
+                <p class="text-hidden" style="line-height:30px; font-size:18px; display:inline-block;">
+                  <i class="MyIF menu-user" style="margin:0 8px 0 12px;"></i>搜索模块
+                </p>
+                <div class="second-menu-btn s1c-Bg box-show">
+                  <i class="MyIF double-arrow-up" :class="{'active':firstMenu === 'search'}" style="width:100%; height:100%; display:inline-block;"></i>
+                </div>
+              </div>
+              <ul v-if="firstMenu === 'search'">
+                <li style="width:83%; height:25px; margin:3px auto 0;">
+                  <router-link to="/backstage/searchList" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('searchList')">
+                    <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">搜索记录列表</span>
+                    <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
+                  </router-link>
+                </li>
+                <li style="width:83%; height:25px; margin:3px auto 0;">
+                  <router-link to="/backstage/searchStatistics" class="s1c-Bg box-show menu-link" @click="changeSecondMenu('searchStatistics')">
+                    <i class="MyIF add-user"></i><span style="margin-left:8px; font-size:15px;">搜索记录统计</span>
+                    <i class="MyIF double-arrow-left" style="right:10px; position:absolute; line-height:25px; font-size:12px;"></i>
+                  </router-link>
+                </li>
+              </ul>
+            </li>
           </ul>
         </gemini-scrollbar>
       </div>

@@ -23,6 +23,7 @@ import categoryInfoTable from '../category/infoTable.vue'
 import articleInfoTable from '../article/infoTable.vue'
 import slideInfoTable from '../slide/infoTable.vue'
 import bulletinInfoTable from '../bulletin/infoTable.vue'
+import searchInfoTable from '../search/infoTable.vue'
 import pagination from '../../common/pagination/pagination.vue'
 import pageLoading from '../../common/loading/pageLoading.vue'
 
@@ -35,6 +36,7 @@ export default {
     articleInfoTable,
     slideInfoTable,
     bulletinInfoTable,
+    searchInfoTable,
     pagination,
     pageLoading
   },

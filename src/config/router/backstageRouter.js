@@ -93,6 +93,14 @@ export default [
         component: () => import('../../views/backstage/slide/updateSlide.vue')
       },
       {
+        path: 'searchList',
+        component: () => import('../../views/backstage/search/searchList.vue')
+      },
+      {
+        path: 'searchStatistics',
+        component: () => import('../../views/backstage/search/searchStatistics.vue')
+      },
+      {
         path: 'bulletinList',
         component: () => import('../../views/backstage/bulletin/bulletinList.vue')
       }
