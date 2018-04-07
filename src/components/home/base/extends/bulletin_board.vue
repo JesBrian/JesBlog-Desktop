@@ -14,8 +14,7 @@
         <ul style="padding:0 13px 0 3px; box-sizing:border-box;">
           <li class="glass-Bg box-show" v-for="item in bulletinList" style="width:100%; min-height:48px; margin-bottom:8px; padding:8px 6px 3px; box-sizing:border-box;">
             <!--BUG 无法显示图片 -->
-            <!--<img class="box-show" v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'" style="width:33px; height:33px; margin:-2px 6px 0 0; border-radius:4px; float:left;">-->
-            <img class="box-show" style="width:33px; height:33px; margin:-2px 6px 0 0; border-radius:4px; float:left;" />
+            <img class="box-show" v-lazy="$store.state.baseHost + 'img/touxiang.jpg'" style="width:33px; height:33px; margin:-2px 6px 0 0; border-radius:4px; float:left;">
             <p class="text-effect" style="width:100%; line-height:1.2em; text-indent:0.8em; font-size:14.5px; color:#AAA;">
               <span style="font-size:15px; font-weight:700; color:#DDD;">{{ item.username === ''?'游客':item.username }}：</span>{{ item.content }}
             </p>

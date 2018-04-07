@@ -7,6 +7,7 @@
 <script>
 export default {
   name: 'float_block',
+
   data () {
     return {
       unshow: ''
