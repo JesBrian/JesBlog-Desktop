@@ -105,6 +105,7 @@ export default {
   data () {
     return {
       loadData: false,
+      changeRouter: true,
       searchType: 'titles',
       searchKey: '',
       searchKeyTemp: '',
@@ -126,15 +127,24 @@ export default {
         this.searchKey = this.$route.params.key
       }
       this.searchKeyTemp = this.searchKey
-      this.changeContent()
+      if (this.changeRouter === true) {
+        this.changeContent()
+        this.changeRouter = true
+      } else {
+        this.changeRouter = true
+      }
+
+      console.log('router')
     },
 
     'searchType' () {
       this.$router.push({path: '/search/' + this.searchType + '/' + this.searchKey})
+      console.log('type')
     },
 
     'searchKey' () {
       this.$router.push({path: '/search/' + this.searchType + '/' + this.searchKey})
+      console.log('key')
     }
   },
 
@@ -152,6 +162,7 @@ export default {
     }
     this.searchKeyTemp = this.searchKey
     this.changeContent()
+    console.log('creat')
   },
 
   methods: {
@@ -179,14 +190,14 @@ export default {
       }
 
       this.axios.post(url, data).then( (response) => {
-        // console.log(response);
         if (response.data.status === '01') {
           this.contentItem = response.data.data
-          console.log(response.data.data)
+          this.changeRouter = false
         } else {
           this.contentItem = []
         }
         this.loadData = true
+        console.log('changeContent')
       }).catch( (error) => {
         console.log(error)
       })
