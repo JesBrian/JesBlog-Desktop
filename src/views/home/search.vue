@@ -80,7 +80,7 @@ import searchBox from '../../components/home/base/extends/searchBox.vue'
 import titles from '../../components/home/article/article_list.vue'
 import author from '../../components/home/author/author_list_search.vue'
 import category from '../../components/home/category/category_list.vue'
-import tag from '@/components/home/article/article_list.vue'
+import tag from '../../components/home/article/article_list.vue'
 import pagination from '../../components/common/pagination/pagination.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
@@ -172,6 +172,7 @@ export default {
      */
     changeContent () {
       this.loadData = false
+      this.changeRouter = false
       this.searchKey = this.searchKeyTemp
 
       let data = {
@@ -192,7 +193,6 @@ export default {
       this.axios.post(url, data).then( (response) => {
         if (response.data.status === '01') {
           this.contentItem = response.data.data
-          this.changeRouter = false
         } else {
           this.contentItem = []
         }

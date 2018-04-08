@@ -4,13 +4,9 @@
     <tr class="glass-Bg" style="height:33px; line-height:33px; font-size:18px; font-weight:700; color:#FFF; background:#333; border-radius:0;">
       <th style="width:33px;"><label class="super-checkbox"><input v-model="selectAll" value="selectAll" type="checkbox"/><i>√</i></label></th>
       <th colspan="3">操作</th>
-      <th>用户名</th>
-      <th style="width:53px;">头像</th>
-      <th style="width:53px;">性别</th>
-      <th>邮箱</th>
-      <th style="width:53px;">主页</th>
-      <th style="width:53px;">状态</th>
-      <th>注册时间</th>
+      <th>搜索关键字</th>
+      <th style="width:88px;">搜索类型</th>
+      <th>搜索日期</th>
     </tr>
 
     <tr v-for="item in contentList" :key="item.id" style="height:30px; line-height:30px; font-size:16px;">
@@ -18,19 +14,14 @@
       <td class="accountTableOper"><i class="accountOperIframeUrl MyIF tool" title="修改"></i></td>
       <td class="accountTableOper"><i class="MyIF search" title="查看详情"></i></td>
       <td class="accountTableOper"><i class="MyIF recycle-2" title="删除"></i></td>
-      <td>{{ item.username }}</td>
-      <td>{{ item.avata }}</td>
-      <td>{{ numToSex(item.sex) }}</td>
-      <td>{{ item.mail }}</td>
-      <td>{{ item.home }}</td>
-      <td>{{ item.status }}</td>
-      <td style="text-align:center;">{{ timestampToTime(item.create_time) }}</td>
+      <td>{{ item.key }}</td>
+      <td>{{ numToSearchType(item.type) }}</td>
+      <td>{{ item.timeid }}</td>
     </tr>
   </table>
 </template>
 
 <script>
-import {timestampToTime} from '../../../assets/js/common.js'
 
 export default {
   name: 'info-table',
@@ -58,19 +49,20 @@ export default {
   },
 
   methods: {
-
-    numToSex (num) {
-      if (num === 1) {
-        return '男'
-      } else if (num === 2) {
-        return '女'
-      } else {
-        return '保密'
+    numToSearchType (num) {
+      switch (num)
+      {
+        case '1':
+          return '文章标题'
+        case '2':
+          return '文章分类'
+        case '3':
+          return '文章标签'
+        case '4':
+          return '用户名称'
+        default:
+          return ''
       }
-    },
-
-    timestampToTime (timestamp) {
-      return timestampToTime(timestamp)
     }
   }
 }

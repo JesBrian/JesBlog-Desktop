@@ -69,6 +69,9 @@ export default {
     } else if (this.$route.path === '/backstage/bulletinList') {
       this.listType = 'bulletinInfoTable'
       url = 'bulletin/backstage-list'
+    } else if (this.$route.path === '/backstage/searchList') {
+      this.listType = 'searchInfoTable'
+      url = 'search/backstage-list-data'
     }
 
     this.axios.post(url, data).then( (response) => {
