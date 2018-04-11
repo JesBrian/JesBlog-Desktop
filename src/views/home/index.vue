@@ -72,7 +72,7 @@
 
           <div style="width:28%; display:inline-block; float:right;">
             <!-- 推荐作者列表组件 -->
-            <author-list/>
+            <author-list :authorList="authorList" />
 
             <!-- 留言板组件 -->
             <bulletin-board :bulletinList="bulletinList"/>
@@ -147,6 +147,7 @@ export default {
       if (response.data.status === '01') {
         this.loadData = true
         this.articleList = response.data.data.articleList
+        this.authorList = response.data.data.authorList
         this.bulletinList = response.data.data.bulletinList
       }
     }).catch( (error) => {

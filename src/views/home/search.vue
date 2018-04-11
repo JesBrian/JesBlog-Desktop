@@ -89,6 +89,7 @@ import pageLoading from '../../components/common/loading/pageLoading.vue'
 
 export default {
   name: 'search',
+
   components: {
     navigationMenu,
     searchBox,
@@ -102,6 +103,7 @@ export default {
     modal,
     pageLoading
   },
+
   data () {
     return {
       loadData: false,

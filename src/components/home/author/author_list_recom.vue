@@ -9,9 +9,9 @@
       </a>
     </div>
     <ul>
-      <li class="otherAuthor" style="margin-bottom:15px;" v-for="(item, index) in dataItem" :key="index">
+      <li class="otherAuthor" style="margin-bottom:15px;" v-for="(item, index) in authorList" :key="index">
         <!--单个推荐作家组件-->
-        <author-cell-recom/>
+        <author-cell-recom :authorData="item" />
       </li>
     </ul>
   </div>
@@ -22,15 +22,21 @@ import authorCellRecom from './author_cell_recom.vue'
 
 export default {
   name: 'author_list_recom',
+
   components: {
     authorCellRecom
   },
+
+  props: [
+    'authorList'
+  ],
+
   data () {
     return {
-      active: false,
-      dataItem: 6
+      active: false
     }
   },
+
   methods: {
     changeRecomAuthor () {
       this.active = true
@@ -39,6 +45,7 @@ export default {
         this.dataItem = 8
       }, 4000)
     },
+
     followNext (authorCell) {
       console.log(authorCell)
     }
@@ -71,8 +78,11 @@ export default {
     color: #19D6E6;
   }
 
-  .otherAuthor:hover > > > a {
-    color: #DDD;
+  .otherAuthor >>> a {
+    color: #BBB;
+  }
+  .otherAuthor:hover >>> a {
+    color: #EEE;
   }
 
   @keyframes goCircle {

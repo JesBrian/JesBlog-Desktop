@@ -1,6 +1,6 @@
 
 /**
- * 滚动加载时间
+ * 滚动到顶部加载数据
  */
 export function scrollToLoadData () {
   let finished = false
