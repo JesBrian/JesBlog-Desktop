@@ -8,23 +8,30 @@
         <i class="MyIF refresh-1"></i> 换一批
       </a>
     </div>
-    <ul>
+    <ul v-if="authorList.length !== 0">
       <li class="otherAuthor" style="margin-bottom:15px;" v-for="(item, index) in authorList" :key="index">
         <!--单个推荐作家组件-->
         <author-cell-recom :authorData="item" />
       </li>
     </ul>
+    <div v-else style="padding:68px 0;">
+      <base-loading />
+    </div>
+
+    <router-link to="/search/author" class="glass-Bg box-show" style="margin:10px 80px 12px; padding:8px 13px; display:inline-block; font-weight:700; color:#AAA;">查找更多作家</router-link>
   </div>
 </template>
 
 <script>
 import authorCellRecom from './author_cell_recom.vue'
+import baseLoading from '../../common/loading/baseLoading.vue'
 
 export default {
   name: 'author_list_recom',
 
   components: {
-    authorCellRecom
+    authorCellRecom,
+    baseLoading
   },
 
   props: [

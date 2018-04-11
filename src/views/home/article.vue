@@ -9,7 +9,7 @@
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
-      <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
+      <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; min-height:488px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
 
         <!-- 文章详情组件 -->
         <article-detail :articleId="this.$route.params.id"/>
@@ -21,7 +21,7 @@
 
         <div style="width:28%; display:inline-block; float:right;">
           <!-- 推荐作者列表组件 -->
-          <author-list/>
+          <author-list :authorList="recomAuthorList" />
         </div>
 
       </div>
@@ -71,7 +71,8 @@ export default {
 
   data () {
     return {
-      recomArticleList: []
+      recomArticleList: [],
+      recomAuthorList: []
     }
   },
 
@@ -83,17 +84,27 @@ export default {
 
   mounted () {
     this.getRecommondArticleList()
+    this.getRecommondAuthorList()
     scrollToLoadData()
   },
 
   methods: {
     getRecommondArticleList () {
-
       this.axios.post('article/recommond-list').then( (response) => {
         if (response.data.status === '01') {
           this.recomArticleList = response.data.data
         } else {
+        }
+      }).catch( (error) => {
+        console.log(error)
+      })
+    },
 
+    getRecommondAuthorList () {
+      this.axios.post('recommend/author').then( (response) => {
+        if (response.data.status === '01') {
+          this.recomAuthorList = response.data.data
+        } else {
         }
       }).catch( (error) => {
         console.log(error)

@@ -137,10 +137,8 @@ import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
 
-// import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import '@/assets/css/editor.css'
-// import 'quill/dist/quill.bubble.css'
 import {quillEditor} from 'vue-quill-editor'
 import LocalStore from 'store'
 

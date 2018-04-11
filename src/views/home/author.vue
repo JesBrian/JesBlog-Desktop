@@ -9,11 +9,11 @@
 
     <div id="mainBody" style="padding:88px 0 108px;"><!-- 真TM迷 -->
 
-      <div id="bodyLayout" class="glass-Bg box-show"
-           style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
+      <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
 
         <div style="width:68%; display:inline-block;">
-          <div style="width:100%; color:#EDE;">
+
+          <div v-if="userInfo !== null" style="width:100%; color:#EDE;">
 
             <div class="s1c-Bg box-show" style="width:68px; height:68px; margin:0 18px 0 28px; float:left;">
               <img v-lazy="this.$store.state.baseHost + 'upload/avatar/' + this.$route.params.id + '-' + userInfo.username + '.jpg'" class="box-show" style="width:62px; height:62px; margin:3px;">
@@ -57,6 +57,9 @@
               </div>
             </div>
           </div>
+          <div v-else style="width:100%; height:86px; position:relative;">
+            <page-loading />
+          </div>
 
           <!-- 切换详细信息按钮组 -->
           <div id="changeUserContent">
@@ -72,18 +75,18 @@
               class="MyIF feedback"></i> 分类</a>
           </div>
 
-          <div v-if="contentList !== null" style="min-height:278px;">
+          <div v-if="contentList !== null" style="min-height:323px;">
             <component :is="contentType" :descript="contentList" :articleList="contentList" :categoryList="contentList" :userList="contentList" :commentGroupData="contentList"/>
           </div>
-          <div v-else style="width:100%; height:278px; padding-bottom:168px; position:relative; box-sizing:border-box;">
-            <page-loading />
+          <div v-else style="width:100%; height:323px; padding-bottom:168px; position:relative; box-sizing:border-box;">
+            <base-loading style="top:108px;" />
           </div>
 
         </div>
 
         <div style="width:28%; display:inline-block; float:right;">
           <!-- 推荐作者列表组件 -->
-          <author-list/>
+          <author-list :authorList="recomAuthorList"/>
         </div>
 
       </div>
@@ -114,6 +117,7 @@ import authorList from '../../components/home/author/author_list_recom.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
+import baseLoading from '../../components/common/loading/baseLoading.vue'
 import pageLoading from '../../components/common/loading/pageLoading.vue'
 
 export default {
@@ -131,17 +135,19 @@ export default {
     floatBlock,
     pageFooter,
     modal,
+    baseLoading,
     pageLoading
   },
 
   data () {
     return {
-      userInfo: {},
+      userInfo: null,
       contentList: null,
       followType: 'user',
       followTypeId: this.$route.params.id,
       contentType: '',
-      personal: false
+      personal: false,
+      recomAuthorList: []
     }
   },
 
@@ -175,9 +181,23 @@ export default {
     if (this.$store.state.userInfo.id === this.$route.params.id) {
       this.personal = true
     }
+
+    this.getRecommondAuthorList()
   },
 
   methods: {
+
+    getRecommondAuthorList () {
+      this.axios.post('recommend/author').then( (response) => {
+        if (response.data.status === '01') {
+          this.recomAuthorList = response.data.data
+        } else {
+        }
+      }).catch( (error) => {
+        console.log(error)
+      })
+    },
+
     changeContent (type = 'authorDescript') {
       if (type === this.contentType) {
         return false

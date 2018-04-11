@@ -12,7 +12,7 @@
       <div id="bodyLayout" class="glass-Bg box-show" style="width:1080px; margin:0 auto; padding:12px 0; border-radius:8px; position:relative; background:#111;">
 
         <!-- 更新个人资料 -->
-        <div style="width:80%; height:100%; margin:0 auto; color:#AAA; position:relative;">
+        <div v-if="hasGetUserData" style="width:80%; height:100%; margin:0 auto; color:#AAA; position:relative;">
 
           <h3 style="font-size:32px; font-weight:500; line-height:2em; font-style:italic; color:#EEE;">{{ this.$store.state.userInfo.username }} ：</h3>
 
@@ -88,6 +88,9 @@
           </table>
 
         </div>
+        <div v-else style="width:100%; height:468px; position:relative;">
+          <page-loading />
+        </div>
       </div>
     </div>
 
@@ -108,10 +111,10 @@ import navigationMenu from '../../components/home/base/extends/navigationMenu.vu
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
+import pageLoading from '../../components/common/loading/pageLoading.vue'
 
-// import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
-// import 'quill/dist/quill.bubble.css'
+import '@/assets/css/editor.css'
 import {quillEditor} from 'vue-quill-editor'
 import LocalStore from 'store'
 
@@ -123,11 +126,13 @@ export default {
     quillEditor,
     floatBlock,
     pageFooter,
-    modal
+    modal,
+    pageLoading
   },
 
   data () {
     return {
+      hasGetUserData: false,
       sex: this.sex === '' ? '' : this.sex,
       mail: '',
       home: '',
@@ -149,6 +154,7 @@ export default {
       this.home = response.data.data.home
       this.mail = response.data.data.mail
       this.descript = response.data.data.descript
+      this.hasGetUserData = true
     }).catch( (error) => {
       console.log(error)
     })
