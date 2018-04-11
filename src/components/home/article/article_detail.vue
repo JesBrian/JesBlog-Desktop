@@ -9,13 +9,13 @@
       <h2 style="padding:0 18px; text-indent:2em; font-size:25px; color:#DED;">{{ articleData.title }} &nbsp;</h2>
       <div style="width:88%; margin:18px auto;">
 
-        <!-- 头像组件 -->
-        <avatar class="avatar-author" :userid="articleData.userid"/>
+        <!-- 头像 -->
+        <router-link :to="'/author/' + articleData.userid" class="avatar-author"><img class="box-show" v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'"></router-link>
 
         <div style="height:56px; display:inline-block;">
 
-          <!-- 用户名组件 -->
-          <username class="username-author" :userid="articleData.userid" :username="articleData.username"/>
+          <!-- 用户名 -->
+          <router-link class="username-author hover-underline" :to="'/author/' + articleData.userid">{{ articleData.username }}</router-link>
 
           <!-- "关注/取消关注"组件 -->
           <follow v-if="articleData.userid !== this.$store.state.userInfo.id" :hasFollow="articleData.hasFollow" :type="followType" :typeId="followTypeId" style="margin:-3px 0 0 28px; position:relative; float:left;"/>
@@ -77,8 +77,6 @@
 </template>
 
 <script>
-import avatar from '../author/avatar.vue'
-import username from '../author/username.vue'
 import follow from '../base/extends/follow.vue'
 import descript from '../base/extends/descript.vue'
 import articleComment from '../comment/article_comment.vue'
@@ -86,9 +84,8 @@ import pagination from '../../common/pagination/pagination.vue'
 
 export default {
   name: 'article_detail',
+
   components: {
-    avatar,
-    username,
     follow,
     descript,
     articleComment,
@@ -165,6 +162,11 @@ export default {
     height: 42px;
     margin: 8px 18px;
     float: left;
+  }
+  .avatar-author > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
   }
 
   .username-author {

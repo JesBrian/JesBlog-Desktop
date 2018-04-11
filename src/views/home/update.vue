@@ -22,7 +22,7 @@
               <img class="box-show" v-if="avatar !== ''" :src="avatar" style="width:98px; height:98px; margin:5px; border:none;"/>
             </div>
             <span class="superButton-Out" @click="uploadAvatar" style="width:108px; height:33px;">
-              <a class="superButton-In MyIF avatar" style="width:100px; height:25px; line-height:25px;"> 修改头像</a>
+              <a class="superButton-In MyIF avatar" style="width:100px; height:25px; top:48%; line-height:25px;"> 修改头像</a>
             </span>
             <input type="file" id="uploadAvatar" name="avatarTemp" value="" style="display:none;"/>
           </div>

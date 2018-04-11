@@ -5,7 +5,7 @@
     <router-link :to="'/author/' + authorData.userid" class="avatar-author"><img class="box-show" v-lazy="$store.state.baseHost + 'img/touxiang.jpg'"></router-link>
 
     <!-- 用户名 -->
-    <router-link :to="'/author/' + authorData.userid" class="hover-underline" style="line-height:19px;">{{ authorData.username }}</router-link>
+    <router-link :to="'/author/' + authorData.userid" class="username-author hover-underline" style="line-height:19px;">{{ authorData.username }}</router-link>
 
     <p>
       <span style="margin-right:8px; line-height:0.3em; font-size:13px; color:#666;"><span style="margin-right:3px;">{{ authorData.likes }}</span>喜欢</span>
@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import avatar from './avatar.vue'
-import username from './username.vue'
 import follow from '../base/button/follow.vue'
 import leave from '../base/button/leave.vue'
 
@@ -30,8 +28,6 @@ export default {
   name: 'author_cell_recom',
 
   components: {
-    avatar,
-    username,
     follow,
     leave
   },
@@ -66,7 +62,7 @@ export default {
     float: left;
   }
 
-  .avatar-author img {
+  .avatar-author > img {
     width: 100%;
     height: 100%;
     border-radius: 3px;
