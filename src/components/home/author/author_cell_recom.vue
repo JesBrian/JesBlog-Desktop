@@ -2,10 +2,10 @@
   <div class="glass-Bg box-show" style="width:95%; height:48px; margin:0 auto; padding-top:5px; position:relative; box-sizing:border-box;">
 
     <!-- 头像 -->
-    <router-link :to="'/author/' + authorData.userid" class="avatar-author"><img class="box-show" v-lazy="$store.state.baseHost + 'img/touxiang.jpg'"></router-link>
+    <router-link :to="'/author/' + authorData.id" class="avatar-author"><img class="box-show" v-lazy="$store.state.baseHost + 'img/touxiang.jpg'"></router-link>
 
     <!-- 用户名 -->
-    <router-link :to="'/author/' + authorData.userid" class="username-author hover-underline" style="line-height:19px;">{{ authorData.username }}</router-link>
+    <router-link :to="'/author/' + authorData.id" class="username-author hover-underline" style="line-height:19px;">{{ authorData.username }}</router-link>
 
     <p>
       <span style="margin-right:8px; line-height:0.3em; font-size:13px; color:#666;"><span style="margin-right:3px;">{{ authorData.likes }}</span>喜欢</span>

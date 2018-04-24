@@ -229,7 +229,7 @@ export default {
       this.axios.post(url, data).then( (response) => {
         if (response.data.status === '01') {
           this.contentList = response.data.data
-          console.log(this.userInfo.descript)
+          console.log(this.contentList)
         } else if (response.data.status === '00') {
           console.log(response.data.msg)
         }

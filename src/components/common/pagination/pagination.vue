@@ -20,6 +20,7 @@
 <script>
 export default {
   name: 'pagination',
+
   data () {
     return {
       current: 1,

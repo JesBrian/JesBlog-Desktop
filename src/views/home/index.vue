@@ -16,40 +16,10 @@
         <!-- 推荐文章分类 -->
         <div v-if="loadData" style="width:20%; height:92%; margin:23px 23px 0 0; display:inline-block; float:right;">
           <ul style="height:100%;">
-            <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
+            <li v-for="n in 6" class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
               <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag1.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
-                <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">sfdvgchjkdfbgjhjk</p>
-              </router-link>
-            </li>
-            <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
-              <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag2.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
-                <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">参考了吗 马上出来看吗系栏目下吗1mkm</p>
-              </router-link>
-            </li>
-            <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
-              <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag3.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
-                <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">参考了吗 马上出来看吗系栏目下吗1mkm</p>
-              </router-link>
-            </li>
-            <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
-              <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag1.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
-                <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">参考ubhjnkk看吗系栏目下吗1mkm</p>
-              </router-link>
-            </li>
-            <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
-              <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag2.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
-                <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">需要发u562参数表</p>
-              </router-link>
-            </li>
-            <li class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
-              <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="this.$store.state.baseHost + 'img/tag/tag3.png'" style="width:43px; height:43px; top:-8px; left:-28px; position:absolute;"/>
-                <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">参vhg考46cdugyb51参cdv加454csjkm</p>
+                <img v-lazy="$store.state.baseHost + 'img/tag/tag' + ((n - 1) % 3 + 1) + '.png'" style="width:43px; height:43px; top:-7px; left:-28px; position:absolute;"/>
+                <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">{{ n }}sfdvgchjkdfbgjhjk</p>
               </router-link>
             </li>
           </ul>

@@ -2,15 +2,15 @@
   <div class="box-show" style="width:100%; height:80px; margin:8px 0 16px; position:relative;">
 
     <!-- 头像 -->
-    <router-link :to="'/author/' + userid" class="avatar-author"><img class="box-show" v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'"></router-link>
+    <router-link :to="'/author/' + authorInfo.userid" class="avatar-author"><img class="box-show" v-lazy="$store.state.baseHost + 'img/touxiang.jpg'"></router-link>
 
     <!-- 用户名 -->
-    <router-link class="username-author hover-underline" :to="'/author/' + userid">{{ username }}</router-link>
+    <router-link class="username-author hover-underline" :to="'/author/' + authorInfo.userid">{{ authorInfo.username }}</router-link>
 
     <p style="color:#999; font-size:15px;">
-      <span style="padding:0 18px; border-right:1px solid #7AFFB4;">关注 0</span>
-      <span style="padding:0 18px; border-right:1px solid #7AFFB4;">粉丝 0</span>
-      <span style="padding:0 18px; border-right:1px solid #7AFFB4;">点赞 0</span>
+      <span style="padding:0 18px; border-right:1px solid #7AFFB4;">关注 {{ authorInfo.attention }}</span>
+      <span style="padding:0 18px; border-right:1px solid #7AFFB4;">粉丝 {{ authorInfo.follows }}</span>
+      <span style="padding:0 18px; border-right:1px solid #7AFFB4;">点赞 {{ authorInfo.likes }}</span>
       <span style="padding:0 18px;">文章 0</span>
     </p>
 
@@ -28,15 +28,22 @@ import leave from '../base/button/leave.vue'
 
 export default {
   name: 'author_cell_search',
+
   components: {
     follow,
     leave
   },
+
+  props: [
+    'authorInfo'
+  ],
+
   data () {
     return {
       haveFollow: false
     }
   },
+
   methods: {
     clickFollow () {
       this.haveFollow = true
@@ -52,7 +59,7 @@ export default {
   .avatar-author {
     width: 42px;
     height: 42px;
-    margin: 8px 18px;
+    margin: 18px 8px 0 18px;
     float: left;
   }
   .avatar-author > img {

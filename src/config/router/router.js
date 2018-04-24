@@ -8,6 +8,11 @@ Vue.use(Router)
 export default new Router({
 
   /**
+   * 历史模式 - 去掉路由的 '#'
+   */
+  // mode: 'history',
+
+  /**
    * 每次页面跳转自动滚到顶部
    */
   scrollBehavior () {

@@ -50,14 +50,18 @@ export default {
 <style scoped>
   .category-name {
     max-width: 208px;
-    margin: 0 18px;
+    margin: 13px 18px 0;
     display: inline-block;
     color: #999;
-    line-height: 2.6em;
+    line-height: 1.8em;
     font-size: 18px;
   }
 
   .category-name:hover {
     color: #DDD;
+  }
+
+  .search-follow {
+    margin:16px;
   }
 </style>

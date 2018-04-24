@@ -1,8 +1,7 @@
 <template>
   <!-- 推荐作者列表组件 -->
   <div class="s1c-Bg box-show" style="width:98%; margin:10px 23px 10px 0; padding:8px 8px; float:right;">
-    <div
-      style="width:88%; margin:12px auto; color:#DDD; font-weight:700; font-size:18px; text-shadow:0.5px 0.5px 0.2px #000;">
+    <div style="width:88%; margin:12px auto; color:#DDD; font-weight:700; font-size:18px; text-shadow:0.5px 0.5px 0.2px #000;">
       推荐作者
       <a id="changeRecomAuthor" @click="changeRecomAuthor()" :class="{'active':active}">
         <i class="MyIF refresh-1"></i> 换一批
