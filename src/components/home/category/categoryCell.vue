@@ -1,7 +1,9 @@
 <template>
   <div class="box-show" style="width:100%; height:80px; margin:8px 0 16px; position:relative;">
-    <router-link to="/category" style="width:48px; height:48px; margin:15px 8px 8px 18px; float:left;"><img class="box-show" v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'" style="width:100%; height:100%; border-radius:3px;"></router-link>
-    <router-link class="category-name hover-underline text-hidden" to="/category">{{ category.name }}</router-link>
+    <router-link :to="'/category/' + category.id" style="width:48px; height:48px; margin:15px 8px 8px 18px; float:left;">
+      <img class="box-show" v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'" style="width:100%; height:100%; border-radius:3px;">
+    </router-link>
+    <router-link class="category-name hover-underline text-hidden" :to="'/category/' + category.id">{{ category.name }}</router-link>
     <p style="color:#999; font-size:15px;">
       <span style="padding:0 18px; border-right:1px solid #7AFFB4;">火热程度 A</span>
       <span style="padding:0 18px; border-right:1px solid #7AFFB4;">关注人数 {{ category.follows }}</span>

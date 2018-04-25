@@ -1,5 +1,5 @@
 <template>
-  <div id="replyOtherUser" class="s1c-Bg box-show" style="width:96%; height:148px; margin:8px auto; text-align:center;">
+  <div id="replyOtherUser" class="s1c-Bg box-show" style="width:96%; height:148px; margin:8px auto 3px; text-align:center;">
 
     <textarea class="text-effect super-text" v-model="comment" style="width:97%; height:86px; margin:13px auto 6px; padding:5px; box-sizing:border-box; background:#222; resize:none; border:none;"></textarea>
 
@@ -14,7 +14,7 @@
       </span>
 
       <!-- "发表评论"按钮 -->
-      <span @click="createComment(0)" class="superButton-Out" style="width:105px; height:32px; position:relative; float:right; border-radius:2px;">
+      <span @click="createComment" class="superButton-Out" style="width:105px; height:32px; position:relative; float:right; border-radius:2px;">
         <span class="superButton-In MyIF feedback" style="width:96px; height:23px; top:48.5%; line-height:24px;"> 发表评论</span>
       </span>
 
@@ -34,17 +34,24 @@ import commentButton from '../base/button/comment.vue'
 
 export default {
   name: 'new_comment',
+
   components: {
     emoji,
     emojiContent,
     commentButton
   },
+
+  props: [
+    'parentid'
+  ],
+
   data () {
     return {
       emojiContent: '',
-      comment: this.$store.state.userInfo.username + '：'
+      comment: ''
     }
   },
+
   methods: {
     createEmojiContent () {
       if (this.emojiContent === '') {
@@ -60,10 +67,10 @@ export default {
       this.comment += '[-' + info + '-]'
     },
 
-    createComment (parentid = 0) {
+    createComment () {
       let data = {
         articleid: this.$route.params.id,
-        parentid: parentid,
+        parentid: this.parentid,
         userid: this.$store.state.userInfo.id,
         content: this.comment
       }

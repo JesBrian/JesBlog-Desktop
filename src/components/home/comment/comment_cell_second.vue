@@ -1,8 +1,8 @@
 <template>
-  <div class="s1c-Bg box-show" style="width:85%; margin:8px auto 0; padding:8px 12px 12px; border-radius:4px;">
+  <div class="s1c-Bg box-show" style="width:85%; margin:8px auto; padding:8px 12px 12px; border-radius:4px;">
     <p style="font-size:14px; line-height:1.35em; word-break:break-all;">
-      <!--<router-link class="hover-underline username-author" :to="'/author/' + commentData.userid">{{ commentData.userid }}</router-link>：-->
-      城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机城是理科生v手机
+      <router-link class="hover-underline username-author" :to="'/author/' + parentCommentData.userid">{{ parentCommentData.username }}</router-link>：
+      {{ parentCommentData.content }}
     </p>
   </div>
 </template>
@@ -10,6 +10,10 @@
 <script>
 export default {
   name: 'comment_cell_second',
+
+  props: [
+    'parentCommentData'
+  ]
 }
 </script>
 

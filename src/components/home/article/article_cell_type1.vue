@@ -20,7 +20,7 @@
         换成你的离开，acskmsldv成绩单深v领看电视剧出口减少了几次啦才能使拉开门出口量hbnjlkm
       </router-link>
 
-      <router-link :to="'/category/' + article.categoryid" style="margin-left:38px; padding:1.8px 8px 1.8px 10px; display:inline-block; box-shadow:0 0 3px #0febe5; border-radius:2px; letter-spacing:2px; font-size:16px; color:#BBB; line-height:1.2em;" >666</router-link>
+      <router-link :to="'/category/' + article.categoryid" style="margin-left:38px; padding:1.8px 8px 1.8px 10px; display:inline-block; box-shadow:0 0 3px #0febe5; border-radius:2px; letter-spacing:2px; font-size:16px; color:#BBB; line-height:1.2em;" >{{ article.categoryName }}</router-link>
       <span style="margin-right:38px; text-align:right; font-size:14px; float:right;">2017-11-05 14:00</span>
     </div>
   </div>

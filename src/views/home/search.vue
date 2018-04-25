@@ -54,7 +54,7 @@
           <page-loading v-if="!loadData" style="margin-left:88px;"/>
 
           <!-- 分页组件 -->
-          <pagination/>
+          <pagination v-if="loadData" />
 
         </div>
 
@@ -135,18 +135,14 @@ export default {
       } else {
         this.changeRouter = true
       }
-
-      console.log('router')
     },
 
     'searchType' () {
       this.$router.push({path: '/search/' + this.searchType + '/' + this.searchKey})
-      console.log('type')
     },
 
     'searchKey' () {
       this.$router.push({path: '/search/' + this.searchType + '/' + this.searchKey})
-      console.log('key')
     }
   },
 
@@ -164,7 +160,7 @@ export default {
     }
     this.searchKeyTemp = this.searchKey
     this.changeContent()
-    console.log('creat')
+    this.changeRouter = true
   },
 
   methods: {
@@ -173,6 +169,7 @@ export default {
      * 改变内容
      */
     changeContent () {
+      console.log('changeContent')
       this.loadData = false
       this.changeRouter = false
       this.searchKey = this.searchKeyTemp
@@ -199,7 +196,6 @@ export default {
           this.contentItem = []
         }
         this.loadData = true
-        console.log('changeContent')
       }).catch( (error) => {
         console.log(error)
       })

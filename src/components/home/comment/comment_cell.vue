@@ -4,21 +4,19 @@
     <router-link :to="'/author/' + commentData.userid" class="avatar-author"><img class="box-show" v-lazy="this.$store.state.baseHost + 'img/touxiang.jpg'" style="width:100%; height:100%; border-radius:3px;"></router-link>
 
     <!-- 用户名 -->
-    <router-link class="hover-underline username-author" :to="'/author/' + commentData.userid">{{ commentData.userid }}</router-link>：
+    <router-link class="hover-underline username-author" :to="'/author/' + commentData.userid">{{ commentData.username }}</router-link>：
+    <span style="margin:10px 38px 0; float:right; font-size:13px;">{{ timestampToTime(commentData.create_time) }}</span>
 
     <p style="padding:0 18px; font-size:14px; line-height:1.2em; word-break:break-all; text-indent:2em;">{{ commentData.content }}</p>
 
     <!-- 父级评论组件 -->
-    <comment-cell-second/>
+    <comment-cell-second v-if="commentData.parentid !== '0'" :parentCommentData="commentData.parentCommentData"/>
 
-    <p style="width:83%; margin:12px 0 8px; text-indent:10em; line-height:1em; clear:both; font-size:13px;">
-      <span>2017 - 12 - 15</span>
-      <a class="replyButton hover-underline" style="float:right; color:#55EEB4;" @click="newComment">回复</a>
-    </p>
+    <a class="replyButton hover-underline" style="height:18px; margin:8px 0 0 83%; color:#55EEB4;" @click="newComment">回复</a>
 
     <transition name="fade" mode="out-in">
       <!-- 新回复组件 -->
-      <component :is="isNewComment"/>
+      <component :is="isNewComment" :parentid="commentData.id" />
     </transition>
 
   </div>
@@ -27,6 +25,8 @@
 <script>
 import commentCellSecond from './comment_cell_second.vue'
 import newComment from './new_comment.vue'
+
+import {timestampToTime} from '../../../assets/js/common.js'
 
 export default {
   name: 'comment_cell',
@@ -50,6 +50,10 @@ export default {
     newComment () {
       this.isNewComment = 'newComment'
       this.$emit('newComment', this)
+    },
+
+    timestampToTime (timestamp) {
+      return timestampToTime(timestamp)
     }
   }
 }
