@@ -50,7 +50,7 @@
 
         <div style="width:28%; display:inline-block; float:right;">
           <!-- 推荐作者列表组件 -->
-          <author-list/>
+          <author-list :authorList="categoryData.recomAuthorList"/>
         </div>
 
       </div>
@@ -65,6 +65,9 @@
     <!-- 拟态框组件 -->
     <modal/>
 
+    <!-- 操作结果提示弹出框组件 -->
+    <alert-tips v-if="$store.state.alertTips !== ''" />
+
   </div>
 </template>
 
@@ -76,6 +79,7 @@ import authorList from '../../components/home/author/author_list_recom.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
+import alertTips from '../../components/common/alertTips/alertTips.vue'
 
 export default {
   name: 'category',
@@ -87,7 +91,8 @@ export default {
     authorList,
     floatBlock,
     pageFooter,
-    modal
+    modal,
+    alertTips
   },
 
   watch: {

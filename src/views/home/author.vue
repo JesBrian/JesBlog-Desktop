@@ -102,6 +102,9 @@
     <!-- 拟态框组件 -->
     <modal/>
 
+    <!-- 操作结果提示弹出框组件 -->
+    <alert-tips v-if="$store.state.alertTips !== ''" />
+
   </div>
 </template>
 
@@ -119,6 +122,7 @@ import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
 import baseLoading from '../../components/common/loading/baseLoading.vue'
 import pageLoading from '../../components/common/loading/pageLoading.vue'
+import alertTips from '../../components/common/alertTips/alertTips.vue'
 
 export default {
   name: 'author',
@@ -135,6 +139,7 @@ export default {
     floatBlock,
     pageFooter,
     modal,
+    alertTips,
     baseLoading,
     pageLoading
   },

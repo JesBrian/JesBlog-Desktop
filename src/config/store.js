@@ -9,7 +9,7 @@ export default new Vuex.Store({
     baseHost: 'http://jesbrian.cn/JesBlog-Backstage/web/', // 本地开发配置域名
     // baseHost: 'http://blog.jesbrian.cn/', // 服务器生产配置域名
     modalType: '', // 拟态框类型
-    alertTips: false, // 弹出的操作提示
+    alertTips: '', // 弹出的操作提示
     screenWidth: document.body.clientWidth, // 浏览器宽度
     userInfo: {
       id: '0', // 用户ID
@@ -25,7 +25,7 @@ export default new Vuex.Store({
      */
     resetVuexStore (state) {
       state.modalType = ''
-      state.alertTips = false
+      state.alertTips = ''
     },
 
     /**
@@ -38,11 +38,14 @@ export default new Vuex.Store({
     /**
      * 弹出操作结果提示框
      */
-    alertTips (state) {
-      state.alertTips = 'alertTips'
+    alertTips (state, alertTipsStr) {
+      state.alertTips = alertTipsStr
       setTimeout(function () {
         state.alertTips = ''
       }, 5000)
+    },
+    closeAlertTips (state) {
+      state.alertTips = ''
     },
 
     /**

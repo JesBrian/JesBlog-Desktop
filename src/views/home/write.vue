@@ -128,6 +128,9 @@
     <!-- 拟态框组件 -->
     <modal @makeSure="sureSaveArticle" :warningText="warningText"/>
 
+    <!-- 操作结果提示弹出框组件 -->
+    <alert-tips v-if="$store.state.alertTips !== ''" />
+
   </div>
 </template>
 
@@ -136,6 +139,7 @@ import navigationMenu from '../../components/home/base/extends/navigationMenu.vu
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
+import alertTips from '../../components/common/alertTips/alertTips.vue'
 
 import 'quill/dist/quill.snow.css'
 import '@/assets/css/editor.css'
@@ -150,7 +154,8 @@ export default {
     quillEditor,
     floatBlock,
     pageFooter,
-    modal
+    modal,
+    alertTips
   },
 
   watch: {

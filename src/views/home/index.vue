@@ -64,7 +64,7 @@
     <modal/>
 
     <!-- 操作结果提示弹出框组件 -->
-    <component :is="alertTips"/>
+    <alert-tips v-if="$store.state.alertTips !== ''" />
 
   </div>
 </template>
@@ -78,8 +78,8 @@ import authorList from '../../components/home/author/author_list_recom.vue'
 import bulletinBoard from '../../components/home/base/extends/bulletin_board.vue'
 import floatBlock from '../../components/home/base/extends/float_block.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
-import alertTips from '../../components/common/alertTips/alertTips.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
+import alertTips from '../../components/common/alertTips/alertTips.vue'
 import baseLoading from '../../components/common/loading/baseLoading.vue'
 import pageLoading from '../../components/common/loading/pageLoading.vue'
 
@@ -127,11 +127,6 @@ export default {
     })
   },
 
-  computed: {
-    alertTips () {
-      return this.$store.state.alertTips
-    }
-  },
   methods: {
     goSearch (key) {
       this.$router.push('/search/titles/' + key)

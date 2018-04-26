@@ -18,46 +18,36 @@
         <label class="MyIF IDcard-1" for="registerUser" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
           <span style="margin-left:8px; color:#DDD;">用户名</span>
         </label>
-        <input id="registerUser" type="text" class="s1c-Bg box-show" :class="{'warning':warningUsername}"
-               v-model.trim="username" @blur="checkUserExist" style="width:268px; padding:6px 12px; float:right;"
-               placeholder="请填写用户名"/>
+        <input id="registerUser" type="text" class="s1c-Bg box-show" :class="{'warning':warningUsername}" v-model.trim="username" @blur="checkUserExist" style="width:268px; padding:6px 12px; float:right;" placeholder="请填写用户名"/>
       </div>
 
       <div style="width:60%; height:62px; margin:0 auto; font-size:19px;">
         <label class="MyIF mail" for="registerMail" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
           <span style="margin-left:8px; color:#DDD;">邮箱</span>
         </label>
-        <input id="registerMail" type="text" class="s1c-Bg box-show" :class="{'warning':warningMail}"
-               v-model.trim="mail" @blur="checkMail" style="width:268px; padding:6px 12px; float:right;"
-               placeholder="请填写邮箱"/>
+        <input id="registerMail" type="text" class="s1c-Bg box-show" :class="{'warning':warningMail}" v-model.trim="mail" @blur="checkMail" style="width:268px; padding:6px 12px; float:right;" placeholder="请填写邮箱"/>
       </div>
 
       <div style="width:60%; height:62px; margin:0 auto; font-size:19px;">
         <label class="MyIF yuechi" for="registerPwd" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
           <span style="margin-left:8px; color:#DDD;">密码</span>
         </label>
-        <input id="registerPwd" type="password" class="s1c-Bg box-show" :class="{'warning':warningPasswd}"
-               v-model.trim="passwd" @blur="checkRepasswd" style="width:268px; padding:6px 12px; float:right;"
-               placeholder="请填写密码"/>
+        <input id="registerPwd" type="password" class="s1c-Bg box-show" :class="{'warning':warningPasswd}" v-model.trim="passwd" @blur="checkRepasswd" style="width:268px; padding:6px 12px; float:right;" placeholder="请填写密码"/>
       </div>
 
       <div style="width:60%; height:62px; margin:0 auto; font-size:19px;">
         <label class="MyIF yuechi" for="registerRePwd" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
           <span style="margin-left:8px; color:#DDD;">重密码</span>
         </label>
-        <input id="registerRePwd" type="password" class="s1c-Bg box-show" :class="{'warning':warningPasswd}"
-               v-model.trim="repasswd" @blur="checkRepasswd" style="width:268px; padding:6px 12px; float:right;"
-               placeholder="请再次填写密码"/>
+        <input id="registerRePwd" type="password" class="s1c-Bg box-show" :class="{'warning':warningPasswd}" v-model.trim="repasswd" @blur="checkRepasswd" style="width:268px; padding:6px 12px; float:right;" placeholder="请再次填写密码"/>
       </div>
 
       <div style="width:75%; height:28%; margin:0 auto 18px; text-align:center;">
-                <span class="superButton-Out" style="width:108px; height:38px; margin:0 48px 0 0;">
-                    <button class="superButton-In MyIF cancel"
-                            style="width:98px; height:28px; top:49%; left:50%; line-height:30px; font-size:16px;"> 重新填写</button>
-                </span>
+        <span class="superButton-Out" style="width:108px; height:38px; margin:0 48px 0 0;">
+          <button class="superButton-In MyIF cancel" style="width:98px; height:28px; top:49%; left:50%; line-height:30px; font-size:16px;"> 重新填写</button>
+        </span>
         <span class="superButton-Out" @click="userRegister" style="width:108px; height:38px; margin:0 0 0 48px;">
-                    <button class="superButton-In MyIF makesure"
-                            style="width:98px; height:28px; top:49%; left:50%; line-height:30px; font-size:16px;"> 确认注册</button>
+          <button class="superButton-In MyIF makesure" style="width:98px; height:28px; top:49%; left:50%; line-height:30px; font-size:16px;"> 确认注册</button>
         </span>
       </div>
 
@@ -106,6 +96,7 @@ export default {
       this.axios.post('user/check', data).then( (response) => {
         if (response.data.status === '00') {
           this.warningUsername = true
+          this.$store.commit('alertTips', '该用户名已被注册！')
         } else {
           this.warningUsername = false
         }
@@ -123,6 +114,7 @@ export default {
         this.warningMail = false
       } else {
         this.warningMail = true
+        this.$store.commit('alertTips', '邮箱格式填写错误！')
       }
     },
 
@@ -134,6 +126,7 @@ export default {
         this.warningPasswd = false
       } else {
         this.warningPasswd = true
+        this.$store.commit('alertTips', '两次密码输入有异！')
       }
     },
 
@@ -169,9 +162,8 @@ export default {
           }
           this.$store.commit('changeUserInfo', userInfo)
           this.$store.commit('changeModal')
-          console.log(response.data.msg)
-        } else {
         }
+        this.$store.commit('alertTips', response.data.msg)
       }).catch( (error) => {
         console.log(error)
       })

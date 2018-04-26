@@ -131,6 +131,15 @@ export default {
      * 用户登录
      */
     userLogin () {
+      if (this.username === '') {
+        this.$store.commit('alertTips', '请输入用户名！')
+        return false
+      }
+      if (this.passwd === '') {
+        this.$store.commit('alertTips', '请输入密码！')
+        return false
+      }
+
       let data = {
         username: this.username,
         passwd: this.passwd
@@ -146,7 +155,10 @@ export default {
           this.$store.commit('changeUserInfo', userInfo)
           this.$store.commit('changeModal')
           this.$router.go(0)
+          return false
         }
+
+        this.$store.commit('alertTips', response.data.msg)
       }).catch( (error) => {
         console.log(error)
       })
@@ -161,7 +173,6 @@ export default {
               clearInterval(this.timer)
               oauthWindow.close()
             }
-            console.log(response)
           }).catch( (error) => {
             console.log(error)
           })

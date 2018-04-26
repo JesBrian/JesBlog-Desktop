@@ -36,6 +36,9 @@
     <!-- 拟态框组件 -->
     <modal/>
 
+    <!-- 操作结果提示弹出框组件 -->
+    <alert-tips v-if="$store.state.alertTips !== ''" />
+
   </div>
 </template>
 
@@ -47,6 +50,7 @@ import floatBlock from '../../components/home/base/extends/float_block.vue'
 import articleDetail from '../../components/home/article/article_detail.vue'
 import pageFooter from '../../components/home/base/extends/page_footer.vue'
 import modal from '../../components/common/modal/modalTotal.vue'
+import alertTips from '../../components/common/alertTips/alertTips.vue'
 
 import {scrollToLoadData} from '../../assets/js/common.js'
 
@@ -60,7 +64,8 @@ export default {
     authorList,
     floatBlock,
     pageFooter,
-    modal
+    modal,
+    alertTips
   },
 
   watch: {

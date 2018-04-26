@@ -17,7 +17,7 @@
         cjxkv距ds成交量的lds;km;ij交量ldvs成交量的时空距ds成lkjij的时空时lvas空距ds成交量的时dsl看电kjd交量的lds;km;ij交量ldvs成交量的时空距ds成lkjij的时空时lvas空距ds成交量的时dsl看电kjd空距离视
       </router-link>
 
-      <router-link :to="'/category/' + article.categoryid" style="margin-left:18px; padding:1.8px 8px 1.8px 10px; display:inline-block; box-shadow:0 0 3px #0febe5; border-radius:2px; letter-spacing:2px; font-size:16px; color:#BBB; line-height:1.1em;" >{{ article.categoryName }}</router-link>
+      <router-link :to="'/category/' + article.categoryid" style="margin-left:18px; padding:1.8px 8px 1.8px 10px; display:inline-block; background:#1D1D1D; box-shadow:0 0 3px #0febe5; border-radius:2px; letter-spacing:2px; font-size:16px; color:#BBB; line-height:1.1em;" >{{ article.categoryName }}</router-link>
       <span style="margin-right:18px; text-align:right; font-size:14px; float:right;">2017-11-05 14:00</span>
     </div>
   </div>
