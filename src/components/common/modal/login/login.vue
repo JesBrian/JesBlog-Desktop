@@ -51,43 +51,43 @@
           <tr>
             <td style="text-align:right;">
               <!-- 微信 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">
+              <div @click="checkOAuthLogin('Weixin')" class="superButton-Out" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="superButton-In MyIF wechat" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
+              </div>
             </td>
             <td>
               <!-- QQ -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">
+              <div @click="checkOAuthLogin('QQ')" class="superButton-Out" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="superButton-In MyIF qq" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
+              </div>
             </td>
           </tr>
           <tr>
             <td style="text-align:right;">
               <!-- 微博 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">
+              <div @click="checkOAuthLogin('Weibo')" class="superButton-Out" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
+              </div>
             </td>
             <td>
               <!-- 百度 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Baidu'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" style="width:40px; height:40px; margin:8px 0;">
+              <div @click="checkOAuthLogin('Baidu')" class="superButton-Out" style="width:40px; height:40px; margin:8px 0;">
                 <span class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
+              </div>
             </td>
           </tr>
           <tr>
             <td style="text-align:right;">
               <!-- Gitee -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">
+              <div @click="checkOAuthLogin('Gitee')" class="superButton-Out" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="superButton-In MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
+              </div>
             </td>
             <td>
               <!-- Github -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" @click="checkOAuthLogin" class="superButton-Out" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
+              <div @click="checkOAuthLogin('Github')" class="superButton-Out" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="superButton-In MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
+              </div>
             </td>
           </tr>
         </table>
@@ -137,7 +137,6 @@ export default {
       }
 
       this.axios.post('user/login', data).then( (response) => {
-        // console.log(response);
         if (response.data.status === '01') {
           let userInfo = {
             'id': response.data.id,
@@ -153,18 +152,20 @@ export default {
       })
     },
 
-    checkOAuthLogin () {
-      setTimeout(function () {
+    checkOAuthLogin (oauthType) {
+      let oauthWindow = window.open(this.$store.state.baseHost + 'oauth/login?oauthType=' + oauthType, '_blank')
+      setTimeout(() => {
         this.timer = setInterval( () => {
           this.axios.post('oauth/check-login').then( (response) => {
             if (response.data.status === '01') {
               clearInterval(this.timer)
+              oauthWindow.close()
             }
             console.log(response)
           }).catch( (error) => {
             console.log(error)
           })
-        }, 3000)
+        }, 2368)
       }, 5000)
     }
   }

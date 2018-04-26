@@ -16,10 +16,10 @@
         <!-- 推荐文章分类 -->
         <div v-if="loadData" style="width:20%; height:92%; margin:23px 23px 0 0; display:inline-block; float:right;">
           <ul style="height:100%;">
-            <li v-for="n in 6" class="s1c-Bg box-show" style="width:100%; height:9%; margin:10.6% auto;">
-              <router-link to="/author/3" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
-                <img v-lazy="$store.state.baseHost + 'img/tag/tag' + ((n - 1) % 3 + 1) + '.png'" style="width:43px; height:43px; top:-7px; left:-28px; position:absolute;"/>
-                <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">{{ n }}sfdvgchjkdfbgjhjk</p>
+            <li v-for="(item, index) in categoryList" class="s1c-Bg box-show" style="width:80%; height:9%; margin:10.6% auto;">
+              <router-link :to="'/category/' + item.id" style="width:96%; height:100%; display:inline-block; position:relative; color:#BBB;">
+                <img v-lazy="$store.state.baseHost + 'img/tag/tag' + (index % 3 + 1) + '.png'" style="width:43px; height:43px; top:-7px; left:-28px; position:absolute;"/>
+                <p class="text-hidden" style="width:100%; font-size:16px; letter-spacing:1px; text-indent:1.1em; line-height:1.68em;">{{ item.name }}</p>
               </router-link>
             </li>
           </ul>
@@ -102,6 +102,7 @@ export default {
   data () {
     return {
       loadData: false,
+      categoryList: [],
       articleList: [],
       authorList: [],
       bulletinList: []
@@ -116,6 +117,7 @@ export default {
     this.axios.post('index/home-index', data).then( (response) => {
       if (response.data.status === '01') {
         this.loadData = true
+        this.categoryList = response.data.data.categoryList
         this.articleList = response.data.data.articleList
         this.authorList = response.data.data.authorList
         this.bulletinList = response.data.data.bulletinList
