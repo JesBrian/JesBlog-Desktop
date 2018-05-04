@@ -12,8 +12,8 @@ import './assets/plugins/myfonticon/iconfont.css'
 
 // axios.defaults.withCredentials = true
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-axios.defaults.baseURL = store.state.baseHost + 'index.php/' // 本地开发配置域名
-// axios.defaults.baseURL = store.state.baseHost // 服务器生产配置域名
+// axios.defaults.baseURL = store.state.baseHost + 'index.php/' // 本地开发配置域名
+axios.defaults.baseURL = store.state.baseHost // 服务器生产配置域名
 Vue.prototype.axios = axios
 Vue.use(vueLazyload, {
   error: store.state.baseHost + 'img/loading.svg',
