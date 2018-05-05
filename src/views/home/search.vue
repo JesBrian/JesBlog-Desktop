@@ -111,6 +111,7 @@ export default {
 
   data () {
     return {
+      source: null,
       loadData: false,
       changeRouter: true,
       searchType: 'titles',
@@ -174,7 +175,6 @@ export default {
      * 改变内容
      */
     changeContent () {
-      console.log('changeContent')
       this.loadData = false
       this.changeRouter = false
       this.searchKey = this.searchKeyTemp
@@ -194,6 +194,14 @@ export default {
         url = 'search/tag'
       }
 
+      // 取消请求（message 参数是可选的）
+      if (this.source !== null) {
+        this.source.cancel()
+      }
+
+      this.source = this.axios.CancelToken.source() // 这里初始化source对象
+      data.cancelToken = this.source.token
+
       this.axios.post(url, data).then((response) => {
         if (response.data.status === '01') {
           this.contentItem = response.data.data
@@ -201,6 +209,7 @@ export default {
           this.contentItem = []
         }
         this.loadData = true
+        this.source = null
       }).catch((error) => {
         console.log(error)
       })
