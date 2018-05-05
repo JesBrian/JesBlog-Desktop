@@ -25,6 +25,7 @@ import infoList from '../../../components/backstage/base/infoList.vue'
 
 export default {
   name: 'admin-list',
+
   components: {
     infoList
   }

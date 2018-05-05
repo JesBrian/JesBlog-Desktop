@@ -191,9 +191,9 @@ export default {
         'id': this.$store.state.userInfo.id
       }
 
-      this.axios.post('user/update', data).then( (response) => {
+      this.axios.post('user/update', data).then((response) => {
         console.log(response)
-      }).catch( (error) => {
+      }).catch((error) => {
         console.log(error)
       })
     },
@@ -219,9 +219,9 @@ export default {
         data.append('file', file, file.name) // 通过append向form对象添加数据
         data.append('id', this.$store.state.userInfo.id) // 添加form表单中其他数据 - 用户id
         data.append('username', this.$store.state.userInfo.username) // 添加form表单中其他数据 - 用户名
-        this.axios.post('user/avatar', data).then( (response) => {
+        this.axios.post('user/avatar', data).then((response) => {
           console.log(response)
-        }).catch( (error) => {
+        }).catch((error) => {
           console.log(error)
         })
       }

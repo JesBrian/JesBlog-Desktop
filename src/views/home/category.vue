@@ -122,13 +122,13 @@ export default {
       userid: this.$store.state.userInfo.id
     }
 
-    this.axios.post('category/category-show-info', data).then( (response) => {
+    this.axios.post('category/category-show-info', data).then((response) => {
       if (response.data.status === '01') {
         this.categoryData = response.data.data
       } else {
         console.log(response.data.msg)
       }
-    }).catch( (error) => {
+    }).catch((error) => {
       console.log(error)
     })
   },
@@ -146,11 +146,11 @@ export default {
       if (this.contentType === 'hot') {
         data.order = 'likes'
       }
-      this.axios.post('article/article-list', data).then( (response) => {
+      this.axios.post('article/article-list', data).then((response) => {
         if (response.data.status === '01') {
           this.categoryData.articleList = response.data.data
         }
-      }).catch( (error) => {
+      }).catch((error) => {
         console.log(error)
       })
     }

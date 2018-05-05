@@ -126,11 +126,11 @@ export default {
       userid: this.$store.state.userInfo.id
     }
 
-    this.axios.post('article/article-num', data).then( (response) => {
+    this.axios.post('article/article-num', data).then((response) => {
       if (response.data.status === '01') {
         this.articleNum = response.data.data
       }
-    }).catch( (error) => {
+    }).catch((error) => {
       console.log(error)
     })
 
@@ -168,7 +168,7 @@ export default {
         data.status = 0
       }
 
-      this.axios.post('article/get-simple-info', data).then( (response) => {
+      this.axios.post('article/get-simple-info', data).then((response) => {
         if (response.data.status === '01') {
           this.articleList = response.data.data
         } else {
@@ -177,7 +177,7 @@ export default {
         }
 
         this.loadData = true
-      }).catch( (error) => {
+      }).catch((error) => {
         console.log(error)
       })
     }

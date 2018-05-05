@@ -70,13 +70,13 @@ export default {
         content: this.comment
       }
 
-      this.axios.post('comment/create-comment', data).then( (response) => {
+      this.axios.post('comment/create-comment', data).then((response) => {
         if (response.data.status === '01') {
           this.comment = ''
           console.log(response.data.data)
         } else {
         }
-      }).catch( (error) => {
+      }).catch((error) => {
         console.log(error)
       })
     }

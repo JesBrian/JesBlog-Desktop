@@ -95,23 +95,23 @@ export default {
 
   methods: {
     getRecommondArticleList () {
-      this.axios.post('article/recommond-list').then( (response) => {
+      this.axios.post('article/recommond-list').then((response) => {
         if (response.data.status === '01') {
           this.recomArticleList = response.data.data
         } else {
         }
-      }).catch( (error) => {
+      }).catch((error) => {
         console.log(error)
       })
     },
 
     getRecommondAuthorList () {
-      this.axios.post('recommend/author').then( (response) => {
+      this.axios.post('recommend/author').then((response) => {
         if (response.data.status === '01') {
           this.recomAuthorList = response.data.data
         } else {
         }
-      }).catch( (error) => {
+      }).catch((error) => {
         console.log(error)
       })
     }

@@ -316,9 +316,9 @@ export default {
         url = 'article/create'
       }
 
-      this.axios.post(url, data).then( (response) => {
+      this.axios.post(url, data).then((response) => {
         console.log(response)
-      }).catch( (error) => {
+      }).catch((error) => {
         console.log(error)
       })
     }

@@ -194,14 +194,14 @@ export default {
         url = 'search/tag'
       }
 
-      this.axios.post(url, data).then( (response) => {
+      this.axios.post(url, data).then((response) => {
         if (response.data.status === '01') {
           this.contentItem = response.data.data
         } else {
           this.contentItem = []
         }
         this.loadData = true
-      }).catch( (error) => {
+      }).catch((error) => {
         console.log(error)
       })
     }

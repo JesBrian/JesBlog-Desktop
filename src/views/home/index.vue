@@ -114,7 +114,7 @@ export default {
       userid: this.$store.state.userInfo.id
     }
 
-    this.axios.post('index/home-index', data).then( (response) => {
+    this.axios.post('index/home-index', data).then((response) => {
       if (response.data.status === '01') {
         this.loadData = true
         this.categoryList = response.data.data.categoryList
@@ -122,7 +122,7 @@ export default {
         this.authorList = response.data.data.authorList
         this.bulletinList = response.data.data.bulletinList
       }
-    }).catch( (error) => {
+    }).catch((error) => {
       console.log(error)
     })
   },

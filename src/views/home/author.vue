@@ -174,12 +174,12 @@ export default {
       'userid': this.$store.state.userInfo.id
     }
 
-    this.axios.post('user/get-detail-info', data).then( (response) => {
+    this.axios.post('user/get-detail-info', data).then((response) => {
       if (response.data.status === '01') {
         this.userInfo = response.data.data
         this.changeContent()
       }
-    }).catch( (error) => {
+    }).catch((error) => {
       console.log(error)
     })
 
@@ -193,12 +193,12 @@ export default {
   methods: {
 
     getRecommondAuthorList () {
-      this.axios.post('recommend/author').then( (response) => {
+      this.axios.post('recommend/author').then((response) => {
         if (response.data.status === '01') {
           this.recomAuthorList = response.data.data
         } else {
         }
-      }).catch( (error) => {
+      }).catch((error) => {
         console.log(error)
       })
     },
@@ -231,14 +231,14 @@ export default {
         return false
       }
 
-      this.axios.post(url, data).then( (response) => {
+      this.axios.post(url, data).then((response) => {
         if (response.data.status === '01') {
           this.contentList = response.data.data
           console.log(this.contentList)
         } else if (response.data.status === '00') {
           console.log(response.data.msg)
         }
-      }).catch( (error) => {
+      }).catch((error) => {
         console.log(error)
       })
     }

@@ -74,11 +74,11 @@ export default {
       url = 'search/backstage-list-data'
     }
 
-    this.axios.post(url, data).then( (response) => {
+    this.axios.post(url, data).then((response) => {
       if (response.data.status === '01') {
         this.contentList = response.data.data
       }
-    }).catch( (error) => {
+    }).catch((error) => {
       console.log(error)
     })
   }
