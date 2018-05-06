@@ -146,6 +146,7 @@ export default {
 
   data () {
     return {
+      axiosSource: null,
       userInfo: null,
       contentList: null,
       followType: 'user',
@@ -215,6 +216,15 @@ export default {
         userid: this.$route.params.id,
         status: 1
       }
+
+      // 取消请求
+      if (this.axiosSource !== null) {
+        this.axiosSource.cancel()
+        console.log(888)
+      }
+      this.axiosSource = this.axios.CancelToken.source() // 这里初始化source对象
+      data.cancelToken = this.axiosSource.token
+
       let url = ''
 
       if (this.contentType === 'articleList') {
@@ -234,10 +244,10 @@ export default {
       this.axios.post(url, data).then((response) => {
         if (response.data.status === '01') {
           this.contentList = response.data.data
-          console.log(this.contentList)
         } else if (response.data.status === '00') {
           console.log(response.data.msg)
         }
+        this.axiosSource = null
       }).catch((error) => {
         console.log(error)
       })

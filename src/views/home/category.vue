@@ -103,6 +103,7 @@ export default {
 
   data () {
     return {
+      axiosSource: null,
       categoryData: {},
       contentType: 'new',
       followType: 'category',
@@ -146,10 +147,19 @@ export default {
       if (this.contentType === 'hot') {
         data.order = 'likes'
       }
+
+      // 取消请求
+      if (this.axiosSource !== null) {
+        this.axiosSource.cancel()
+      }
+      this.axiosSource = this.axios.CancelToken.source() // 这里初始化source对象
+      data.cancelToken = this.axiosSource.token
+
       this.axios.post('article/article-list', data).then((response) => {
         if (response.data.status === '01') {
           this.categoryData.articleList = response.data.data
         }
+        this.axiosSource = null
       }).catch((error) => {
         console.log(error)
       })
